@@ -33,7 +33,7 @@ brew install gnu-sed --with-default-names
 # running `chsh`.
 brew install bash
 brew tap homebrew/versions
-brew install bash-completion2
+brew install bash-completion
 
 # Install `wget` with IRI support.
 brew install wget --with-iri
@@ -43,7 +43,7 @@ brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php55 --with-gmp
+# brew install homebrew/php/php55 --with-gmp
 
 # Install other useful binaries.
 brew install ack
@@ -58,7 +58,7 @@ brew install p7zip
 brew install pigz
 brew install pv
 brew install rename
-brew install rhino
+# brew install rhino
 brew install speedtest_cli
 brew install ssh-copy-id
 brew install tree
@@ -75,6 +75,7 @@ brew install sqlite
 brew install redis
 brew install todo-txt
 brew install heroku-toolbelt
+brew install tmux
 
 # Symlink things maybe
 brew linkapps
@@ -103,8 +104,8 @@ brew cask install sublime-text
 brew cask install pgadmin3
 brew cask install postgres
 brew cask install sequel-pro
-brew cask install virtualbox
-brew cask install vagrant
+# brew cask install virtualbox
+# brew cask install vagrant
 brew cask install firefox
 brew cask install google-chrome
 
@@ -117,4 +118,5 @@ brew cask install slack
 
 # Remove outdated versions from the cellar.
 brew cleanup
+brew cleanup -s --force
 brew cask cleanup

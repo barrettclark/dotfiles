@@ -12,6 +12,7 @@ function doIt() {
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
   rsync --exclude ".DS_Store" -av --no-perms fonts/ ~/Library/Fonts/
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
 	source ~/.bash_profile;
 }
 
