@@ -1,5 +1,6 @@
 # Make vim the default editor.
-export EDITOR='vim';
+export EDITOR='/usr/local/bin/vim';
+export BUNDLER_EDITOR=$EDITOR
 
 # Enable persistent REPL history for `node`.
 NODE_REPL_HISTORY_FILE=~/.node_history;
@@ -11,6 +12,8 @@ export HISTSIZE='32768';
 export HISTFILESIZE="${HISTSIZE}";
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
+# append to history, don't overwrite it
+shopt -s histappend
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
@@ -24,3 +27,6 @@ export MANPAGER='less -X';
 
 # Always enable colored `grep` output.
 export GREP_OPTIONS='--color=auto';
+
+# no ._ files in archives
+export COPYFILE_DISABLE=true

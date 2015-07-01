@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Volumes/Card/Projects/TripCasePlatform/Collab-Chat/app/models/api'
+let g:netrw_dirhist_2='/Volumes/Card/Projects/SCRATCH/ELIXIR/worktripp-server-elixir/worktripp_server/lib'
+let g:netrw_dirhist_3='/Volumes/Card/Projects/SabreDevStudio/traveler-first-air-shopping/airfair'

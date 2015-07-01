@@ -1,0 +1,14 @@
+#!/usr/local/bin/bash
+ 
+[[ $1 == "" ]] && exit 0 || SESSION_NAME=$1
+tmux has-session -t $SESSION_NAME &> /dev/null
+if [ $? -ne "0" ]
+then
+        tmux new-session -d -s $SESSION_NAME
+        tmux split-window -h -p 40
+        tmux split-window -v -p 40
+        # tmux send-keys -t 0 "vim" C-m
+        tmux select-pane -t 0
+fi
+ 
+tmux attach -t $SESSION_NAME

@@ -46,3 +46,17 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+if [ -f ~/.ssh/id_rsa ]; then
+  ssh-add ~/.ssh/id_rsa
+fi
+
+# The next line enables bash completion for gcloud
+source '/Users/barrettclark/google-cloud-sdk/completion.bash.inc'
+
+# Load RVM into a shell session as a function
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+if [ -f /usr/local/bin/fortune ]; then
+  fortune | cowsay
+fi

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Install developer tools
+# xcode-select --install
+
 # Install command-line tools using Homebrew.
 
 # Ask for the administrator password upfront.
@@ -35,50 +38,12 @@ brew install bash-completion2
 # Install `wget` with IRI support.
 brew install wget --with-iri
 
-# Install RingoJS and Narwhal.
-# Note that the order in which these are installed is important;
-# see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
-
 # Install more recent versions of some OS X tools.
 brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
 brew install homebrew/php/php55 --with-gmp
-
-# Install font tools.
-brew tap bramstein/webfonttools
-brew install sfnt2woff
-brew install sfnt2woff-zopfli
-brew install woff2
-
-# Install some CTF tools; see https://github.com/ctfs/write-ups.
-brew install aircrack-ng
-brew install bfg
-brew install binutils
-brew install binwalk
-brew install cifer
-brew install dex2jar
-brew install dns2tcp
-brew install fcrackzip
-brew install foremost
-brew install hashpump
-brew install hydra
-brew install john
-brew install knock
-brew install netpbm
-brew install nmap
-brew install pngcheck
-brew install socat
-brew install sqlmap
-brew install tcpflow
-brew install tcpreplay
-brew install tcptrace
-brew install ucspi-tcp # `tcpserver` etc.
-brew install xpdf
-brew install xz
 
 # Install other useful binaries.
 brew install ack
@@ -100,5 +65,56 @@ brew install tree
 brew install webkit2png
 brew install zopfli
 
+# The things I like that were not already listed
+brew install curl
+brew install ctags
+brew install node
+brew install npm
+brew install cloc
+brew install sqlite
+brew install redis
+brew install todo-txt
+brew install heroku-toolbelt
+
+# Symlink things maybe
+brew linkapps
+
+# Cask to install binaries
+brew install caskroom/cask/brew-cask
+
+# system things
+brew cask install pusher
+brew cask install growlnotify
+brew cask install launchrocket
+brew cask install caffeine
+brew cask install charles
+brew cask install controlplane
+brew cask install istat-menus
+brew cask install sizeup
+
+# dev things
+brew cask install android-studio
+brew cask install charles
+brew cask install colloquy
+brew cask install controlplane
+brew cask install dash
+brew cask install gitx
+brew cask install sublime-text
+brew cask install pgadmin3
+brew cask install postgres
+brew cask install sequel-pro
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install firefox
+brew cask install google-chrome
+
+# general things
+brew cask install disk-inventory-x
+brew cask install dropbox
+brew cask install get-lyrical
+brew cask install screenhero
+brew cask install slack
+
 # Remove outdated versions from the cellar.
 brew cleanup
+brew cask cleanup

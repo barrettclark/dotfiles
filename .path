@@ -1,0 +1,21 @@
+# Java
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home"
+export PATH=$PATH:$JAVA_HOME
+
+# Node
+source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
+export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+export PATH=$PATH:/usr/local/share/npm/bin:$NODE_PATH
+
+# Pebble SDK
+export PATH=~/pebble-dev/PebbleSDK-2.1.1/bin:$PATH
+export PATH=/Users/barrettclark/pebble-dev/PebbleSDK-current/bin:$PATH
+
+export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/barrettclark/google-cloud-sdk/path.bash.inc'
+
+# Add RVM to PATH for scripting
+PATH=$HOME/.rvm/bin:$PATH
