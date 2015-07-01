@@ -76,6 +76,15 @@ brew install redis
 brew install todo-txt
 brew install heroku-toolbelt
 brew install tmux
+brew install memcached
+brew install bash-git-prompt
+brew install carthage
+brew install cowsay
+brew install fortune
+brew install gradle
+brew install highlight
+brew install mosquitto
+brew install readline
 
 # Symlink things maybe
 brew linkapps
