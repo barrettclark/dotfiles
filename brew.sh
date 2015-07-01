@@ -85,6 +85,9 @@ brew install gradle
 brew install highlight
 brew install mosquitto
 brew install readline
+brew install go
+brew install scala
+brew install elixir
 
 # Symlink things maybe
 brew linkapps
