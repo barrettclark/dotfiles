@@ -103,7 +103,9 @@ brew cask install istat-menus
 brew cask install sizeup
 
 # dev things
+brew cask install java
 brew cask install android-studio
+brew cask install intellij-idea
 brew cask install charles
 brew cask install colloquy
 brew cask install controlplane
