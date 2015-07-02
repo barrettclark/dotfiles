@@ -94,6 +94,7 @@ brew linkapps
 
 # Cask to install binaries
 brew install caskroom/cask/brew-cask
+brew cask update
 
 # system things
 brew cask install pusher
@@ -122,6 +123,7 @@ brew cask install sequel-pro
 # brew cask install vagrant
 brew cask install firefox
 brew cask install google-chrome
+# brew tap caskroom/fonts
 
 # general things
 brew cask install disk-inventory-x
