@@ -8,11 +8,15 @@ function doIt() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
   # This does NOT run ./osx or ./brew.sh
   rm -rf ~/.vim
+
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
+		--exclude "README.md" --exclude "LICENSE-MIT.txt" --exclude "fonts/" \
+    --exclude "init/" -avh --no-perms . ~;
   rsync --exclude ".DS_Store" -av --no-perms fonts/ ~/Library/Fonts/
+
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
+
 	source ~/.bash_profile;
 }
 

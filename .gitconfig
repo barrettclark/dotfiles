@@ -39,7 +39,8 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
-	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+  # whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	whitespace = warn
 	# editor = subl -n -w
 	editor = vim
 
@@ -95,3 +96,5 @@
 
 [push]
 	default = simple
+[http]
+[http]

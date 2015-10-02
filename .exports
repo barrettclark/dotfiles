@@ -1,32 +1,66 @@
-# Make vim the default editor.
-export EDITOR='/usr/local/bin/vim';
+# Set the default editor
+# sublime text for all
+# export EDITOR='subl -w'
+# export BUNDLER_EDITOR='subl -w'
+# vim for all
+export EDITOR='/usr/local/bin/vim'
 export BUNDLER_EDITOR=$EDITOR
 
-# Enable persistent REPL history for `node`.
-NODE_REPL_HISTORY_FILE=~/.node_history;
-# Allow 32³ entries; the default is 1000.
-NODE_REPL_HISTORY_SIZE='32768';
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
 
-# Increase Bash history size. Allow 32³ entries; the default is 500.
-export HISTSIZE='32768';
-export HISTFILESIZE="${HISTSIZE}";
-# Omit duplicates and commands that begin with a space from history.
-export HISTCONTROL='ignoreboth';
-# append to history, don't overwrite it
-shopt -s histappend
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+shopt -s histappend                      # append to history, don't overwrite it
 
-# Prefer US English and use UTF-8.
-export LANG='en_US.UTF-8';
-export LC_ALL='en_US.UTF-8';
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 
-# Highlight section titles in manual pages.
-export LESS_TERMCAP_md="${yellow}";
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; echo -ne \"\033]0;${USER}@${HOSTNAME}\007\"; $PROMPT_COMMAND"
 
-# Don’t clear the screen after quitting a manual page.
-export MANPAGER='less -X';
+# Fix psycopg2 on 10.7.3
+export PGHOST=/tmp
 
-# Always enable colored `grep` output.
-export GREP_OPTIONS='--color=auto';
-
-# no ._ files in archives
+# no ._ files in archives please
 export COPYFILE_DISABLE=true
+
+#
+# PATH
+#
+export PATH=$PATH:~/bin
+
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
+
+# Java
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home"
+export PATH=$JAVA_HOME:$PATH
+
+# node
+source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
+export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+export PATH=$PATH:/usr/local/share/npm/bin:$NODE_PATH
+
+# Pebble SDK
+export PATH=~/pebble-dev/PebbleSDK-2.1.1/bin:$PATH
+export PATH=/Users/barrettclark/pebble-dev/PebbleSDK-current/bin:$PATH
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# PG App
+export PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/barrettclark/google-cloud-sdk/path.bash.inc'
+
+# Add RVM to PATH for scripting
+PATH=$HOME/.rvm/bin:$PATH

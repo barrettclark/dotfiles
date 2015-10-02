@@ -24,6 +24,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kballard/vim-swift'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,6 +64,10 @@ set title
 set showcmd
 
 "" CTags
+" default leader is \
+" CTRL + ]
+" :ts
+" See also: grep -H -r 'what_you_search' * | less
 map<Leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg --languages=-javascript,sql<CR><CR>
 set tags+=.git/tags
 

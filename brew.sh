@@ -47,7 +47,7 @@ brew install homebrew/dupes/screen
 
 # Install other useful binaries.
 brew install ack
-brew install dark-mode
+#brew install dark-mode
 #brew install exiv2
 brew install git
 brew install git-lfs
@@ -97,37 +97,41 @@ brew install caskroom/cask/brew-cask
 brew cask update
 
 # system things
-brew cask install pusher
-brew cask install growlnotify
-brew cask install launchrocket
 brew cask install caffeine
 brew cask install charles
 brew cask install controlplane
+brew cask install growlnotify
 brew cask install istat-menus
+brew cask install java
+brew cask install launchrocket
+brew cask install pusher
 brew cask install sizeup
+brew cask install squidman
 
 # dev things
-brew cask install java
+# brew cask install vagrant
+# brew tap caskroom/fonts
 brew cask install android-studio
-brew cask install intellij-idea
 brew cask install charles
 brew cask install colloquy
-brew cask install controlplane
 brew cask install dash
+brew cask install firefox
 brew cask install gitx
-brew cask install sublime-text
+brew cask install google-chrome
+brew cask install google-cloud-sdk
+brew cask install intellij-idea
 brew cask install pgadmin3
 brew cask install postgres
+brew cask install r
+brew cask install rstudio
 brew cask install sequel-pro
-# brew cask install virtualbox
-# brew cask install vagrant
-brew cask install firefox
-brew cask install google-chrome
-# brew tap caskroom/fonts
+brew cask install sublime-text
+brew cask install virtualbox
 
 # general things
 brew cask install disk-inventory-x
 brew cask install dropbox
+brew cask install evernote
 brew cask install get-lyrical
 brew cask install screenhero
 brew cask install slack
