@@ -5,6 +5,9 @@
 
 # Install command-line tools using Homebrew.
 
+# Install homebrew
+# ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Ask for the administrator password upfront.
 sudo -v
 
@@ -49,6 +52,7 @@ brew install homebrew/dupes/screen
 brew install ack
 #brew install dark-mode
 #brew install exiv2
+brew install gpg
 brew install git
 brew install git-lfs
 brew install imagemagick --with-webp
@@ -64,12 +68,14 @@ brew install ssh-copy-id
 brew install tree
 brew install webkit2png
 brew install zopfli
+brew install cmake
 
 # The things I like that were not already listed
 brew install curl
 brew install ctags
 brew install node
 brew install npm
+brew install nvm
 brew install cloc
 brew install sqlite
 brew install redis
@@ -88,6 +94,7 @@ brew install readline
 brew install go
 brew install scala
 brew install elixir
+brew install docker docker-machine
 
 # Symlink things maybe
 brew linkapps
@@ -98,14 +105,14 @@ brew cask update
 
 # system things
 brew cask install caffeine
-brew cask install charles
 brew cask install controlplane
 brew cask install growlnotify
 brew cask install istat-menus
+# brew cask install caskroom/homebrew-versions/java6
 brew cask install java
 brew cask install launchrocket
 brew cask install pusher
-brew cask install sizeup
+# brew cask install sizeup
 brew cask install squidman
 
 # dev things

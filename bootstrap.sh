@@ -11,7 +11,8 @@ function doIt() {
 
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" --exclude "fonts/" \
-    --exclude "init/" -avh --no-perms . ~;
+    --exclude "init/" --exclude ".osx" --exclude "brew.sh" \
+    --exclude "tmux_setup.sh" -avh --no-perms . ~;
   rsync --exclude ".DS_Store" -av --no-perms fonts/ ~/Library/Fonts/
 
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim

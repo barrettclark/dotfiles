@@ -59,8 +59,5 @@ export PATH=$PATH:$GOPATH/bin
 # PG App
 export PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/barrettclark/google-cloud-sdk/path.bash.inc'
-
 # Add RVM to PATH for scripting
 PATH=$HOME/.rvm/bin:$PATH

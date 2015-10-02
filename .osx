@@ -13,11 +13,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-echo "Setting computer name to: Barrett Clark's MacBook Air"
-sudo scutil --set ComputerName "Barrett Clark's MacBook Air"
-sudo scutil --set HostName "Barrett Clark's MacBook Air"
-sudo scutil --set LocalHostName "Barrett Clark's MacBook Air"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Barrett Clark's MacBook Air"
+COMPUTER_NAME="Tele"
+echo "Setting computer name to: $COMPUTER_NAME"
+sudo scutil --set ComputerName "$COMPUTER_NAME"
+sudo scutil --set HostName "$COMPUTER_NAME"
+sudo scutil --set LocalHostName "$COMPUTER_NAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
@@ -839,4 +840,5 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
 	"Transmission" "Twitter" "iCal"; do
 	killall "${app}" > /dev/null 2>&1
 done
+# rm -rf ~/init
 echo "Done. Note that some of these changes require a logout/restart to take effect."
