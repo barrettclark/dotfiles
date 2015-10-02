@@ -61,6 +61,7 @@ brew install lynx
 brew install p7zip
 brew install pigz
 brew install pv
+brew install python
 brew install rename
 # brew install rhino
 brew install speedtest_cli
