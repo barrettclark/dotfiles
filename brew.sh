@@ -95,7 +95,7 @@ brew install readline
 brew install go
 brew install scala
 brew install elixir
-brew install docker docker-machine
+brew install docker docker-machine docker-compose
 
 # Symlink things maybe
 brew linkapps
