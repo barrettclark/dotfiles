@@ -102,6 +102,7 @@ brew linkapps
 
 # Cask to install binaries
 brew install caskroom/cask/brew-cask
+brew upgrade brew-cask
 brew cask update
 
 # system things
