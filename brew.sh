@@ -101,7 +101,9 @@ brew install docker docker-machine docker-compose
 brew linkapps
 
 # Cask to install binaries
-brew install caskroom/cask/brew-cask
+if [ ! -d "ls /opt/homebrew-cask/Caskroom" ]; then
+  brew install caskroom/cask/brew-cask
+fi
 brew upgrade brew-cask
 brew cask update
 
@@ -123,7 +125,8 @@ brew cask install squidman
 brew cask install android-studio
 brew cask install charles
 brew cask install colloquy
-brew cask install dash
+echo "Install Dash from the App Store"
+# brew cask install dash
 brew cask install firefox
 brew cask install gitx
 brew cask install google-chrome
@@ -144,6 +147,7 @@ brew cask install evernote
 brew cask install get-lyrical
 brew cask install screenhero
 brew cask install slack
+brew cask install mojibar
 
 # Remove outdated versions from the cellar.
 brew cleanup
