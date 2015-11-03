@@ -1,0 +1,24 @@
+{
+	"caret_style": "wide",
+	"color_scheme": "Packages/Color Scheme - Default/Blackboard.tmTheme",
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "DroidSansMonoSlashed",
+	"font_size": 12.0,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		80
+	],
+	"save_on_focus_lost": true,
+	"tab_size": 2,
+	"trailing_spaces_highlight_color": "comment",
+	"translate_tabs_to_spaces": true,
+	"word_wrap": false,
+	"wrap_width": 80
+}

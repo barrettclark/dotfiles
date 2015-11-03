@@ -1,0 +1,21 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"CTags",
+		"Dockerfile Syntax Highlighting",
+		"Git",
+		"Highlight",
+		"HTML-CSS-JS Prettify",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"Pretty JSON",
+		"Print to HTML",
+		"SCSS",
+		"TidyHTML5"
+	]
+}
