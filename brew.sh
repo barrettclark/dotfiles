@@ -149,6 +149,7 @@ brew cask install get-lyrical
 brew cask install screenhero
 brew cask install slack
 brew cask install mojibar
+brew cask install keycastr
 
 # Remove outdated versions from the cellar.
 brew cleanup
