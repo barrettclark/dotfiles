@@ -62,6 +62,7 @@ set cursorline
 set showmode
 set title
 set showcmd
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 "" CTags
 " default leader is \
@@ -82,4 +83,3 @@ set foldlevel=1         "this is just what i use
 " split horizontally with <leader> s
 nmap <leader>v :vsplit<CR> <C-w><C-w>
 nmap <leader>s :split<CR> <C-w><C-w>
-
