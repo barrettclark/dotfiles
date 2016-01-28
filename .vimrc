@@ -25,6 +25,8 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'kballard/vim-swift'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'rust-lang/rust.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'junegunn/gv.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,6 +65,7 @@ set showmode
 set title
 set showcmd
 autocmd BufNewFile,BufRead *.json set ft=javascript
+set autochdir
 
 "" CTags
 " default leader is \
