@@ -140,6 +140,7 @@ brew cask install rstudio
 brew cask install sequel-pro
 brew cask install sublime-text
 brew cask install virtualbox
+brew cask install macdown
 
 # general things
 brew cask install disk-inventory-x
