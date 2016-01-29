@@ -27,6 +27,10 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'rust-lang/rust.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'junegunn/gv.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'danro/rename.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,7 +58,7 @@ set showbreak=+++              " wrap broken line prefix
 set textwidth=120              " linewrap
 set showmatch                  " highlight matching brace
 set autoindent                 " auto-indent new lines
-set ruler                      " show row and column ruler info
+" set ruler                      " show row and column ruler info
 set guifont=Droid\ Sans\ Mono\ Slashed:h16
 set number
 color blackboard
@@ -62,7 +66,7 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="80,".join(range(120,999),",")
 set cursorline
 set showmode
-set title
+" set title
 set showcmd
 autocmd BufNewFile,BufRead *.json set ft=javascript
 set autochdir
@@ -86,3 +90,7 @@ set foldlevel=1         "this is just what i use
 " split horizontally with <leader> s
 nmap <leader>v :vsplit<CR> <C-w><C-w>
 nmap <leader>s :split<CR> <C-w><C-w>
+
+"" Vim Airline
+set laststatus=2
+" let g:airline#extensions#tabline#enabled = 1
