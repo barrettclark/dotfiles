@@ -24,6 +24,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kballard/vim-swift'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'junegunn/gv.vim'
@@ -94,3 +95,6 @@ nmap <leader>s :split<CR> <C-w><C-w>
 "" Vim Airline
 set laststatus=2
 " let g:airline#extensions#tabline#enabled = 1
+
+"" vim-go settings
+let g:go_fmt_command = "goimports"

@@ -54,10 +54,15 @@ export PATH=/Users/barrettclark/pebble-dev/PebbleSDK-current/bin:$PATH
 
 # Go
 export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # PG App
-export PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
+export PATH=/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH
+
+# Swift
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
 
 # Add RVM to PATH for scripting
 PATH=$HOME/.rvm/bin:$PATH
