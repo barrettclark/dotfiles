@@ -120,9 +120,15 @@ brew cask install pusher
 # brew cask install sizeup
 brew cask install squidman
 
+# fonts
+brew tap caskroom/fonts
+brew cask install font-open-sans
+brew cask install font-roboto
+brew cask install font-source-code-pro
+brew cask install font-hack
+
 # dev things
 # brew cask install vagrant
-# brew tap caskroom/fonts
 brew cask install android-studio
 brew cask install charles
 brew cask install colloquy
