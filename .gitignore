@@ -44,3 +44,5 @@ Temporary Items
 # Bundler
 .bundle
 
+# .env file #never4get
+.env
