@@ -19,4 +19,4 @@ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 # http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt
-sudo apt-get install postgresql-9.4-postgis-2.1 pgadmin3 postgresql-contrib
+sudo apt-get install postgresql-9.4-postgis-2.1 pgadmin3 postgresql-contrib postgresql-server-dev-9.4
