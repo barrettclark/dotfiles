@@ -97,6 +97,7 @@ brew install go
 brew install scala
 brew install elixir
 brew install docker docker-machine docker-compose
+brew install reattach-to-user-namespace
 
 # Symlink things maybe
 brew linkapps
