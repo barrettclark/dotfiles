@@ -71,6 +71,7 @@ brew install tree
 brew install webkit2png
 brew install zopfli
 brew install cmake
+brew install gimp
 
 # The things I like that were not already listed
 brew install curl
