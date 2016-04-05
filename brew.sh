@@ -99,6 +99,7 @@ brew install scala
 brew install elixir
 brew install docker docker-machine docker-compose
 brew install reattach-to-user-namespace
+brew install tidy-html5
 
 # Symlink things maybe
 brew linkapps
