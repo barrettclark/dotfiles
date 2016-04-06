@@ -35,6 +35,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -84,7 +86,8 @@ map<Leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg 
 set tags+=.git/tags
 
 "folding settings (za to fold)
-set foldmethod=indent   "fold based on indent
+" set foldmethod=indent   "fold based on indent
+set foldmethod=syntax
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
@@ -103,3 +106,7 @@ let g:airline_powerline_fonts = 0
 
 "" vim-go settings
 let g:go_fmt_command = "goimports"
+
+"" html tidy
+:command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
+:command Txml  :%!tidy -q -i --show-errors 0 -xml
