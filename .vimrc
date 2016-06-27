@@ -68,6 +68,7 @@ set autoindent                 " auto-indent new lines
 set guifont=Droid\ Sans\ Mono\ Slashed:h16
 set number
 color blackboard
+" colorscheme 1989
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="80,".join(range(120,999),",")
 set cursorline
@@ -97,6 +98,10 @@ set foldlevel=1         "this is just what i use
 " split horizontally with <leader> s
 nmap <leader>v :vsplit<CR> <C-w><C-w>
 nmap <leader>s :split<CR> <C-w><C-w>
+
+" Tabluarize on first occurrance
+" :TabFirst =
+command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
 
 "" Vim Airline
 set laststatus=2
