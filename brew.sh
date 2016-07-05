@@ -105,8 +105,8 @@ brew install tidy-html5
 brew linkapps
 
 # Cask to install binaries
-if [ ! -d "ls /opt/homebrew-cask/Caskroom" ]; then
-  brew install caskroom/cask/brew-cask
+if [ ! -d "ls /usr/local/Caskroom" ]; then
+  brew tap caskroom/cask
 fi
 brew upgrade brew-cask
 brew cask update
