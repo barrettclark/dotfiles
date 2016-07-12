@@ -48,7 +48,7 @@ brew install homebrew/dupes/openssh
 # brew install homebrew/dupes/screen
 # brew install homebrew/php/php55 --with-gmp
 
-# Install other useful binaries.
+# Install other useful things.
 brew install ack
 #brew install dark-mode
 #brew install exiv2
@@ -72,6 +72,7 @@ brew install webkit2png
 brew install zopfli
 brew install cmake
 brew install gimp
+brew install mono
 
 # The things I like that were not already listed
 brew install curl
@@ -97,7 +98,7 @@ brew install readline
 brew install go
 brew install scala
 brew install elixir
-brew install docker docker-machine docker-compose
+# brew install docker docker-machine docker-compose
 brew install reattach-to-user-namespace
 brew install tidy-html5
 
@@ -150,6 +151,9 @@ brew cask install sequel-pro
 brew cask install sublime-text
 brew cask install virtualbox
 brew cask install macdown
+brew cask install docker
+brew cask install kitematic
+brew cask install visual-studio-code
 
 # general things
 brew cask install disk-inventory-x
