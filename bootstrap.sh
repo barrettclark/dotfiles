@@ -14,6 +14,7 @@ function doIt() {
     --exclude "init/" --exclude ".osx" --exclude "brew.sh" \
     --exclude "tmux_setup.sh" --exclude ".linux" -avh --no-perms . ~;
   rsync --exclude ".DS_Store" -av --no-perms fonts/ ~/Library/Fonts/
+  # cp init/sadserver_tweets.dat /usr/local/share/games/fortunes
 
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
