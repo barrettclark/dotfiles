@@ -37,6 +37,7 @@ Plugin 'bling/vim-bufferline'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
+Plugin 'rizzatti/dash.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,7 +67,9 @@ set showmatch                  " highlight matching brace
 set autoindent                 " auto-indent new lines
 " set ruler                      " show row and column ruler info
 set guifont=Droid\ Sans\ Mono\ Slashed:h16
-set number
+" set number
+nnoremap : :set nu<CR>:
+cnoremap <silent> <CR> <CR>:set nonu<CR>
 color blackboard
 " colorscheme 1989
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
