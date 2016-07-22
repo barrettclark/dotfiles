@@ -33,21 +33,27 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   copyDotFiles;
-  while getopts ":ol" opt; do
+  while getopts ":olvt" opt; do
     case $opt in
       o)
-        echo "Bootstrap OSX"
+        echo " *** Bootstrap OSX ***"
         bootstrap_osx.sh
         brew.sh
         ;;
       l)
-        echo "Bootstrap Linux"
+        echo " *** Bootstrap Linux ***"
         bootstrap_linux.sh
+        ;;
+      v)
+        echo " *** Bootstrap vim ***"
+        setupVim
+        ;;
+      t)
+        echo " *** Bootstrap tmux plugins ***"
+        setupTmux
         ;;
     esac
   done
-  setupVim;
-  setupTmux;
 fi;
 
 unset copyDotFiles;
