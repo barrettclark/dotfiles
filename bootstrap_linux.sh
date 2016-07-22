@@ -7,6 +7,9 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 sudo apt-get update
+sudo apt-get dist-update
+sudo apt-get upgrade
+sudo apt-get autoremove
 sudo apt-get install build-essential bash-completion wget curl vim \
   git tree ctags npm sqlite redis-server tmux memcached cowsay \
   fortune gradle highlight mosquitto golang docker cmake \
