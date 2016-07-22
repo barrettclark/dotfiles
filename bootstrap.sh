@@ -9,11 +9,9 @@ function doIt() {
   # This does NOT run ./osx or ./brew.sh
   rm -rf ~/.vim
 
-  rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-    --exclude "README.md" --exclude "LICENSE-MIT.txt" --exclude "fonts/" \
-    --exclude "init/" --exclude ".osx" --exclude "brew.sh" \
-    --exclude "tmux_setup.sh" --exclude ".linux" -avh --no-perms . ~;
-  rsync --exclude ".DS_Store" -av --no-perms fonts/ ~/Library/Fonts/
+  rsync -avh --no-perms --progress the_dot_files/ $HOME
+  rsync -avh --no-perms --progress bin/ $HOME/bin
+  rsync --exclude ".DS_Store" -av --no-perms --progress fonts/ ~/Library/Fonts/
   # cp init/sadserver_tweets.dat /usr/local/share/games/fortunes
 
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim

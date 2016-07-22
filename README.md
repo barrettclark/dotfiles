@@ -50,7 +50,7 @@ You could also use `~/.extra` to override settings, functions and aliases from m
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
-./.osx
+./bootstrap_osx.sh
 ```
 
 ### Install Homebrew formulae
@@ -66,5 +66,5 @@ When setting up a new Mac, you may want to install some common [Homebrew](http:/
 I also use a Linux box from time to time, so here is how I bootstrap that puppy:
 
 ```bash
-./linux
+./bootstrap_linux.sh
 ```
