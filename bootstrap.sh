@@ -17,8 +17,8 @@ function copyDotFiles() {
 
 function setupVim() {
   rm -rf ~/.vim
-  rsynch -avh --no-perms --progress .vim/colors ~/.vim
-  rsynch -avh --no-perms --progress .vim/syntax ~/.vim
+  rsync -avh --no-perms --progress .vim/colors ~/.vim
+  rsync -avh --no-perms --progress .vim/syntax ~/.vim
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
 }
