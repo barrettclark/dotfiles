@@ -38,6 +38,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
       o)
         echo "Bootstrap OSX"
         bootstrap_osx.sh
+        brew.sh
         ;;
       l)
         echo "Bootstrap Linux"

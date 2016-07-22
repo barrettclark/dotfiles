@@ -25,6 +25,15 @@ Alternatively, to update while avoiding the confirmation prompt:
 set -- -f; source bootstrap.sh
 ```
 
+### Bootstrapping from scratch (without git) (-l for linux -o for OSX)
+
+```bash
+wget https://github.com/barrettclark/dotfiles/archive/master.zip
+unzip master.zip
+cd dotfiles-master
+./bootstrap.sh -l
+```
+
 To update later on, just run that command again.
 
 The bootstrap process copies over a lot of dotfiles, installs the vundle plugins, and installs fonts.
