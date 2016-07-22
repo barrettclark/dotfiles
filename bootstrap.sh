@@ -8,7 +8,9 @@ function copyDotFiles() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
   rsync -avh --no-perms --progress the_dot_files/ $HOME
   rsync -avh --no-perms --progress bin/ $HOME/bin
-  rsync --exclude ".DS_Store" -av --no-perms --progress fonts/ ~/Library/Fonts/
+  if [[ -d ~/Library/Fonts ]]; then
+    rsync --exclude ".DS_Store" -av --no-perms --progress fonts/ ~/Library/Fonts/
+  fi
   # cp init/sadserver_tweets.dat /usr/local/share/games/fortunes
   source ~/.bash_profile;
 }
