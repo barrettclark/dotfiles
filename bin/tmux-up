@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
  
 [[ $1 == "" ]] && exit 0 || SESSION_NAME=$1
 tmux has-session -t $SESSION_NAME &> /dev/null
