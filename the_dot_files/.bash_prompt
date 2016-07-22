@@ -10,12 +10,6 @@ export GIT_PS1_SHOWSTASHSTATE=true
 
 export PROMPT_DIRTRIM=3
 
-# if [[ ${EUID} == 0 ]] ; then
-# 	PS1='[\[\033[0;36m\]\u\[\033[0;36m\]@\[\033[0;36m\]\h \[\033[1;31m\]\w\[\033[0;33m\]]\[\033[0;31m\] $(rvm-prompt i v g) $(__git_ps1 "(%s)")\[\033[0;37m\]\n\\$ \[\033[00m\]'
-# else
-# 	PS1='[\[\033[0;36m\]\u\[\033[0;36m\]@\[\033[0;36m\]\h \[\033[0;32m\]\w\[\033[0;33m\]]\[\033[0;31m\] $(rvm-prompt i v g) $(__git_ps1 "(%s)")\[\033[0;37m\]\n\\$ \[\033[00m\]'
-# fi
-
 if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
   # GIT_PROMPT_THEME=Default
   export __GIT_PROMPT_DIR="$(brew --prefix bash-git-prompt)/share/"
