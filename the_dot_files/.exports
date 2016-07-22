@@ -43,8 +43,8 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Hom
 export PATH=$JAVA_HOME:$PATH
 
 # node
-source $(brew --prefix nvm)/nvm.sh
-export NVM_DIR=~/.nvm
+# source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR=~/.nvm
 export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export PATH=$PATH:/usr/local/share/npm/bin:$NODE_PATH
 

@@ -79,7 +79,7 @@ brew install curl
 brew install ctags
 brew install node
 brew install npm
-brew install nvm
+# brew install nvm
 brew install cloc
 brew install sqlite
 brew install redis
