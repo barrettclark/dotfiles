@@ -2,7 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
+# git pull origin master;
 
 function setupBash() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
@@ -23,6 +23,7 @@ function setupFish() {
   else
     chsh -s /usr/bin/fish
   fi
+  rsync -avh --no-perms --progress fish/ ~/.config/fish
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
   fisher fzf
 }

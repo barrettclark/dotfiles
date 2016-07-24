@@ -77,3 +77,8 @@ I also use a Linux box from time to time, so here is how I bootstrap that puppy:
 ```bash
 ./bootstrap_linux.sh
 ```
+
+## Credits
+
+Initial dotfiles forked from mathiasbynens/dotfiles
+Fish functions from nvie/dotfiles
