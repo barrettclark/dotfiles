@@ -24,8 +24,8 @@ function setupFish() {
   else
     chsh -s /usr/bin/fish
   fi
-  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-  fisher fzf
+  # curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+  # fisher fzf
   rsync -avh --no-perms --progress fish/ ~/.config/fish
 }
 
