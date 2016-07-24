@@ -1,5 +1,5 @@
 # Load other dotfiles (aliases, etc)
-for file in ~/.{aliases,bash_prompt,bash_exports,bash_functions}; do
+for file in ~/.{bash_aliases,bash_prompt,bash_exports,bash_functions}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file

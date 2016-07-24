@@ -6,7 +6,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 function setupBash() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
-  rsync -avh --no-perms --progress the_dot_files/ $HOME
+  rsync -avh --no-perms --progress bash_dot_files/ $HOME
   rsync -avh --no-perms --progress bin/ $HOME/bin
   if [[ -d ~/Library/Fonts ]]; then
     rsync --exclude ".DS_Store" -av --no-perms --progress fonts/ ~/Library/Fonts/
@@ -16,6 +16,7 @@ function setupBash() {
 }
 
 function setupFish() {
+  rm -rf ~/.config/fish
   if [[ -f /usr/local/bin/fish ]]; then
     # OSX + homebrew
     echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
@@ -30,6 +31,7 @@ function setupFish() {
 
 function setupVim() {
   rm -rf ~/.vim
+  cp the_dot_files/.vimrc ~/
   rsync -avh --no-perms --progress .vim/colors ~/.vim
   rsync -avh --no-perms --progress .vim/syntax ~/.vim
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
@@ -45,6 +47,7 @@ function setupTmux() {
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+  rsync -avh --no-perms --progress the_dot_files/ $HOME
   while getopts ":olvtbf" opt; do
     case $opt in
       b)
