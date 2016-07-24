@@ -6,11 +6,11 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-sudo apt-get update
-sudo apt-get dist-upgrade
-sudo apt-get upgrade
-sudo apt-get autoremove
-sudo apt-get install build-essential bash-completion wget curl vim \
+sudo apt-get -qq update
+sudo apt-get -qq dist-upgrade
+sudo apt-get -qq upgrade
+sudo apt-get -qq autoremove
+sudo apt-get -qq install build-essential bash-completion wget curl vim \
   git tree ctags npm sqlite redis-server tmux memcached cowsay \
   fortune gradle highlight mosquitto golang docker cmake \
   openssh-server jq r-base fish
@@ -23,9 +23,9 @@ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 # http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt
-sudo apt-get install postgresql-9.4-postgis-2.1 postgresql-contrib \
+sudo apt-get -qq install postgresql-9.4-postgis-2.1 postgresql-contrib \
   postgresql-server-dev-9.4 pgadmin3
 
 sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-sudo apt-get update
-sudo apt-get install qgis python-qgis qgis-plugin-grass
+sudo apt-get -qq update
+sudo apt-get -qq install qgis python-qgis qgis-plugin-grass
