@@ -37,7 +37,7 @@ end
 
 # Interactive/login shells {{{
 
+source ~/.config/fish/aliases.fish
 if status --is-login
-  . ~/.config/fish/aliases.fish
-  . ~/.config/fish/env.fish
+  source ~/.config/fish/env.fish
 end

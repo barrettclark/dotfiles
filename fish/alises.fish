@@ -1,3 +1,4 @@
+echo " *** Loading aliases *** "
 # Shortcuts
 alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"

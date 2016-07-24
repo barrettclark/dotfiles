@@ -1,3 +1,4 @@
+echo " *** Loading env ***"
 set -gx EDITOR /usr/local/bin/vim
 set -gx BUNDLER_EDITOR $EDITOR
 
