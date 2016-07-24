@@ -4,7 +4,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master;
 
-function copyDotFiles() {
+function setupBash() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
   rsync -avh --no-perms --progress the_dot_files/ $HOME
   rsync -avh --no-perms --progress bin/ $HOME/bin
@@ -13,6 +13,18 @@ function copyDotFiles() {
   fi
   # cp init/sadserver_tweets.dat /usr/local/share/games/fortunes
   source ~/.bash_profile;
+}
+
+function setupFish() {
+  if [[ -f /usr/local/bin/fish ]]; then
+    # OSX + homebrew
+    echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+    chsh -s /usr/local/bin/fish
+  else
+    chsh -s /usr/bin/fish
+  fi
+  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+  fisher fzf
 }
 
 function setupVim() {
@@ -32,9 +44,16 @@ function setupTmux() {
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  copyDotFiles;
-  while getopts ":olvt" opt; do
+  while getopts ":olvtbf" opt; do
     case $opt in
+      b)
+        echo " *** Bootstrap Bash ***"
+        setupBash
+        ;;
+      f)
+        echo " *** Bootstrap Fish shell *** "
+        setupFish
+        ;;
       o)
         echo " *** Bootstrap OSX ***"
         bootstrap_osx.sh
@@ -56,6 +75,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   done
 fi;
 
-unset copyDotFiles;
+unset setupBash;
+unset setupFish;
 unset setupVim;
 unset setupTmux;
