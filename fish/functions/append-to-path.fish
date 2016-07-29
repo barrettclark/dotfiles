@@ -1,3 +1,4 @@
+# https://github.com/nvie/dotfiles/tree/master/.config/fish/functions
 function append-to-path -d 'Adds the given directory to the end of the PATH'
     set -l dir ''
     if test (count $argv) -ne 0

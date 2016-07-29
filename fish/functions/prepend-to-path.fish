@@ -1,3 +1,4 @@
+# https://github.com/nvie/dotfiles/tree/master/.config/fish/functions
 function prepend-to-path --description 'Adds the given directory to the front of the PATH'
     set -l dir ''
     if test (count $argv) -ne 0
