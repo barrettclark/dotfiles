@@ -153,7 +153,7 @@ brew cask install virtualbox
 brew cask install macdown
 brew cask install docker
 brew cask install kitematic
-brew cask install visual-studio-code
+# brew cask install visual-studio-code
 
 # general things
 brew cask install disk-inventory-x
