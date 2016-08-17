@@ -71,7 +71,6 @@ brew install tree
 brew install webkit2png
 brew install zopfli
 brew install cmake
-brew install gimp
 brew install mono
 
 # The things I like that were not already listed
@@ -101,6 +100,7 @@ brew install elixir
 # brew install docker docker-machine docker-compose
 brew install reattach-to-user-namespace
 brew install tidy-html5
+brew install r
 
 # Symlink things maybe
 brew linkapps
@@ -145,7 +145,6 @@ brew cask install google-cloud-sdk
 brew cask install intellij-idea
 brew cask install pgadmin3
 brew cask install postgres
-brew cask install r
 brew cask install rstudio
 brew cask install sequel-pro
 brew cask install sublime-text
@@ -164,6 +163,7 @@ brew cask install screenhero
 brew cask install slack
 brew cask install mojibar
 brew cask install keycastr
+brew cask install gimp
 
 # Remove outdated versions from the cellar.
 brew cleanup
