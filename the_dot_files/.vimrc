@@ -39,6 +39,9 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
 Plugin 'rizzatti/dash.vim'
 Plugin 'dag/vim-fish'
+Plugin 'morhetz/gruvbox'
+Plugin 'scrooloose/syntastic'
+Plugin 'junegunn/seoul256.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,8 +74,11 @@ set guifont=Droid\ Sans\ Mono\ Slashed:h16
 " set number
 nnoremap : :set nu<CR>:
 cnoremap <silent> <CR> <CR>:set nonu<CR>
-color blackboard
-" colorscheme 1989
+" color blackboard
+" colorscheme gruvbox
+" set background=dark
+let g:seoul256_background = 234
+colorscheme seoul256
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="80,".join(range(120,999),",")
 set cursorline
@@ -119,3 +125,13 @@ let g:go_fmt_command = "goimports"
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
 :command Txml  :%!tidy -q -i --show-errors 0 -xml
+
+"" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
