@@ -18,4 +18,5 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
 
   # OSX update
   sudo softwareupdate -i -a
+  echo "To reboot: sudo shutdown -r now"
 end
