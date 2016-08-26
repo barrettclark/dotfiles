@@ -1,3 +1,8 @@
+" Vim needs a POSIX-Compliant shell. Fish is not.
+if $SHELL =~ 'bin/fish'
+  set shell=/bin/sh
+endif
+
 "" Default launchpoint http://mislav.uniqpath.com/2011/12/vim-revisited/
 set nocompatible                " choose no compatibility with legacy vi
 

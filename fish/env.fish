@@ -1,6 +1,7 @@
 echo " *** Loading env ***"
 set -gx EDITOR /usr/local/bin/vim
 set -gx BUNDLER_EDITOR $EDITOR
+set -gx TERM "screen-256color"
 
 # Manpage settings {{{
 set -gx MANPAGER "less -X"
@@ -13,6 +14,8 @@ append-to-path ~/bin
 prepend-to-path /usr/local/sbin
 # }}}
 
+set JDK jdk1.8.0_92.jdk
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/$JDK/Contents/Home
 
 # Go {{{
 set -gx GOPATH ~/go
