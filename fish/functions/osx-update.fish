@@ -20,7 +20,7 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
   npm update -g --cache-min 60
 
   # OSX update
-  mas upgrade
+  reattach-to-user-namespace mas upgrade
   sudo softwareupdate -i -a
   echo "To reboot: sudo shutdown -r now"
 end
