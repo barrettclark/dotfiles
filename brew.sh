@@ -101,6 +101,7 @@ brew install elixir
 brew install reattach-to-user-namespace
 brew install tidy-html5
 brew install r
+brew install mas
 
 # Symlink things maybe
 brew linkapps

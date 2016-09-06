@@ -2,6 +2,9 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
   # homebrew
   ~/temp/dotfiles/brew.sh
 
+  # Oh my fish! update
+  omf update
+
   # vim plugins
   vim +PluginClean +qall
   vim +PluginUpdate +qall
@@ -17,6 +20,7 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
   npm update -g --cache-min 60
 
   # OSX update
+  mas upgrade
   sudo softwareupdate -i -a
   echo "To reboot: sudo shutdown -r now"
 end
