@@ -7,6 +7,18 @@ set gray (set_color -o black)
 
 # Interactive/login shells {{{
 
+set fish_plugins brew rvm
+# rvm default
+
 if status --is-login
   source ~/.config/fish/env.fish
 end
+
+# }}}
+
+abbr -a gs git status
+abbr -a gc git commit
+abbr -a gpom git push origin master
+abbr -a be bundle exec
+abbr -a ber bundle exec rake
+abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
