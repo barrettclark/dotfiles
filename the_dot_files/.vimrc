@@ -85,7 +85,8 @@ cnoremap <silent> <CR> <CR>:set nonu<CR>
 let g:seoul256_background = 234
 colorscheme seoul256
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn="72,".join(range(80,120),",")
+" let &colorcolumn="80,".join(range(120,999),",")
 set cursorline
 set showmode
 " set title

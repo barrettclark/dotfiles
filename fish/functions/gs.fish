@@ -1,4 +1,3 @@
-function gs --description "git status"
-  git status
-end
-
+# function gs --description "git status"
+#   git status
+# end
