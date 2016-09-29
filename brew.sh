@@ -140,7 +140,7 @@ brew cask install colloquy
 echo "Install Dash from the App Store"
 # brew cask install dash
 brew cask install firefox
-brew cask install gitx
+brew cask install rowanj-gitx
 brew cask install google-chrome
 brew cask install google-cloud-sdk
 brew cask install intellij-idea-ce
