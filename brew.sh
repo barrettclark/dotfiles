@@ -137,8 +137,8 @@ brew cask install font-hack
 brew cask install android-studio
 brew cask install charles
 brew cask install colloquy
-echo "Install Dash from the App Store"
-# brew cask install dash
+# echo "Install Dash from the App Store"
+brew cask install dash
 brew cask install firefox
 brew cask install rowanj-gitx
 brew cask install google-chrome
