@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#
+# NOTE: This is being replaced with the Brewfile
+#
+
 # Install developer tools
 # xcode-select --install
 

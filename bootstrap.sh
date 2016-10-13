@@ -2,14 +2,18 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-# git pull origin master;
+function setupHomebrew() {
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew tap Homebrew/bundle
+  brew bundle --file=~/temp/dotfiles/Brewfile
+}
 
 function setupBash() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
-  rsync -avh --no-perms --progress bash_dot_files/ $HOME
-  rsync -avh --no-perms --progress bin/ $HOME/bin
+  rsync -avh --ignore-times --no-perms --progress bash_dot_files/ $HOME
+  rsync -avh --ignore-times --no-perms --progress bin/ $HOME/bin
   if [[ -d ~/Library/Fonts ]]; then
-    rsync --exclude ".DS_Store" -av --no-perms --progress fonts/ ~/Library/Fonts/
+    rsync --exclude ".DS_Store" -av --ignore-times --no-perms --progress fonts/ ~/Library/Fonts/
   fi
   # cp init/sadserver_tweets.dat /usr/local/share/games/fortunes
   source ~/.bash_profile;
@@ -24,16 +28,16 @@ function setupFish() {
   else
     chsh -s /usr/bin/fish
   fi
-  # curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-  # fisher fzf
-  rsync -avh --no-perms --progress fish/ ~/.config/fish
+  curl -L http://get.oh-my.fish | fish
+  omf install brew rvm
+  rsync -avh --ignore-times --no-perms --progress fish/ ~/.config/fish
 }
 
 function setupVim() {
   rm -rf ~/.vim
   cp the_dot_files/.vimrc ~/
-  rsync -avh --no-perms --progress .vim/colors ~/.vim
-  rsync -avh --no-perms --progress .vim/syntax ~/.vim
+  rsync -avh --ignore-times --no-perms --progress .vim/colors ~/.vim
+  rsync -avh --ignore-times --no-perms --progress .vim/syntax ~/.vim
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
 }
@@ -47,8 +51,8 @@ function setupTmux() {
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  rsync -avh --no-perms --progress the_dot_files/ $HOME
-  while getopts ":olvtbf" opt; do
+  rsync -avh --ignore-times --no-perms --progress the_dot_files/ $HOME
+  while getopts ":bfholtv" opt; do
     case $opt in
       b)
         echo " *** Bootstrap Bash ***"
@@ -58,22 +62,27 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo " *** Bootstrap Fish shell *** "
         setupFish
         ;;
+      h)
+        echo " *** Bootstrap OSX Homebrew *** "
+        setupHomebrew
+        ;;
       o)
         echo " *** Bootstrap OSX ***"
         bootstrap_osx.sh
-        brew.sh
+        # brew.sh
+        setupHomebrew
         ;;
       l)
         echo " *** Bootstrap Linux ***"
         bootstrap_linux.sh
         ;;
-      v)
-        echo " *** Bootstrap vim ***"
-        setupVim
-        ;;
       t)
         echo " *** Bootstrap tmux plugins ***"
         setupTmux
+        ;;
+      v)
+        echo " *** Bootstrap vim ***"
+        setupVim
         ;;
     esac
   done
@@ -81,5 +90,6 @@ fi;
 
 unset setupBash;
 unset setupFish;
-unset setupVim;
+unset setupHomebrew;
 unset setupTmux;
+unset setupVim;
