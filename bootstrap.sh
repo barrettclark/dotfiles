@@ -8,18 +8,25 @@ function setupHomebrew() {
   brew bundle --file=~/temp/dotfiles/Brewfile
 }
 
+function setupSettings() {
+  if [[ -d ~/Library/Fonts ]]; then
+    rsync --exclude ".DS_Store" -av --ignore-times --no-perms --progress fonts/ ~/Library/Fonts/
+  fi
+  if [[ -d /usr/local/share/hames/fortunes ]]; then
+    rsync -av --ignore-times --no-perms --progress init/sadserver_tweets.dat /usr/local/share/games/fortunes
+  fi
+}
+
 function setupBash() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
   rsync -avh --ignore-times --no-perms --progress bash_dot_files/ $HOME
   rsync -avh --ignore-times --no-perms --progress bin/ $HOME/bin
-  if [[ -d ~/Library/Fonts ]]; then
-    rsync --exclude ".DS_Store" -av --ignore-times --no-perms --progress fonts/ ~/Library/Fonts/
-  fi
-  # cp init/sadserver_tweets.dat /usr/local/share/games/fortunes
+  setupSettings
   source ~/.bash_profile;
 }
 
 function setupFish() {
+  setupSettings
   rm -rf ~/.config/fish
   if [[ -f /usr/local/bin/fish ]]; then
     # OSX + homebrew
@@ -91,5 +98,6 @@ fi;
 unset setupBash;
 unset setupFish;
 unset setupHomebrew;
+unset setupSettings;
 unset setupTmux;
 unset setupVim;

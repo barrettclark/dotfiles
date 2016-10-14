@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-#
-# NOTE: This is being replaced with the Brewfile
-#
-
 # Install developer tools
 # xcode-select --install
 
@@ -49,13 +45,9 @@ brew install wget --with-iri
 brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
-# brew install homebrew/dupes/screen
-# brew install homebrew/php/php55 --with-gmp
 
 # Install other useful things.
 brew install ack
-#brew install dark-mode
-#brew install exiv2
 brew install gpg
 brew install git
 brew install git-lfs
@@ -68,7 +60,6 @@ brew install pigz
 brew install pv
 brew install python
 brew install rename
-# brew install rhino
 brew install speedtest_cli
 brew install ssh-copy-id
 brew install tree
@@ -82,7 +73,6 @@ brew install curl
 brew install ctags
 brew install node
 brew install npm
-# brew install nvm
 brew install cloc
 brew install sqlite
 brew install redis
@@ -100,8 +90,7 @@ brew install mosquitto
 brew install readline
 brew install go
 brew install scala
-brew install elixir
-# brew install docker docker-machine docker-compose
+# brew install elixir
 brew install reattach-to-user-namespace
 brew install tidy-html5
 brew install r
@@ -126,8 +115,6 @@ brew cask install istat-menus
 brew cask install java
 brew cask install launchrocket
 brew cask install pusher
-# brew cask install sizeup
-brew cask install squidman
 
 # fonts
 brew tap caskroom/fonts
@@ -141,7 +128,6 @@ brew cask install font-hack
 brew cask install android-studio
 brew cask install charles
 brew cask install colloquy
-# echo "Install Dash from the App Store"
 brew cask install dash
 brew cask install firefox
 brew cask install rowanj-gitx
@@ -157,7 +143,6 @@ brew cask install virtualbox
 brew cask install macdown
 brew cask install docker
 brew cask install kitematic
-# brew cask install visual-studio-code
 
 # general things
 brew cask install disk-inventory-x

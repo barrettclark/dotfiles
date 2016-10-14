@@ -13,7 +13,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-COMPUTER_NAME="Tele"
+if [ $# -eq 0 ]; then
+  echo "Please pass in the computer name: ./bootstrap_osx.sh Tele"
+  exit 0
+fi
+
+COMPUTER_NAME=$1
 echo "Setting computer name to: $COMPUTER_NAME"
 sudo scutil --set ComputerName "$COMPUTER_NAME"
 sudo scutil --set HostName "$COMPUTER_NAME"
