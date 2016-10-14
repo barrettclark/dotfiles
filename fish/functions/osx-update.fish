@@ -1,10 +1,6 @@
 function osx-update --description "Update Homebrew, vim plugins, tmux plugins, rvm, npm, OSX"
   # homebrew
-  # ~/temp/dotfiles/brew.sh
-  brew bundle --file=~/temp/dotfiles/Brewfile
-  brew cleanup
-  brew cleanup -s --force
-  brew cask cleanup
+  ~/temp/dotfiles/brew.sh
 
   # Oh my fish! update
   omf update
