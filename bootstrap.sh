@@ -3,9 +3,13 @@
 cd "$(dirname "${BASH_SOURCE}")";
 
 function setupHomebrew() {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew tap Homebrew/bundle
-  brew bundle --file=~/temp/dotfiles/Brewfile
+  # NOTE Be sure Xcode is installed first
+  if [[ -d /Applications/Xcode.app ]]; then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/local/brew.sh
+  else
+    echo " *** Xcode must be installed first"
+  fi
 }
 
 function setupSettings() {

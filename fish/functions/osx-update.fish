@@ -1,6 +1,6 @@
 function osx-update --description "Update Homebrew, vim plugins, tmux plugins, rvm, npm, OSX"
   # homebrew
-  ~/temp/dotfiles/brew.sh
+  /usr/local/dotfiles/brew.sh
 
   # Oh my fish! update
   omf update
