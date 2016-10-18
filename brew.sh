@@ -56,7 +56,7 @@ brew install jq
 brew install lua
 brew install lynx
 brew install p7zip
-brew install pigz
+# brew install pigz
 brew install pv
 brew install python
 brew install rename
@@ -66,7 +66,7 @@ brew install tree
 brew install webkit2png
 brew install zopfli
 brew install cmake
-brew install mono
+# brew install mono
 
 # The things I like that were not already listed
 brew install curl
@@ -89,10 +89,11 @@ brew install highlight
 brew install mosquitto
 brew install readline
 brew install go
-brew install scala
+# brew install scala
 # brew install elixir
 brew install reattach-to-user-namespace
 brew install tidy-html5
+brew tap homebrew/science
 brew install r
 brew install mas
 
@@ -100,10 +101,9 @@ brew install mas
 brew linkapps
 
 # Cask to install binaries
-if [ ! -d "ls /usr/local/Caskroom" ]; then
+if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap caskroom/cask
 fi
-brew upgrade brew-cask
 brew cask update
 
 # system things
@@ -132,8 +132,8 @@ brew cask install dash
 brew cask install firefox
 brew cask install rowanj-gitx
 brew cask install google-chrome
-brew cask install google-cloud-sdk
-brew cask install intellij-idea-ce
+# brew cask install google-cloud-sdk
+# brew cask install intellij-idea-ce
 brew cask install pgadmin4
 brew cask install postgres
 brew cask install rstudio

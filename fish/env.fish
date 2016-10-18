@@ -12,7 +12,7 @@ set -gx COPYFILE_DISABLE true
 # PATH {{{
 append-to-path ~/bin
 prepend-to-path /usr/local/sbin
-append-to-path /Applications/Postgres.app/Contents/Versions/9.5/bin
+append-to-path /Applications/Postgres.app/Contents/Versions/9.6/bin
 # }}}
 
 set JDK jdk1.8.0_92.jdk

@@ -3,13 +3,13 @@
 cd "$(dirname "${BASH_SOURCE}")";
 
 function setupHomebrew() {
-  # NOTE Be sure Xcode is installed first
-  if [[ -d /Applications/Xcode.app ]]; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    /usr/local/brew.sh
-  else
-    echo " *** Xcode must be installed first"
-  fi
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /usr/local/dotfiles/brew.sh
+}
+
+function setupRVM() {
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  \curl -sSL https://get.rvm.io | bash -s -- --autolibs=read-fail
 }
 
 function setupSettings() {
@@ -41,7 +41,7 @@ function setupFish() {
   fi
   curl -L http://get.oh-my.fish | fish
   omf install brew rvm
-  rsync -avh --ignore-times --no-perms --progress fish/ ~/.config/fish
+  rsync -avh --ignore-times --no-perms --progress /usr/local/dotfiles/fish/ ~/.config/fish
 }
 
 function setupVim() {
@@ -70,18 +70,18 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         setupBash
         ;;
       f)
-        echo " *** Bootstrap Fish shell *** "
+        echo " *** Bootstrap Fish shell ***"
         setupFish
         ;;
       h)
-        echo " *** Bootstrap OSX Homebrew *** "
+        echo " *** Bootstrap Homebrew ***"
         setupHomebrew
         ;;
       o)
-        echo " *** Bootstrap OSX ***"
-        bootstrap_osx.sh
-        # brew.sh
+        echo " *** Bootstrap macOS ***"
+        ./bootstrap_macos.sh $2
         setupHomebrew
+        setupRVM
         ;;
       l)
         echo " *** Bootstrap Linux ***"
@@ -102,6 +102,7 @@ fi;
 unset setupBash;
 unset setupFish;
 unset setupHomebrew;
+unset setupRVM;
 unset setupSettings;
 unset setupTmux;
 unset setupVim;
