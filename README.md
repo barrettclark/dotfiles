@@ -21,21 +21,18 @@ Any or many of the options can be passed in. The options are as follows:
 * -v = vim
 ```
 
-### Sensible OS X defaults
+### Installing a fresh Mac
 
-When setting up a new Mac, you may want to set some sensible OS X defaults:
+This will install general dotfiles, fish, vim, tmux, OSX things.
 
-```bash
-./bootstrap_osx.sh
-```
-
-### Install Homebrew formulae
-
-When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing Homebrew, of course):
-
-```bash
-./brew.sh
-```
+* Setup an SSH key with GitHub
+* Clone the dotfiles into `/usr/local/dotfiles`
+	* First change the owner of `/usr/local` to your user
+	* The first time you run the `git` command it will ask to install the command line tools. No need to install Xcode!
+* Install LastPass in Safari
+* Bootstrap ALLTHETHINGS `/usr/local/dotfiles/bootstrap.sh -votf [NAME]`
+	* I have started using wine varieties for computer names
+* Install App Store purchases
 
 ### Linux Setup
 
