@@ -17,7 +17,7 @@ function setupSettings() {
     rsync --exclude ".DS_Store" -av --ignore-times --no-perms --progress fonts/ ~/Library/Fonts/
   fi
   if [[ -d /usr/local/share/hames/fortunes ]]; then
-    rsync -av --ignore-times --no-perms --progress init/sadserver_tweets.dat /usr/local/share/games/fortunes
+    rsync -av --ignore-times --no-perms --progress init/sadserver_tweets* /usr/local/share/games/fortunes
   fi
 }
 

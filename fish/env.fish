@@ -1,4 +1,4 @@
-echo " *** Loading env ***"
+fortune sadserver_tweets | cowsay
 set -gx EDITOR /usr/local/bin/vim
 set -gx BUNDLER_EDITOR $EDITOR
 set -gx TERM "screen-256color"
