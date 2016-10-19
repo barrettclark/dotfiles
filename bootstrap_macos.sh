@@ -453,6 +453,9 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (
 # Safari & WebKit                                                             #
 ###############################################################################
 
+# Default download location to the desktop
+defaults write com.apple.Safari DownloadsPath ~/Desktop
+
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
