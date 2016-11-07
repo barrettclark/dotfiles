@@ -114,7 +114,7 @@ brew cask install istat-menus
 # brew cask install caskroom/homebrew-versions/java6
 brew cask install java
 brew cask install launchrocket
-brew cask install pusher
+# brew cask install pusher
 
 # fonts
 brew tap caskroom/fonts
@@ -125,9 +125,9 @@ brew cask install font-hack
 
 # dev things
 # brew cask install vagrant
-brew cask install android-studio
+# brew cask install android-studio
 brew cask install charles
-brew cask install colloquy
+# brew cask install colloquy
 brew cask install dash
 brew cask install firefox
 brew cask install rowanj-gitx
@@ -147,7 +147,7 @@ brew cask install kitematic
 # general things
 brew cask install disk-inventory-x
 brew cask install dropbox
-brew cask install evernote
+# brew cask install evernote
 brew cask install get-lyrical
 brew cask install screenhero
 brew cask install slack
