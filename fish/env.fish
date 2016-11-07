@@ -23,6 +23,10 @@ set -gx GOPATH ~/go
 append-to-path $GOPATH
 # }}}
 
+# Oracle {{{
+append-to-path ~/instantclient_12_1
+# }}}
+
 # Set locale
 set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8
