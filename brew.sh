@@ -134,6 +134,7 @@ brew cask install rowanj-gitx
 brew cask install google-chrome
 # brew cask install google-cloud-sdk
 # brew cask install intellij-idea-ce
+brew cask install dbvisualizer
 brew cask install pgadmin4
 brew cask install postgres
 brew cask install rstudio
@@ -151,6 +152,7 @@ brew cask install dropbox
 brew cask install get-lyrical
 brew cask install screenhero
 brew cask install slack
+brew cask install flowdock
 brew cask install mojibar
 brew cask install keycastr
 brew cask install gimp
