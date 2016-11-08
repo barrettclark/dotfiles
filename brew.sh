@@ -96,6 +96,7 @@ brew install tidy-html5
 brew tap homebrew/science
 brew install r
 brew install mas
+brew install tmux-mem-cpu-load
 
 # Symlink things maybe
 brew linkapps
@@ -134,7 +135,6 @@ brew cask install rowanj-gitx
 brew cask install google-chrome
 # brew cask install google-cloud-sdk
 # brew cask install intellij-idea-ce
-brew cask install dbvisualizer
 brew cask install pgadmin4
 brew cask install postgres
 brew cask install rstudio

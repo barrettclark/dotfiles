@@ -24,7 +24,9 @@ append-to-path $GOPATH
 # }}}
 
 # Oracle {{{
-append-to-path ~/instantclient_12_1
+append-to-path /opt/oracle/instantclient_12_1
+set -gx OCI_DIR /opt/oracle/instantclient_12_1
+set -gx NLS_LANG AMERICAN_AMERICA.UTF8
 # }}}
 
 # Set locale
