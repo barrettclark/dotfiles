@@ -21,13 +21,13 @@
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 	# Undo a `git push`
 	undopush = push -f origin HEAD^:master
-        co = checkout
-        ci = commit
-        st = status
-        br = branch
-        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-        type = cat-file -t
-        dump = cat-file -p
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -88,7 +88,7 @@
 
 [user]
 	name = Barrett Clark
-	email = barrett@websitesbybarrett.com
+	email = code@cookingco.de
 
 [filter "media"]
 	clean = git-media-clean %f
@@ -96,5 +96,5 @@
 
 [push]
 	default = simple
-[http]
+
 [http]
