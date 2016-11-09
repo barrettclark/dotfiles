@@ -94,8 +94,16 @@ set cursorline
 set showmode
 " set title
 set showcmd
-autocmd BufNewFile,BufRead *.json set ft=javascript
 set autochdir
+
+"" Filetypes for syntax highlighting
+autocmd BufNewFile,BufRead *.json set ft=javascript
+au BufRead,BufNewFile *.vw setfiletype sql
+au BufRead,BufNewFile *.mvw setfiletype sql
+au BufRead,BufNewFile *.prc setfiletype sql
+au BufRead,BufNewFile *.fnc setfiletype sql
+
+"" git commit message length
 au FileType gitcommit set tw=72
 
 "" CTags
