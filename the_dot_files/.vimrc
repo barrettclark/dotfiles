@@ -48,6 +48,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'justinmk/vim-gtfo'
+Plugin 'craigemery/vim-autotag'
+Plugin 'airblade/vim-rooter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -94,13 +96,15 @@ set showmode
 set showcmd
 autocmd BufNewFile,BufRead *.json set ft=javascript
 set autochdir
+au FileType gitcommit set tw=72
 
 "" CTags
 " default leader is \
 " CTRL + ]
 " :ts
 " See also: grep -H -r 'what_you_search' * | less
-map<Leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg --languages=-javascript,sql<CR><CR>
+" map<Leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg --languages=-javascript,sql<CR><CR>
+map<Leader>rt :!ctags
 set tags+=.git/tags
 
 "folding settings (za to fold)
@@ -142,3 +146,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+"" vim rooter - project root detection
+let g:rooter_patterns = ['Rakefile', '.git/']

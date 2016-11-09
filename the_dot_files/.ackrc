@@ -1,0 +1,12 @@
+--ignore-dir=.idea
+--ignore-dir=doc
+--ignore-dir=log
+--ignore-dir=public/assets
+--ignore-dir=tmp
+--ignore-dir=vendor
+--ignore-file=is:.keep
+--ignore-file=is:.tags
+--color
+--follow
+--group
+--sort-files
