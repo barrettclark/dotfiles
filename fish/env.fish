@@ -15,7 +15,7 @@ prepend-to-path /usr/local/sbin
 append-to-path /Applications/Postgres.app/Contents/Versions/9.6/bin
 # }}}
 
-set JDK jdk1.8.0_92.jdk
+set JDK jdk1.8.0_112.jdk
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/$JDK/Contents/Home
 
 # Go {{{
