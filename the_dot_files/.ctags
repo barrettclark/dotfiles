@@ -1,3 +1,4 @@
+-Rf.git/tags
 --recurse=yes
 --exclude=.git
 --exclude=pkg
