@@ -63,6 +63,8 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   rsync -avh --ignore-times --no-perms --progress the_dot_files/ $HOME
+  sudo pip install --upgrade pip
+  sudo pip install pygments
   while getopts ":bfholtv" opt; do
     case $opt in
       b)
