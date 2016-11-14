@@ -1,4 +1,5 @@
-fortune sadserver_tweets | cowsay
+# fortune sadserver_tweets | cowsay
+fortune work | cowsay
 set -gx EDITOR /usr/local/bin/vim
 set -gx BUNDLER_EDITOR $EDITOR
 set -gx TERM "screen-256color"
