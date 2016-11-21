@@ -19,6 +19,7 @@ end
 abbr -a gs git status
 abbr -a gc git commit
 abbr -a gpom git push origin master
+abbr -a gcm git checkout master
 abbr -a be bundle exec
 abbr -a ber bundle exec rake
 abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
