@@ -12,6 +12,11 @@ set fish_plugins brew rvm
 
 if status --is-login
   source ~/.config/fish/env.fish
+
+  # Load TCS file, if applicable/available
+  if test -e ~/.config/fish/tcs.env
+    source ~/.config/fish/tcs.env
+  end
 end
 
 # }}}
