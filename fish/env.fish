@@ -1,5 +1,4 @@
-# fortune sadserver_tweets | cowsay
-fortune work | cowsay
+fortune sadserver_tweets | cowsay
 set -gx EDITOR /usr/local/bin/vim
 set -gx BUNDLER_EDITOR $EDITOR
 set -gx TERM "screen-256color"
@@ -13,7 +12,8 @@ set -gx COPYFILE_DISABLE true
 # PATH {{{
 append-to-path ~/bin
 prepend-to-path /usr/local/sbin
-append-to-path /Applications/Postgres.app/Contents/Versions/9.6/bin
+set -gx PG_CONFIG /Applications/Postgres.app/Contents/Versions/9.6/bin
+append-to-path $PG_CONFIG
 # }}}
 
 set JDK jdk1.8.0_112.jdk
@@ -22,12 +22,6 @@ set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/$JDK/Contents/Home
 # Go {{{
 set -gx GOPATH ~/go
 append-to-path $GOPATH
-# }}}
-
-# Oracle {{{
-append-to-path /opt/oracle/instantclient_12_1
-set -gx OCI_DIR /opt/oracle/instantclient_12_1
-set -gx NLS_LANG AMERICAN_AMERICA.UTF8
 # }}}
 
 # Set locale
