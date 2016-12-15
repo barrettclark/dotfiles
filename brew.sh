@@ -97,6 +97,7 @@ brew tap homebrew/science
 brew install r
 brew install mas
 brew install tmux-mem-cpu-load
+brew install rlwrap
 
 # Symlink things maybe
 brew linkapps
