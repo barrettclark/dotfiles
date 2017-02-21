@@ -110,8 +110,8 @@ brew cask update
 
 # system things
 brew cask install caffeine
-brew cask install controlplane
-brew cask install growlnotify
+# brew cask install controlplane
+# brew cask install growlnotify
 brew cask install istat-menus
 # brew cask install caskroom/homebrew-versions/java6
 brew cask install java
@@ -155,7 +155,7 @@ brew cask install screenhero
 brew cask install slack
 brew cask install flowdock
 brew cask install mojibar
-brew cask install keycastr
+# brew cask install keycastr
 brew cask install gimp
 
 # Remove outdated versions from the cellar.
