@@ -158,6 +158,8 @@ brew cask install flowdock
 brew cask install mojibar
 # brew cask install keycastr
 brew cask install gimp
+brew cask install spotify
+brew cask install hermes
 
 # Remove outdated versions from the cellar.
 brew cleanup
