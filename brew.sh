@@ -82,7 +82,7 @@ brew install tmux
 brew install memcached
 brew install bash-git-prompt
 brew install carthage
-brew install cowsay ponysay
+brew install cowsay ponysay lolcat
 brew install fortune
 brew install gradle
 brew install highlight
