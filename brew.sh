@@ -99,6 +99,7 @@ brew install mas
 brew install tmux-mem-cpu-load
 brew install rlwrap
 brew install ansifilter
+brew install graphviz
 
 # Symlink things maybe
 brew linkapps
