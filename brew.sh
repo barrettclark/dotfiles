@@ -100,6 +100,8 @@ brew install tmux-mem-cpu-load
 brew install rlwrap
 brew install ansifilter
 brew install graphviz
+brew install gtk+
+brew install chromedriver geckodriver
 
 # Symlink things maybe
 brew linkapps
