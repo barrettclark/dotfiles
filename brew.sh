@@ -97,9 +97,6 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
   to_install.each { |package| %x{brew install #{package}} }
 EORUBY
 
-# Symlink things maybe
-brew linkapps
-
 # Cask to install binaries
 if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap caskroom/cask
