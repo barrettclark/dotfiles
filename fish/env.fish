@@ -22,6 +22,7 @@ set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/$JDK/Contents/Home
 # Go {{{
 set -gx GOPATH ~/go
 append-to-path $GOPATH
+append-to-path $GOPATH/bin
 # }}}
 
 # Set locale
