@@ -128,6 +128,7 @@ brew tap caskroom/fonts
     "istat-menus",
     "java",
     "kitematic",
+    "lastpass",
     "launchrocket",
     "macdown",
     "mojibar",
