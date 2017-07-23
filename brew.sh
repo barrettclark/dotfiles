@@ -90,17 +90,22 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
     "zopfli"
   ]
   installed  = %x(brew list).split("\n")
-  names      = packages.map { |package| package.split(' ').first }
-  diff       = names - installed
-  to_install = diff.map { |name| packages.grep(/name/).first }.uniq
-  p to_install unless to_install.empty?
-  to_install.each { |package| %x{brew install #{package}} }
+  if installed.count < 10
+    packages.each { |package| system("brew install #{package}") }
+  else
+    names      = packages.map { |package| package.split(' ').first }
+    diff       = names - installed
+    to_install = diff.map { |name| packages.grep(/name/).first }.uniq
+    p to_install unless to_install.empty?
+    to_install.each { |package| system("brew install #{package}") }
+  end
 EORUBY
 
 # Cask to install binaries
 if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap caskroom/cask
 fi
+brew tap caskroom/fonts
 
 /usr/bin/env ruby <<-EORUBY
   casks = [
