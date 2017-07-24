@@ -146,7 +146,7 @@ brew tap caskroom/fonts
   installed  = %x(brew cask list).split("\n")
   to_install = casks - installed
   p to_install unless to_install.empty?
-  to_install.each { |cask| %x{brew cask install #{cask}} }
+  to_install.each { |cask| system("brew cask install #{cask}") }
 EORUBY
 
 # Remove outdated versions from the cellar.
