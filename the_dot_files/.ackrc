@@ -1,3 +1,4 @@
+--ignore-case
 --ignore-dir=.idea
 --ignore-dir=doc
 --ignore-dir=log
