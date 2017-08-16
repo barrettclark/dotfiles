@@ -32,6 +32,9 @@ Plugin 'junegunn/gv.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'kballard/vim-swift'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/html5.vim'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'mileszs/ack.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'plasticboy/vim-markdown'
@@ -47,6 +50,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'trevordmiller/nova-vim'
 Plugin 'justinmk/vim-gtfo'
 " Plugin 'craigemery/vim-autotag'
 Plugin 'airblade/vim-rooter'
@@ -88,6 +92,7 @@ nnoremap : :set nu<CR>:
 cnoremap <silent> <CR> <CR>:set nonu<CR>
 " color blackboard
 " colorscheme gruvbox
+" colorscheme nova
 " set background=dark
 let g:seoul256_background = 234
 colorscheme seoul256
@@ -106,6 +111,9 @@ au BufRead,BufNewFile *.vw setfiletype sql
 au BufRead,BufNewFile *.mvw setfiletype sql
 au BufRead,BufNewFile *.prc setfiletype sql
 au BufRead,BufNewFile *.fnc setfiletype sql
+au BufRead,BufNewFile *.bdy setfiletype sql
+au BufRead,BufNewFile *.tab setfiletype sql
+au BufRead,BufNewFile *.spc setfiletype sql
 
 "" git commit message length
 au FileType gitcommit set tw=72
