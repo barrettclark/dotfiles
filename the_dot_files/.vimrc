@@ -52,7 +52,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'trevordmiller/nova-vim'
 Plugin 'justinmk/vim-gtfo'
-" Plugin 'craigemery/vim-autotag'
+Plugin 'craigemery/vim-autotag'
+Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-rooter'
 " Plugin 'nginx.vim'
 Plugin 'skywind3000/quickmenu.vim'
@@ -123,9 +124,11 @@ au FileType gitcommit set tw=72
 " CTRL + ]
 " :ts
 " See also: grep -H -r 'what_you_search' * | less
-map<Leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg --languages=-javascript,sql<CR><CR>
-" map<Leader>rt :!ctags
-set tags+=.git/tags
+let g:autotagTagsFile=".tags"
+nmap <F8> :TagbarToggle<CR>
+" To generate tags (if vim-autotags does not), call this from the ex line
+" :!ctags
+set tags=./.tags,.tags,.git/.tags
 
 "folding settings (za to fold)
 " set foldmethod=indent   "fold based on indent

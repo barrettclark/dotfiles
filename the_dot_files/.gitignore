@@ -46,3 +46,6 @@ Temporary Items
 
 # .env file #never4get
 .env
+
+# CTags
+.tags
