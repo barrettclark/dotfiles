@@ -98,3 +98,5 @@
 	default = simple
 
 [http]
+[help]
+	autocorrect = 1
