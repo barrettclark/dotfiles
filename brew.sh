@@ -27,6 +27,7 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 /usr/bin/env ruby <<-EORUBY
   packages = [
+    "FreeTDS",
     "ack",
     "ansifilter",
     "bash",
@@ -40,10 +41,10 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
     "cowsay",
     "ctags",
     "curl",
-    "FreeTDS",
     "findutils",
     "fish",
     "fortune",
+    "fpp",
     "geckodriver",
     "git",
     "git-lfs",
