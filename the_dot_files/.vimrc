@@ -20,45 +20,53 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'bling/vim-bufferline'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'dag/vim-fish'
-Plugin 'danro/rename.vim'
-" Plugin 'derekwyatt/vim-scala'
-" Plugin 'elixir-lang/vim-elixir'
-Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'junegunn/gv.vim'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'kballard/vim-swift'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/html5.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'mileszs/ack.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'rizzatti/dash.vim'
-" Plugin 'rust-lang/rust.vim'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-surround'
+Plugin 'skywind3000/quickmenu.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'trevordmiller/nova-vim'
-Plugin 'justinmk/vim-gtfo'
-Plugin 'craigemery/vim-autotag'
-Plugin 'majutsushi/tagbar'
+
+" Utilities
 Plugin 'airblade/vim-rooter'
-" Plugin 'nginx.vim'
-Plugin 'skywind3000/quickmenu.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'craigemery/vim-autotag'
+Plugin 'danro/rename.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'junegunn/gv.vim'          " :GV git commit browser
+Plugin 'justinmk/vim-gtfo'        " :gof open dir in Finder, :got open dir in terminal
+Plugin 'mileszs/ack.vim'          " :Ack in vim
+Plugin 'rizzatti/dash.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'       " vim Git wrapper
+Plugin 'tpope/vim-surround'
+
+" Language-related
+Plugin 'dag/vim-fish'
+Plugin 'fatih/vim-go'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'kballard/vim-swift'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+
+" Color scheme for vim
+Plugin 'junegunn/seoul256.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'trevordmiller/nova-vim'
+
+" Not currently in use but helpful in the past
 " Bundle 'edkolev/tmuxline.vim'
+" Plugin 'derekwyatt/vim-scala'
+" Plugin 'elixir-lang/vim-elixir'
+" Plugin 'nginx.vim'
+" Plugin 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
