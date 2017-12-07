@@ -132,7 +132,7 @@ brew tap caskroom/fonts
     "macdown",
     "mojibar",
     "pgadmin4",
-    "pocketcasts",
+    "pocket-casts",
     "postgres",
     "postman",
     "rowanj-gitx",
