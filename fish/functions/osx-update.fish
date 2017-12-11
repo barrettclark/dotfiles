@@ -8,6 +8,7 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
   # vim plugins
   vim +PluginClean +qall
   vim +PluginUpdate +qall
+  vim +GoInstallBinaries +qall
 
   # tmux plugin manager
   ~/.tmux/plugins/tpm/bin/clean_plugins
