@@ -27,7 +27,6 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 /usr/bin/env ruby <<-EORUBY
   packages = [
-    "FreeTDS",
     "ack",
     "ansifilter",
     "bash",
@@ -41,10 +40,12 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
     "cowsay",
     "ctags",
     "curl",
+    "exercism",
     "findutils",
     "fish",
     "fortune",
     "fpp",
+    "freetds",
     "geckodriver",
     "git",
     "git-lfs",
@@ -79,7 +80,7 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
     "redis",
     "rename",
     "rlwrap",
-    "speedtest_cli",
+    "speedtest-cli",
     "sqlite",
     "ssh-copy-id",
     "tidy-html5",
