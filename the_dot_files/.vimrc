@@ -42,6 +42,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'       " vim Git wrapper
 Plugin 'tpope/vim-surround'
+Plugin 'dbeniamine/todo.txt-vim'
 
 " Language-related
 Plugin 'dag/vim-fish'
