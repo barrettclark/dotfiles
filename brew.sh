@@ -91,6 +91,7 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
     "vim --override-system-vi",
     "webkit2png",
     "wget --with-iri",
+    "yarn",
     "zopfli"
   ]
   installed  = %x(brew list).split("\n")
