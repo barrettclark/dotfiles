@@ -2,8 +2,8 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
   # homebrew
   /usr/local/dotfiles/brew.sh
 
-  # Oh my fish! update
-  omf update
+  # Fisherman update
+  fisher update
 
   # vim plugins
   vim +PluginClean +qall

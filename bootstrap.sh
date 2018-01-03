@@ -39,8 +39,8 @@ function setupFish() {
   else
     chsh -s /usr/bin/fish
   fi
-  curl -L http://get.oh-my.fish | fish
-  omf install brew rvm
+  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+  fisher fzf rvm nyarly/fish-rake-complete brgmnn/fish-docker-compose gitignore
   rsync -avh --ignore-times --no-perms --progress /usr/local/dotfiles/fish/ ~/.config/fish
 }
 

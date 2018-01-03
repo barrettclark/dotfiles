@@ -29,3 +29,5 @@ abbr -a be bundle exec
 abbr -a ber bundle exec rake
 abbr -a beg bundle exec rails g
 abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
+
+alias md5sum gmd5sum
