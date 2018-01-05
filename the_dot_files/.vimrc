@@ -85,6 +85,20 @@ set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
+" Strip trailing whitespace (\ss)
+function! StripWhitespace()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+
+" Show “invisible” characters
+set lcs=tab:▸\ ,trail:·,nbsp:_
+set list
+
 "" Searching
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
