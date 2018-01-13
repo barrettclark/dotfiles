@@ -59,7 +59,6 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
     "gtk+",
     "heroku",
     "highlight",
-    "imagemagick --with-webp",
     "jq",
     "libxml2",
     "lolcat",
