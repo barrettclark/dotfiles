@@ -20,10 +20,7 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
-# Install GNU core utilities (those that come with OS X are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+brew tap codeclimate/formulae
 
 /usr/bin/env ruby <<-EORUBY
   packages = [
@@ -71,7 +68,6 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
     "node",
     "openssh",
     "p7zip",
-    "ponysay",
     "pv",
     "python",
     "r",
@@ -101,6 +97,10 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
   p to_install unless to_install.empty?
   to_install.each { |package| system("brew install #{package}") }
 EORUBY
+
+# Install GNU core utilities (those that come with OS X are outdated).
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Cask to install binaries
 if [ ! -d "/usr/local/Caskroom" ]; then

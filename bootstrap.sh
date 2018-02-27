@@ -64,7 +64,7 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   rsync -avh --ignore-times --no-perms --progress the_dot_files/ $HOME
   sudo pip install --upgrade pip
-  sudo pip install pygments
+  pip install pygments
   while getopts ":bfholtv" opt; do
     case $opt in
       b)

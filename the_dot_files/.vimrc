@@ -32,17 +32,18 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-rooter'
 Plugin 'craigemery/vim-autotag'
 Plugin 'danro/rename.vim'
+Plugin 'dbeniamine/todo.txt-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/gv.vim'          " :GV git commit browser
 Plugin 'justinmk/vim-gtfo'        " :gof open dir in Finder, :got open dir in terminal
 Plugin 'mileszs/ack.vim'          " :Ack in vim
+Plugin 'prettier/vim-prettier'
 Plugin 'rizzatti/dash.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'       " vim Git wrapper
 Plugin 'tpope/vim-surround'
-Plugin 'dbeniamine/todo.txt-vim'
 
 " Language-related
 Plugin 'dag/vim-fish'
@@ -50,7 +51,8 @@ Plugin 'fatih/vim-go'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kballard/vim-swift'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'moll/vim-node'            " gf inside require("...") to jump to source and module files
+Plugin 'mzlogin/vim-markdown-toc' " :GenTocGFM"
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
@@ -181,6 +183,10 @@ let g:airline_powerline_fonts = 0
 "" vim-go settings
 let g:go_fmt_command = "goimports"
 
+"" Prettier formatting
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
 :command Txml  :%!tidy -q -i --show-errors 0 -xml
@@ -248,7 +254,6 @@ let g:quickmenu_options = "LH"
 
 " use your favorite key to show / hide quickmenu
 noremap <silent><F12> :call quickmenu#toggle(0)
-
 
 " new section: empty action with text starts with "#" represent a new section
 call quickmenu#append("# Debug", '')
