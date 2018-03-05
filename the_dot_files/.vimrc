@@ -29,6 +29,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " Utilities
+Plugin 'airblade/vim-gitgutter'
 Plugin 'airblade/vim-rooter'
 Plugin 'craigemery/vim-autotag'
 Plugin 'danro/rename.vim'
