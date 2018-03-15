@@ -29,5 +29,12 @@ abbr -a be bundle exec
 abbr -a ber bundle exec rake
 abbr -a beg bundle exec rails g
 abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
+abbr -a dcd docker-compose down
+abbr -a dcb docker-compose up --build
 
 alias md5sum gmd5sum
+
+# Base16 Shell
+if status --is-interactive
+    eval sh $HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh
+end
