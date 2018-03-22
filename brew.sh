@@ -37,6 +37,7 @@ brew tap codeclimate/formulae
     "cowsay",
     "ctags",
     "curl",
+    "envconsul",
     "exercism",
     "findutils",
     "fish",
