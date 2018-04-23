@@ -15,16 +15,16 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Make sure we’re using the latest Homebrew.
+mv ~/.git-templates/hooks ~/.git-templates/hooks.bak
 brew update
 
 # Upgrade any already-installed formulae.
 brew upgrade
 
-brew tap codeclimate/formulae
-
 /usr/bin/env ruby <<-EORUBY
   packages = [
     "ack",
+    "ansible",
     "ansifilter",
     "bash",
     "bash-completion",
@@ -85,6 +85,7 @@ brew tap codeclimate/formulae
     "tmux-mem-cpu-load",
     "todo-txt",
     "tree",
+    "vault",
     "vim --override-system-vi",
     "webkit2png",
     "wget --with-iri",
@@ -146,6 +147,7 @@ brew tap caskroom/fonts
     "slack",
     "spotify",
     "sublime-text",
+    "vagrant",
     "virtualbox"
   ]
   installed  = %x(brew cask list).split("\n")
@@ -158,3 +160,4 @@ EORUBY
 brew cleanup
 brew cleanup -s --force
 brew cask cleanup
+mv ~/.git-templates/hooks.bak ~/.git-templates/hooks
