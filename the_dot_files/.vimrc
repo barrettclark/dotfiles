@@ -45,6 +45,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'       " vim Git wrapper
 Plugin 'tpope/vim-surround'
+Plugin 'wincent/command-t'        " \t to invoke
 
 " Language-related
 Plugin 'dag/vim-fish'
@@ -66,6 +67,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'trevordmiller/nova-vim'
+" Plugin 'chriskempson/base16-vim'
 
 " Not currently in use but helpful in the past
 " Bundle 'edkolev/tmuxline.vim'
@@ -114,25 +116,25 @@ set showbreak=+++              " wrap broken line prefix
 set textwidth=120              " linewrap
 set showmatch                  " highlight matching brace
 set autoindent                 " auto-indent new lines
+set cursorline
+set showmode
+" set title
+set autochdir
 " set ruler                      " show row and column ruler info
-set guifont=Droid\ Sans\ Mono\ Slashed:h16
+" set guifont=Droid\ Sans\ Mono\ Slashed:h16
 " set number
 nnoremap : :set nu<CR>:
 cnoremap <silent> <CR> <CR>:set nonu<CR>
+
 " color blackboard
 " colorscheme gruvbox
 " colorscheme nova
 " set background=dark
+
 let g:seoul256_background = 234
 colorscheme seoul256
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="72,".join(range(80,120),",")
-" let &colorcolumn="80,".join(range(120,999),",")
-set cursorline
-set showmode
-" set title
-set showcmd
-set autochdir
 
 "" Filetypes for syntax highlighting
 autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -178,8 +180,8 @@ command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[
 "" Vim Airline
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 0
-let g:airline_powerline_fonts = 0
-" let g:airline_theme='distinguished'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='simple'
 
 "" vim-go settings
 let g:go_fmt_command = "goimports"
