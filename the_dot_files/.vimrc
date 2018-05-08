@@ -145,6 +145,7 @@ au BufRead,BufNewFile *.fnc setfiletype sql
 au BufRead,BufNewFile *.bdy setfiletype sql
 au BufRead,BufNewFile *.tab setfiletype sql
 au BufRead,BufNewFile *.spc setfiletype sql
+au BufRead,BufNewFile Dockerfile* setfiletype dockerfile
 
 "" git commit message length
 au FileType gitcommit set tw=72
@@ -182,6 +183,7 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme='simple'
+let g:airline#extensions#bufferline#enabled = 0
 
 "" vim-go settings
 let g:go_fmt_command = "goimports"
