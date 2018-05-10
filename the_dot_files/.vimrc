@@ -190,6 +190,9 @@ let g:go_fmt_command = "goimports"
 
 "" Prettier formatting
 let g:prettier#autoformat = 0
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#trailing_comma = 'es5'
+let g:prettier#config#single_quote = 'true'
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 "" html tidy
