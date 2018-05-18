@@ -67,6 +67,7 @@ brew upgrade
     "moreutils",
     "mosquitto",
     "node",
+    "nvm",
     "openssh",
     "p7zip",
     "pv",
