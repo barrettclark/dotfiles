@@ -7,6 +7,10 @@ set -gx TERM "screen-256color"
 set -gx MANPAGER "less -X"
 # }}}
 
+# Todo.sh settings {{{
+set -gx TODOTXT_DEFAULT_ACTION ls
+# }}}
+
 set -gx COPYFILE_DISABLE true
 
 # PATH {{{

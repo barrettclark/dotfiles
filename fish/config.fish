@@ -31,6 +31,7 @@ abbr -a beg bundle exec rails g
 abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 abbr -a dcd docker-compose down
 abbr -a dcb docker-compose up --build
+abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 
 alias md5sum gmd5sum
 

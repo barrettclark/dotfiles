@@ -151,6 +151,7 @@ brew tap caskroom/fonts
     "sequel-pro",
     "slack",
     "spotify",
+    "todotxt",
     "sublime-text",
     "vagrant",
     "virtualbox"
