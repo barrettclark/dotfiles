@@ -90,6 +90,9 @@ set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
+" Carriage return will clear search highlighting, `n` will still find next
+noremap <CR> :noh<CR>
+
 " Strip trailing whitespace (\ss)
 function! StripWhitespace()
   let save_cursor = getpos(".")
@@ -180,7 +183,7 @@ command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[
 
 "" Vim Airline
 set laststatus=2
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='simple'
 let g:airline#extensions#bufferline#enabled = 0
