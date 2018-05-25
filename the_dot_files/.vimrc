@@ -218,6 +218,7 @@ let g:rooter_patterns = ['Rakefile', '.git/']
 " Put this in your .vimrc and whenever you `git commit` you'll see the diff of your commit next to your commit message.
 " For the most accurate diffs, use `git config --global commit.verbose true`
 
+" https://gist.github.com/bswinnerton/73765deb6150f835f04b91ee3c1811eb
 " BufRead seems more appropriate here but for some reason the final `wincmd p` doesn't work if we do that.
 autocmd VimEnter COMMIT_EDITMSG call OpenCommitMessageDiff()
 function OpenCommitMessageDiff()
@@ -237,8 +238,16 @@ function OpenCommitMessageDiff()
       call cursor(1, 0)
     endif
 
+    " Depending on the width of the window, split vertically or horiziontal
+    "
+    " 144 is wide enough to display two 72 character commit messages
+    if winwidth(0) >= 144
+      vnew
+    else
+      new
+    endif
+
     " Paste into a new buffer
-    vnew
     normal! V"zP
   finally
     " Restore the z register
