@@ -37,6 +37,7 @@ brew upgrade
     "cowsay",
     "ctags",
     "curl",
+    "enscript",
     "envconsul",
     "exercism",
     "findutils",
