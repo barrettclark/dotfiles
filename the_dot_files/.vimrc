@@ -91,7 +91,7 @@ set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 " Carriage return will clear search highlighting, `n` will still find next
-noremap <CR> :noh<CR>
+noremap <leader><CR> :noh<CR>
 
 " Strip trailing whitespace (\ss)
 function! StripWhitespace()
