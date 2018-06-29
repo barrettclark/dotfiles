@@ -1,4 +1,6 @@
 function flush-dns --description "Flush Directory Service cache"
-  dscacheutil -flushcache and killall -HUP mDNSResponder
+  sudo killall -HUP mDNSResponder
+  sudo killall mDNSResponderHelper
+  sudo dscacheutil -flushcache
 end
 
