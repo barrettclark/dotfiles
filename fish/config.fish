@@ -21,16 +21,18 @@ end
 
 # }}}
 
-abbr -a gs git status
-abbr -a gc git commit
-abbr -a gpom git push origin master
-abbr -a gcm git checkout master
 abbr -a be bundle exec
-abbr -a ber bundle exec rake
 abbr -a beg bundle exec rails g
-abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
-abbr -a dcd docker-compose down
+abbr -a ber bundle exec rake
 abbr -a dcb docker-compose up --build
+abbr -a dcd docker-compose down
+abbr -a gb git branch
+abbr -a gc git commit
+abbr -a gcm git checkout master
+abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
+abbr -a gf git fetch
+abbr -a gpom git push origin master
+abbr -a gs git status
 abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 
 alias md5sum gmd5sum
