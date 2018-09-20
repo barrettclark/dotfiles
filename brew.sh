@@ -29,6 +29,7 @@ brew upgrade
     "bash",
     "bash-completion",
     "bash-git-prompt",
+    "bat",
     "carthage",
     "chromedriver",
     "cloc",
@@ -165,6 +166,5 @@ EORUBY
 
 # Remove outdated versions from the cellar.
 brew cleanup
-brew cleanup -s --force
-brew cask cleanup
+brew cleanup -s
 mv ~/.git-templates/hooks.bak ~/.git-templates/hooks
