@@ -1,3 +1,5 @@
-.netrc
 *license*
+.netrc
 fish/tcs.env
+node_modules
+package-lock.json
