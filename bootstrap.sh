@@ -13,8 +13,14 @@ function setupRVM() {
 }
 
 function setupSettings() {
+  # Fonts Mac
   if [[ -d ~/Library/Fonts ]]; then
     rsync --exclude ".DS_Store" -av --ignore-times --no-perms --progress fonts/ ~/Library/Fonts/
+  fi
+  # Fonts Linux
+  if [[ -d /usr/local/share/fonts ]]; then
+    sudo rsync --exclude ".DS_Store" -av --ignore-times --no-perms --progress fonts/ /usr/local/share/fonts/
+    fc-cache -f -v
   fi
   if [[ -d /usr/local/share/games/fortunes ]]; then
     rsync -av --ignore-times --no-perms --progress init/sadserver_tweets* /usr/local/share/games/fortunes
