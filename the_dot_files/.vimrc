@@ -19,33 +19,28 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'bling/vim-bufferline'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-Plugin 'skywind3000/quickmenu.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-syntastic/syntastic'
 
 " Utilities
 Plugin 'airblade/vim-gitgutter'
-Plugin 'airblade/vim-rooter'
-Plugin 'craigemery/vim-autotag'
+Plugin 'airblade/vim-rooter'      " change the working directory to the project root when you open a file or directory
+Plugin 'craigemery/vim-autotag'   " update ctags on the fly
 Plugin 'danro/rename.vim'
 Plugin 'dbeniamine/todo.txt-vim'
-Plugin 'godlygeek/tabular'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'godlygeek/tabular'        " Let vim line things up automatically
+Plugin 'jiangmiao/auto-pairs'     " Insert or delete brackets, parens, quotes in pair
 Plugin 'junegunn/gv.vim'          " :GV git commit browser
-Plugin 'justinmk/vim-gtfo'        " :gof open dir in Finder, :got open dir in terminal
 Plugin 'mileszs/ack.vim'          " :Ack in vim
 Plugin 'prettier/vim-prettier'
-Plugin 'rizzatti/dash.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-endwise'
+Plugin 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other cool tricks)
+Plugin 'tpope/vim-endwise'        " end structures automatically
 Plugin 'tpope/vim-fugitive'       " vim Git wrapper
 Plugin 'tpope/vim-surround'
-Plugin 'wincent/command-t'        " \t to invoke
 
 " Language-related
 Plugin 'dag/vim-fish'
@@ -65,16 +60,16 @@ Plugin 'tpope/vim-rake'
 
 " Color scheme for vim
 Plugin 'junegunn/seoul256.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'trevordmiller/nova-vim'
-" Plugin 'chriskempson/base16-vim'
 
 " Not currently in use but helpful in the past
-" Bundle 'edkolev/tmuxline.vim'
+" Plugin 'chriskempson/base16-vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'elixir-lang/vim-elixir'
+" Plugin 'morhetz/gruvbox'
 " Plugin 'nginx.vim'
 " Plugin 'rust-lang/rust.vim'
+" Plugin 'trevordmiller/nova-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -92,16 +87,6 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 
 " Carriage return will clear search highlighting, `n` will still find next
 noremap <leader><CR> :noh<CR>
-
-" Strip trailing whitespace (\ss)
-function! StripWhitespace()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  :%s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
 
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,nbsp:_
@@ -121,19 +106,11 @@ set showmatch                  " highlight matching brace
 set autoindent                 " auto-indent new lines
 set cursorline
 set showmode
-" set title
 set autochdir
-" set ruler                      " show row and column ruler info
-" set guifont=Droid\ Sans\ Mono\ Slashed:h16
-" set number
 nnoremap : :set nu<CR>:
 cnoremap <silent> <CR> <CR>:set nonu<CR>
 
-" color blackboard
-" colorscheme gruvbox
-" colorscheme nova
-" set background=dark
-
+"" Color scheme settings
 let g:seoul256_background = 234
 colorscheme seoul256
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
@@ -155,7 +132,7 @@ au FileType gitcommit set tw=72
 
 "" CTags
 " default leader is \
-" CTRL + ]
+" CTRL + ] to go to the original definition
 " :ts
 " See also: grep -H -r 'what_you_search' * | less
 let g:autotagTagsFile=".tags"
@@ -163,13 +140,6 @@ nmap <F8> :TagbarToggle<CR>
 " To generate tags (if vim-autotags does not), call this from the ex line
 " :!ctags
 set tags=./.tags,.tags,.git/.tags
-
-"folding settings (za to fold)
-" set foldmethod=indent   "fold based on indent
-set foldmethod=syntax
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
 
 " window splitting mappings
 " split vertically with <leader> v
@@ -214,6 +184,19 @@ let g:syntastic_check_on_wq = 0
 
 "" vim rooter - project root detection
 let g:rooter_patterns = ['Rakefile', '.git/']
+
+" nginx config syntax
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/etc/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
+" Strip trailing whitespace (\ss)
+function! StripWhitespace()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
 
 " Put this in your .vimrc and whenever you `git commit` you'll see the diff of your commit next to your commit message.
 " For the most accurate diffs, use `git config --global commit.verbose true`
@@ -261,36 +244,3 @@ function OpenCommitMessageDiff()
   " Get back to the commit message
   wincmd p
 endfunction
-
-" nginx config syntax
-au BufRead,BufNewFile /etc/nginx/*,/usr/local/etc/nginx/conf/* if &ft == '' | setfiletype nginx | endif
-
-" Quick Menu
-" clear all the items
-call quickmenu#reset()
-
-" enable cursorline (L) and cmdline help (H)
-let g:quickmenu_options = "LH"
-
-" use your favorite key to show / hide quickmenu
-noremap <silent><F12> :call quickmenu#toggle(0)
-
-" new section: empty action with text starts with "#" represent a new section
-call quickmenu#append("# Debug", '')
-
-" script between %{ and } will be evaluated before menu open
-call quickmenu#append("Run %{expand('%:t')}", '!./%', "Run current file")
-
-" new section
-call quickmenu#append("# Git", '')
-
-" use fugitive to show diff
-call quickmenu#append("git diff", 'Gvdiff', "use fugitive's Gvdiff on current document")
-call quickmenu#append("git status", 'Gstatus', "use fugitive's Gstatus on current document")
-call quickmenu#append("git blame", 'Gblame', "use fugitive's Gblame on current document")
-
-" new section
-call quickmenu#append("# Misc", '')
-call quickmenu#append("Turn paste %{&paste? 'off':'on'}", "set paste!", "enable/disable paste mode (:set paste!)")
-call quickmenu#append("Turn spell %{&spell? 'off':'on'}", "set spell!", "enable/disable spell check (:set spell!)")
-" call quickmenu#append("Function List", "TagbarToggle", "Switch Tagbar on/off")
