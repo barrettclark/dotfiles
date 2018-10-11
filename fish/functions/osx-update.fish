@@ -3,7 +3,7 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
   /usr/local/dotfiles/brew.sh
 
   # Fisherman update
-  fisher update
+  fisher self-update
 
   # vim plugins
   vim +PluginClean +qall
