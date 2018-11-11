@@ -24,7 +24,8 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 
 " Utilities
 Plugin 'airblade/vim-gitgutter'
@@ -173,14 +174,38 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 :command Txml  :%!tidy -q -i --show-errors 0 -xml
 
 "" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+"
+" let g:syntastic_css_checkers = ['prettier']
+" let g:syntastic_json_checkers = ['jq']
+" let g:syntastic_ruby_checkers = ['flog', 'reek', 'rubocop']
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+"" ale
+let g:airline#extensions#ale#enabled = 1
+
+" lint on save only
+" let g:ale_lint_on_text_changed = 'never'
+" disable this option if you don't want linters to run on opening a file
+" let g:ale_lint_on_enter = 0
+
+let g:ale_ruby_reek_executable = 'bundle'
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'css': ['prettier'],
+\   'javascript': ['eslint', 'prettier'],
+\   'json': ['jq'],
+\   'markdown': ['prettier'],
+\   'ruby': ['rubocop'],
+\   'scss': ['prettier'],
+\   'yaml': ['prettier'],
+\}
 
 "" vim rooter - project root detection
 let g:rooter_patterns = ['Rakefile', '.git/']

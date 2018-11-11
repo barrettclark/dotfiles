@@ -71,6 +71,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   rsync -avh --ignore-times --no-perms --progress the_dot_files/ $HOME
   sudo pip install --upgrade pip
   pip install pygments
+  # npm install -g csslint fx markdownlint-cli moment prettier
   while getopts ":bfholtv" opt; do
     case $opt in
       b)
