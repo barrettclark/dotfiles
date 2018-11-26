@@ -173,19 +173,8 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
 :command Txml  :%!tidy -q -i --show-errors 0 -xml
 
-"" syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-"
-" let g:syntastic_css_checkers = ['prettier']
-" let g:syntastic_json_checkers = ['jq']
-" let g:syntastic_ruby_checkers = ['flog', 'reek', 'rubocop']
+"" vim-markdown
+let g:vim_markdown_folding_disabled = 1
 
 "" ale
 let g:airline#extensions#ale#enabled = 1
