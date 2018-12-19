@@ -51,6 +51,7 @@ brew upgrade
     "geckodriver",
     "git",
     "git-lfs",
+    "git-standup",
     "gnu-sed --with-default-names",
     "gnupg",
     "go",
