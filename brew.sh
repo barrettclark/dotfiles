@@ -55,6 +55,7 @@ brew upgrade
     "gnu-sed --with-default-names",
     "gnupg",
     "go",
+    "gpg2",
     "gradle",
     "graphviz",
     "grep",
@@ -121,6 +122,7 @@ brew tap caskroom/fonts
   casks = [
     "caffeine",
     "charles",
+    "corelocationcli",
     "dash",
     "disk-inventory-x",
     "docker",
@@ -150,6 +152,7 @@ brew tap caskroom/fonts
     "pocket-casts",
     "postgres",
     "postman",
+    "quicklook-json",
     "rowanj-gitx",
     "rstudio",
     "screenhero",
