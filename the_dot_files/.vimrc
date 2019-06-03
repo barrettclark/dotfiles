@@ -35,7 +35,7 @@ Plugin 'danro/rename.vim'
 Plugin 'dbeniamine/todo.txt-vim'
 Plugin 'godlygeek/tabular'        " Let vim line things up automatically
 Plugin 'jiangmiao/auto-pairs'     " Insert or delete brackets, parens, quotes in pair
-Plugin 'junegunn/gv.vim'          " :GV git commit browser
+Plugin 'junegunn/gv.vim'          " :GV git commit browser to highlight pairs
 Plugin 'mileszs/ack.vim'          " :Ack in vim
 Plugin 'prettier/vim-prettier'
 Plugin 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other cool tricks)
@@ -58,6 +58,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
+Plugin 'b4b4r07/vim-sqlfmt'
 
 " Color scheme for vim
 Plugin 'junegunn/seoul256.vim'
@@ -119,13 +120,15 @@ let &colorcolumn="72,".join(range(80,120),",")
 
 "" Filetypes for syntax highlighting
 autocmd BufNewFile,BufRead *.json set ft=javascript
-au BufRead,BufNewFile *.vw setfiletype sql
+au BufRead,BufNewFile *.bdy setfiletype sql
+au BufRead,BufNewFile *.fnc setfiletype sql
+au BufRead,BufNewFile *.grt setfiletype sql
 au BufRead,BufNewFile *.mvw setfiletype sql
 au BufRead,BufNewFile *.prc setfiletype sql
-au BufRead,BufNewFile *.fnc setfiletype sql
-au BufRead,BufNewFile *.bdy setfiletype sql
-au BufRead,BufNewFile *.tab setfiletype sql
 au BufRead,BufNewFile *.spc setfiletype sql
+au BufRead,BufNewFile *.tab setfiletype sql
+au BufRead,BufNewFile *.usr setfiletype sql
+au BufRead,BufNewFile *.vw setfiletype sql
 au BufRead,BufNewFile Dockerfile* setfiletype dockerfile
 
 "" git commit message length

@@ -11,12 +11,12 @@ set fish_plugins brew rvm
 # rvm default
 
 if status --is-login
-  source ~/.config/fish/env.fish
+  source /Users/43502/.config/fish/env.fish
+end
 
-  # Load TCS file, if applicable/available
-  if test -e ~/.config/fish/tcs.env
-    source ~/.config/fish/tcs.env
-  end
+# Load TCS file, if applicable/available
+if test -e /Users/43502/.config/fish/tcs.env
+  source /Users/43502/.config/fish/tcs.env
 end
 
 # }}}
@@ -36,8 +36,3 @@ abbr -a gs git status
 abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 
 alias md5sum gmd5sum
-
-# Base16 Shell
-if status --is-interactive
-    eval sh $HOME/.config/base16-shell/scripts/base16-tomorrow-night.sh
-end
