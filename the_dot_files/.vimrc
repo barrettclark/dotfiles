@@ -56,6 +56,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'b4b4r07/vim-sqlfmt'
@@ -124,6 +125,8 @@ au BufRead,BufNewFile *.bdy setfiletype sql
 au BufRead,BufNewFile *.fnc setfiletype sql
 au BufRead,BufNewFile *.grt setfiletype sql
 au BufRead,BufNewFile *.mvw setfiletype sql
+au BufRead,BufNewFile *.pkb setfiletype sql
+au BufRead,BufNewFile *.pkg setfiletype sql
 au BufRead,BufNewFile *.prc setfiletype sql
 au BufRead,BufNewFile *.spc setfiletype sql
 au BufRead,BufNewFile *.tab setfiletype sql

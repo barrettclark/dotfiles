@@ -31,7 +31,6 @@ brew upgrade
     "bash-git-prompt",
     "bat",
     "carthage",
-    "chromedriver",
     "cloc",
     "cmake",
     "coreutils",
@@ -125,6 +124,7 @@ brew tap caskroom/fonts
   casks = [
     "caffeine",
     "charles",
+    "chromedriver",
     "corelocationcli",
     "dash",
     "disk-inventory-x",
