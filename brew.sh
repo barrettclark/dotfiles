@@ -24,6 +24,7 @@ brew upgrade
 /usr/bin/env ruby <<-EORUBY
   packages = [
     "ack",
+    "awscli",
     "ansible",
     "ansifilter",
     "bash",
@@ -33,13 +34,14 @@ brew upgrade
     "carthage",
     "cloc",
     "cmake",
+    "consul",
+    "consul-template",
     "coreutils",
     "cowsay",
     "ctags",
     "curl",
     "dep",
     "enscript",
-    "envconsul",
     "exercism",
     "findutils",
     "fish",
@@ -88,6 +90,7 @@ brew upgrade
     "speedtest-cli",
     "sqlite",
     "ssh-copy-id",
+    "terraform",
     "tidy-html5",
     "tmux",
     "tmux-mem-cpu-load",
@@ -118,7 +121,7 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap caskroom/cask
 fi
-brew tap caskroom/fonts
+brew tap caskroom/cask-fonts
 
 /usr/bin/env ruby <<-EORUBY
   casks = [
@@ -161,13 +164,15 @@ brew tap caskroom/fonts
     "rstudio",
     "screenhero",
     "sequel-pro",
+    "skype",
     "slack",
     "spotify",
     "spotify-notifications",
     "todotxt",
     "sublime-text",
     "vagrant",
-    "virtualbox"
+    "virtualbox",
+    "visual-studio-code"
   ]
   installed  = %x(brew cask list).split("\n")
   to_install = casks - installed

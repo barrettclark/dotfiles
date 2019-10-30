@@ -44,9 +44,11 @@ Plugin 'tpope/vim-fugitive'       " vim Git wrapper
 Plugin 'tpope/vim-surround'
 
 " Language-related
+Plugin 'b4b4r07/vim-sqlfmt'
 Plugin 'dag/vim-fish'
 Plugin 'fatih/vim-go'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'hashivim/vim-terraform'
 Plugin 'kballard/vim-swift'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'moll/vim-node'            " gf inside require("...") to jump to source and module files
@@ -59,7 +61,6 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
-Plugin 'b4b4r07/vim-sqlfmt'
 
 " Color scheme for vim
 Plugin 'junegunn/seoul256.vim'
@@ -177,7 +178,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
-:command Txml  :%!tidy -q -i --show-errors 0 -xml
+:command Txml  :%!tidy -q -i -config ~/.html-tidy --show-errors 0 -xml
 
 "" vim-markdown
 let g:vim_markdown_folding_disabled = 1
@@ -190,19 +191,22 @@ let g:airline#extensions#ale#enabled = 1
 " disable this option if you don't want linters to run on opening a file
 " let g:ale_lint_on_enter = 0
 
-let g:ale_ruby_reek_executable = 'bundle'
+" let g:ale_ruby_reek_executable = 'bundle'
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'css': ['prettier'],
 \   'javascript': ['eslint', 'prettier'],
 \   'json': ['jq'],
-\   'markdown': ['prettier'],
 \   'ruby': ['rubocop'],
 \   'scss': ['prettier'],
 \   'yaml': ['prettier'],
 \}
 
-"" vim rooter - project root detection
+" Terraform auto-format
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
+" vim rooter - project root detection
 let g:rooter_patterns = ['Rakefile', '.git/']
 
 " nginx config syntax

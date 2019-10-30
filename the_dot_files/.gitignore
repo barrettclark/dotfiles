@@ -49,3 +49,7 @@ Temporary Items
 
 # CTags
 .tags
+
+.overcommit.yml
+.reek.yml
+.hadolint.yaml
