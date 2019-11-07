@@ -87,6 +87,7 @@ brew upgrade
     "rename",
     "rlwrap",
     "rpm",
+    "sl",
     "speedtest-cli",
     "sqlite",
     "ssh-copy-id",
@@ -121,7 +122,7 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap caskroom/cask
 fi
-brew tap caskroom/cask-fonts
+brew tap caskroom/cask-cask-fonts
 
 /usr/bin/env ruby <<-EORUBY
   casks = [
