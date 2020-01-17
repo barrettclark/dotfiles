@@ -57,6 +57,7 @@ brew upgrade
     "gnupg",
     "go",
     "gradle",
+    "graphicsmagick",
     "graphviz",
     "grep",
     "gtk+",
