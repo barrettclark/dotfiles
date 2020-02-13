@@ -12,6 +12,7 @@ set fish_plugins brew rvm
 
 if status --is-login
   source /Users/43502/.config/fish/env.fish
+  source /usr/local/opt/asdf/asdf.fish
 end
 
 # Load TCS file, if applicable/available
@@ -24,8 +25,8 @@ end
 abbr -a be bundle exec
 abbr -a beg bundle exec rails g
 abbr -a ber bundle exec rake
-abbr -a dcb docker-compose up --build
-abbr -a dcd docker-compose down
+abbr -a dcb docker-compose up --build --remove-orphans
+abbr -a dcd docker-compose down --remove-orphans
 abbr -a gb git branch
 abbr -a gc git commit
 abbr -a gcm git checkout master
@@ -36,3 +37,4 @@ abbr -a gs git status
 abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 
 alias md5sum gmd5sum
+alias less 'less -r'

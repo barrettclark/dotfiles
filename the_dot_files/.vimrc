@@ -24,7 +24,6 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'vim-syntastic/syntastic'
 Plugin 'w0rp/ale'
 
 " Utilities
@@ -42,6 +41,7 @@ Plugin 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other coo
 Plugin 'tpope/vim-endwise'        " end structures automatically
 Plugin 'tpope/vim-fugitive'       " vim Git wrapper
 Plugin 'tpope/vim-surround'
+Plugin 'zivyangll/git-blame.vim'
 
 " Language-related
 Plugin 'b4b4r07/vim-sqlfmt'
@@ -61,6 +61,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-haml'
 
 " Color scheme for vim
 Plugin 'junegunn/seoul256.vim'
@@ -113,6 +114,12 @@ set showmode
 set autochdir
 nnoremap : :set nu<CR>:
 cnoremap <silent> <CR> <CR>:set nonu<CR>
+
+" Git Blame
+nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
+
+" Show commits for every source line
+nnoremap <Leader>gb :Gblame<CR>  " git blame
 
 "" Color scheme settings
 let g:seoul256_background = 234

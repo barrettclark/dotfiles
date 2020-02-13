@@ -1,6 +1,7 @@
 --ignore-case
 --ignore-dir=.idea
 --ignore-dir=build
+--ignore-dir=coverage
 --ignore-dir=doc
 --ignore-dir=log
 --ignore-dir=public/assets
