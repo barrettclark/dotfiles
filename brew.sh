@@ -122,8 +122,8 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 # Cask to install binaries
 if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap caskroom/cask
+  brew tap caskroom/cask-fonts
 fi
-brew tap caskroom/cask-cask-fonts
 
 /usr/bin/env ruby <<-EORUBY
   casks = [
