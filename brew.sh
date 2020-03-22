@@ -82,6 +82,7 @@ brew upgrade
     "pv",
     "python",
     "r",
+    "rainbarf",
     "readline",
     "reattach-to-user-namespace",
     "redis",
