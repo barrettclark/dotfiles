@@ -65,6 +65,7 @@ brew upgrade
     "highlight",
     "jq",
     "lastpass-cli",
+    "leiningen",
     "libxml2",
     "lolcat",
     "lua",
