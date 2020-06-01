@@ -28,6 +28,7 @@ abbr -a ber bundle exec rake
 abbr -a dcb docker-compose up --build --remove-orphans
 abbr -a dcd docker-compose down --remove-orphans
 abbr -a gb git branch
+abbr -a gbc 'git branch | grep -v master | xargs git branch -d'
 abbr -a gc git commit
 abbr -a gcm git checkout master
 abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
