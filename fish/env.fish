@@ -25,11 +25,6 @@ append-to-path $PG_CONFIG
 set JDK jdk1.8.0_112.jdk
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/$JDK/Contents/Home
 
-# jEnv {{{
-append-to-path ~/.jenv/bin
-status --is-interactive; and source (jenv init -|psub)
-# }}}
-
 # Go {{{
 set -gx GOPATH ~/go
 append-to-path $GOPATH

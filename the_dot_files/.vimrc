@@ -29,7 +29,7 @@ Plugin 'w0rp/ale'
 " Utilities
 Plugin 'airblade/vim-gitgutter'
 Plugin 'airblade/vim-rooter'      " change the working directory to the project root when you open a file or directory
-Plugin 'craigemery/vim-autotag'   " update ctags on the fly
+" Plugin 'craigemery/vim-autotag'   " update ctags on the fly
 Plugin 'danro/rename.vim'
 Plugin 'dbeniamine/todo.txt-vim'
 Plugin 'godlygeek/tabular'        " Let vim line things up automatically
@@ -40,6 +40,7 @@ Plugin 'prettier/vim-prettier'
 Plugin 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other cool tricks)
 Plugin 'tpope/vim-endwise'        " end structures automatically
 Plugin 'tpope/vim-fugitive'       " vim Git wrapper
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
 Plugin 'zivyangll/git-blame.vim'
 
@@ -186,6 +187,10 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
 :command Txml  :%!tidy -q -i -config ~/.html-tidy --show-errors 0 -xml
+
+"" SQLFmt
+let g:sqlfmt_command = "sqlformat"
+let g:sqlfmt_options = "-r -k upper"
 
 "" vim-markdown
 let g:vim_markdown_folding_disabled = 1
