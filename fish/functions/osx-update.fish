@@ -22,6 +22,6 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
 
   # OSX update
   reattach-to-user-namespace mas upgrade
-  sudo softwareupdate -i -a
+  sudo softwareupdate --all --install --force
   echo "To reboot: sudo shutdown -r now"
 end
