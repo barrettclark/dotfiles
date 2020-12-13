@@ -78,6 +78,7 @@ brew upgrade
     "mkcert",
     "moreutils",
     "mosquitto",
+    "netcat",
     "node",
     "openssh",
     "p7zip",
@@ -111,7 +112,7 @@ brew upgrade
     "yarn",
     "zopfli"
   ]
-  installed  = %x(brew list).split("\n")
+  installed  = %x(brew list --formula).split("\n")
   names      = packages.map { |package| package.split(' ').first }
   diff       = names - installed
   to_install = diff.each { |name| packages.grep(/name/).first }.uniq
@@ -154,7 +155,7 @@ fi
     "google-chrome",
     "intellij-idea",
     "istat-menus",
-    "java",
+    # "java",
     "kitematic",
     "launchrocket",
     "macdown",
