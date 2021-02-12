@@ -55,6 +55,7 @@ brew upgrade
     "git-lfs",
     "git-standup",
     "gnu-sed --with-default-names",
+    "gnu-tar",
     "gnupg",
     "go",
     "gpp",
