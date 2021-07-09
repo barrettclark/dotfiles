@@ -22,9 +22,9 @@ function setupSettings() {
     sudo rsync --exclude ".DS_Store" -av --ignore-times --no-perms --progress fonts/ /usr/local/share/fonts/
     fc-cache -f -v
   fi
-  if [[ -d /usr/local/share/games/fortunes ]]; then
-    rsync -av --ignore-times --no-perms --progress init/sadserver_tweets* /usr/local/share/games/fortunes
-  fi
+  # if [[ -d /usr/local/share/games/fortunes ]]; then
+  #   rsync -av --ignore-times --no-perms --progress init/sadserver_tweets* /usr/local/share/games/fortunes
+  # fi
 }
 
 function setupBash() {

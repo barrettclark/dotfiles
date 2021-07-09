@@ -52,6 +52,3 @@ fi
 if [ -f ~/bin/dcos/bin/env-setup ]; then
   source ~/bin/dcos/bin/env-setup
 fi
-
-# cp sadserver_tweets.dat /usr/local/share/games/fortunes
-fortune sadserver_tweets | cowsay
