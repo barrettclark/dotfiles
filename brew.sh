@@ -156,7 +156,6 @@ fi
     "google-chrome",
     "intellij-idea",
     "istat-menus",
-    # "java",
     "kitematic",
     "launchrocket",
     "macdown",

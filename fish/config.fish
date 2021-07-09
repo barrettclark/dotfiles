@@ -29,6 +29,7 @@ abbr -a dcb docker-compose up --build --remove-orphans
 abbr -a dcd docker-compose down --remove-orphans
 abbr -a gb git branch
 abbr -a gbc 'git branch | grep -v master | xargs git branch -d'
+abbr -a gbc2 'git branch | grep -v main | xargs git branch -d'
 abbr -a gc git commit
 abbr -a gcm git checkout master
 abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
@@ -39,3 +40,5 @@ abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 
 alias md5sum gmd5sum
 alias less 'less -r'
+
+status --is-interactive; and source (jenv init -|psub)
