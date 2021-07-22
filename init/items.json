@@ -1,0 +1,66 @@
+[
+  // ----- LEFT
+  {
+    "type": "escape",
+    "width": 64,
+    "align": "left"
+  },
+  { "type": "brightnessDown", "width": 32, "bordered": false, "align": "left" },
+  { "type": "brightnessUp", "width": 32, "bordered": false, "align": "left" },
+  {
+    "type": "play",
+    "align": "left",
+    "width": 38
+  },
+  // Spotify
+  {
+    "type": "appleScriptTitledButton",
+    "source": {
+      "inline": "if application \"Spotify\" is running then\rtell application \"Spotify\"\rif player state is playing then\rreturn (get artist of current track) & \" – \" & (get name of current track)\relse\rreturn \"\"\rend if\rend tell\rend if\rreturn \"\"\r"
+    },
+    "refreshInterval": 1,
+    "align": "left",
+    "image": {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURUdwTB3WXx3UXh3VXx7XYBkXFRpVLRyURmIaeAQAAAAEdFJOUwDDO3fSqUUkAAABbklEQVRIx61VbW6DMAztoAeYNA7ApB6gkzhAWS24wIAL0HABaK6/pHFNEhy8TXu/kPzkPD/8cTj8K7KPAqB+K5NhQPCUrABCXe7HOUYYZxgVRLiG8RfY4DUgFFtC7cffAfZTFBwBdhWEKfgEq4ocEjgj4ZQifO6/QG9kkETp1dDeVWfRKx3XYSW0LoqY5kCElXDrQkyeCCuh6WL0M4nIWQIyzqixdfKU1koFDKvyCA8NJMzU4xiD+b4kfHRpsIyKc6hBwjVptFHVY51EMAINNDFGJITKDNQcdpX74Hz0CQ3rY5qwMp4EIxrlafzrsYZ2Veb0DkRgfNCUok4Y1fqEijfyi2b8RE9beWqa48Y/uvCNMcH9btfUi+/CGLR1vhL6Zz9N/vBlaCU+7lwY/cmJ67Ryen/2tj23PLqJBodZH8vgj544vOL4pxfI5acrSFxi8hrkU9TSKr78ZpnL50A8KPJJEo+afBblwyqf5j/iGys5j6ScrST2AAAAAElFTkSuQmCC"
+    }
+  },
+
+  // iTunes
+  // {
+  //   "type": "appleScriptTitledButton",
+  //   "source": {
+  //     "inline": "if application \"iTunes\" is running then\rtell application \"iTunes\"\rif player state is playing then\rreturn (get artist of current track) & \" – \" & (get name of current track)\relse\rreturn \"\"\rend if\rend tell\rend if\rreturn \"\"\r"
+  //   },
+  //   "refreshInterval": 2,
+  //   "align": "left",
+  //   "image": {
+  //     "base64": "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"
+  //   }
+  // },
+  // ----- RIGHT
+  {
+    "type": "battery",
+    "align": "right",
+    "image": {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALiQAAC4kBN8nLrQAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAAcVQTFRFAAAAAP8A//8A////gP+Aqv9Vqv+qv/+Amf9mzP9mqv+Atv9tqv9xs/+Auf90qv+ApP+Arv95rf94rv95q/93q/95rP95q/94rP94rf96q/94qv95rP92rP95rf94rP93q/93qv93rP93q/94rP94q/93q/94q/94rP93qv93rP93rP95q/94rf94q/93rP94q/93q/95rf95q/94q/93rP94rP95q/94rP93rP95rP94rP94rP93rP95q/93q/94rP94q/93rf94rP95rP94rP94q/93rP94q/94rP95q/94q/93q/95rP93rP95rP93q/94rP94q/94q/94rP94q/94q/94rP94rP93rP94rP94rP94q/94rP94rP93rP95q/94rP94q/93q/94q/94rP93q/94rP94q/94rP94rP94rP94q/94q/94q/94rP94q/93q/94rP94rP94q/93rP93rP94q/94rP94rP93rP94q/94rP94rP95rf95r/96r/97sP97sf97sf98sv98sv99s/99tP99tP9+tf9+tf9/tv9/t/+AuP+Buf+Buv+CvP+DvP+Evf+Evv+Fv/+Fv/+Gwv+IMJzaNwAAAHt0Uk5TAAEBAQIDAwQFBQYHCQoLDA4TIjk6PUpVWVpbXV9fZGVnaWlqbG15fX6BgYGCgoOEhYWFhpKTlJWWlpeZmpqeoaKjpKmssrS1t7i5urq8vL6/xMbIyNHS1dbW19rb297e5ebn5+jp6+zx8vP19vf5+fr6+vv8/Pz9/f7+XaSQpwAAAkpJREFUSMftlv1TEkEYxx+kBLE0K1O0TEusREohs4S0EqkoXxCVxCwzehPpxQsJIZHwztvbywrUv7cNGmex5Tb8tT43tzd3O5/Zm+d7z80C0OhNRsNROJVZjSUJK6k3x+GIwWjSQ0kOFy4nN1ZjCaJE118fK5pgGo29TtfVu2vxWJwQS769c83l7G0s6VRC3QTexAoWP8YKrHySya2EJ+rIJAPywg+yAhIlUVL2IDciErIP89OMRerFxGJHQ7O5ydy0h7m5oWMxIdYzlzHAOSRfZ61/Q1bOk2mWYlGQFWoMVUaKKkMNWJFiKaG0Y+QA0/7nJnAg3F5qFYy6WUo3wpYylZ7/yr+hXIHqikNFVFRzFRPoiviLb4yBXUvBXTAw7rlH4RkfABvWUNROCG1LKoW0HQKrqqVYYSYdfk8RTs9wlVlJSFII0ixXCaYjAkUkHeQonbCQkzCFlHumrZCK3fZ5R0fIkR9GRr2+W9oVQz0HyaXPM+SmGPL0cXK5BC92ZDoXeSdUdsW+BLnK4325bPJzCaTC7yjCqQA3l+fFuYi5BW4u7infpH+S4Cejf9I35ebkcoB+sYFjsN+V52Z+7B90wGVOv7zaxd8o1N2X3Io9KrdiVpiTo2ufC8evISrPaSpKviuXPlAscbpSUbtg/ntGpsj8mAebqmgoF8D7ZDpAMf30PlwsrbQh2cnKxSWjNqZSSXZI8Yj9dGvLWYqW1jP2SHzjBHN3odfBcDa69fUPtqLZYdDp2Xur2jHSLMvLwu+zAPnJjNXSu6ufY9Bl7SC0Yh8AAAAASUVORK5CYII="
+    },
+    "bordered": false
+  },
+  {
+    "type": "weather",
+    "align": "right",
+    "icon_type": "images",
+    "units": "imperial",
+    "api_key": "ca93a0bb8cdb428552660d83249e4bc9",
+    "bordered": true
+  },
+  {
+    "type": "timeButton",
+    "formatTemplate": "hh:mm a zzz",
+    "align": "right",
+    "bordered": false,
+    "longAction": "shellScript",
+    "longExecutablePath": "/usr/bin/pmset",
+    "longShellArguments": ["sleepnow"]
+  }
+]

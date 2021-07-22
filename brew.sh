@@ -159,6 +159,7 @@ fi
     "kitematic",
     "launchrocket",
     "macdown",
+    "mtmr",
     "pocket-casts",
     "postgres",
     "postman",
