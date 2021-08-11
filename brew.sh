@@ -54,10 +54,12 @@ brew upgrade
     "git",
     "git-lfs",
     "git-standup",
+    "gnu-indent",
     "gnu-sed --with-default-names",
     "gnu-tar",
+    "gnu-which",
     "gnupg",
-    "go",
+    "golang",
     "gpp",
     "gradle",
     "graphicsmagick",
@@ -73,6 +75,7 @@ brew upgrade
     "lolcat",
     "lua",
     "lynx",
+    "markdown",
     "mas",
     "maven",
     "memcached",
@@ -81,11 +84,13 @@ brew upgrade
     "mosquitto",
     "netcat",
     "node",
+    "npm",
     "openssh",
     "p7zip",
     "pandoc",
     "pv",
     "python",
+    "python3",
     "r",
     "rainbarf",
     "readline",
@@ -127,6 +132,7 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Cask to install binaries
 if [ ! -d "/usr/local/Caskroom" ]; then
+  brew tap AdoptOpenJDK/openjdk
   brew tap caskroom/cask
   brew tap caskroom/cask-fonts
 fi
@@ -134,6 +140,11 @@ fi
 /usr/bin/env ruby <<-EORUBY
   casks = [
     "1password-cli",
+    "adoptopenjdk",
+    "adoptopenjdk11",
+    "adoptopenjdk14",
+    "adoptopenjdk15",
+    "adoptopenjdk8",
     "caffeine",
     "charles",
     "chromedriver",
@@ -154,7 +165,7 @@ fi
     "get-lyrical",
     "gimp",
     "google-chrome",
-    "intellij-idea",
+    "intellij-idea-ce",
     "istat-menus",
     "kitematic",
     "launchrocket",
@@ -169,18 +180,18 @@ fi
     "sequel-pro",
     "slack",
     "spotify",
-    "spotify-notifications",
     "sublime-text",
     "todotxt",
     "vagrant",
     "virtualbox",
     "visual-studio-code",
-    "wkhtmltopdf"
+    "wkhtmltopdf",
+    "zoom"
   ]
   installed  = %x(brew list --cask).split("\n")
   to_install = casks - installed
   p to_install unless to_install.empty?
-  to_install.each { |cask| system("brew cask install #{cask}") }
+  to_install.each { |cask| system("brew install --cask #{cask}") }
 EORUBY
 
 # Remove outdated versions from the cellar.

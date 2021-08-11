@@ -69,8 +69,15 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   rsync -avh --ignore-times --no-perms --progress the_dot_files/ $HOME
-  sudo pip install --upgrade pip
-  pip install pygments
+  sudo pip3 install --upgrade pip
+  sudo pip3 install --upgrade setuptools
+  PYTHON_PACKAGES=(
+    ipython
+    pygments
+    virtualenv
+    virtualenvwrapper
+  )
+  sudo pip3 install ${PYTHON_PACKAGES[@]}
   # npm install -g csslint fx markdownlint-cli moment prettier
   while getopts ":bfholtv" opt; do
     case $opt in

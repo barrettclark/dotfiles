@@ -17,6 +17,7 @@ set -gx COPYFILE_DISABLE true
 append-to-path ~/bin
 append-to-path /usr/local/dotfiles/bin
 append-to-path ~/Library/Python/2.7/bin
+append-to-path /usr/local/opt/findutils/libexec/gnubin
 prepend-to-path /usr/local/sbin
 set -gx PG_CONFIG /Applications/Postgres.app/Contents/Versions/9.6/bin
 append-to-path $PG_CONFIG
