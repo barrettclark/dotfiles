@@ -9,13 +9,17 @@
 		"CTags",
 		"Dockerfile Syntax Highlighting",
 		"Git",
-		"Highlight",
 		"HTML-CSS-JS Prettify",
+		"Highlight",
 		"Markdown Preview",
 		"MarkdownEditing",
+		"Package Control",
 		"Pretty JSON",
 		"Print to HTML",
 		"SCSS",
-		"TidyHTML5"
+		"TidyHTML5",
+		"ToDone",
+		"Todo",
+		"TodoTxt Syntax",
 	]
 }

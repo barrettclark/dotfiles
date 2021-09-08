@@ -35,6 +35,7 @@ Plugin 'dbeniamine/todo.txt-vim'
 Plugin 'godlygeek/tabular'        " Let vim line things up automatically
 Plugin 'jiangmiao/auto-pairs'     " Insert or delete brackets, parens, quotes in pair
 Plugin 'junegunn/gv.vim'          " :GV git commit browser to highlight pairs
+Plugin 'kamykn/spelunker.vim'
 Plugin 'mileszs/ack.vim'          " :Ack in vim
 Plugin 'prettier/vim-prettier'
 Plugin 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other cool tricks)
@@ -49,7 +50,7 @@ Plugin 'b4b4r07/vim-sqlfmt'
 Plugin 'dag/vim-fish'
 Plugin 'fatih/vim-go'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-hashicorp-tools'
 Plugin 'kballard/vim-swift'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'moll/vim-node'            " gf inside require("...") to jump to source and module files
@@ -60,20 +61,18 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-cucumber'
-Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-haml'
+Plugin 'vim-ruby/vim-ruby'
 
 " Color scheme for vim
 Plugin 'junegunn/seoul256.vim'
 
 " Not currently in use but helpful in the past
-" Plugin 'chriskempson/base16-vim'
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'elixir-lang/vim-elixir'
-" Plugin 'morhetz/gruvbox'
 " Plugin 'nginx.vim'
 " Plugin 'rust-lang/rust.vim'
 " Plugin 'trevordmiller/nova-vim'
@@ -116,6 +115,11 @@ set showmode
 set autochdir
 nnoremap : :set nu<CR>:
 cnoremap <silent> <CR> <CR>:set nonu<CR>
+
+" fold in the cheese
+set foldmethod=indent
+set foldlevelstart=2
+set foldcolumn=2
 
 " Git Blame
 nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
@@ -205,6 +209,7 @@ let g:airline#extensions#ale#enabled = 1
 " let g:ale_lint_on_enter = 0
 
 " let g:ale_ruby_reek_executable = 'bundle'
+let g:ale_linters = {'go': ['gometalinter', 'gopls']}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'css': ['prettier'],
@@ -224,6 +229,14 @@ let g:rooter_patterns = ['Rakefile', '.git/']
 
 " nginx config syntax
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/etc/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
+" Spell checking
+" custom dictionary in ~/.vim/spell/en.utf-8.add
+let g:spelunker_disable_account_name_checking = 1
+let g:spelunker_disable_acronym_checking = 1
+let g:spelunker_disable_backquoted_checking = 1
+let g:spelunker_disable_email_checking = 1
+let g:spelunker_disable_uri_checking = 1
 
 " Strip trailing whitespace (\ss)
 function! StripWhitespace()

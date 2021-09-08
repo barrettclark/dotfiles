@@ -11,13 +11,13 @@ set fish_plugins brew rvm
 # rvm default
 
 if status --is-login
-  source /Users/43502/.config/fish/env.fish
+  source $HOME/.config/fish/env.fish
   source /usr/local/opt/asdf/asdf.fish
 end
 
-# Load TCS file, if applicable/available
-if test -e /Users/43502/.config/fish/tcs.env
-  source /Users/43502/.config/fish/tcs.env
+# Load HashiCorp file, if applicable/available
+if test -e $HOME/.config/fish/hashicorp.env
+  source $HOME/.config/fish/hashicorp.env
 end
 
 # }}}
@@ -36,6 +36,7 @@ abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 abbr -a gf git fetch
 abbr -a gpom git push origin master
 abbr -a gs git status
+abbr -a tf terraform
 abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 
 alias md5sum gmd5sum

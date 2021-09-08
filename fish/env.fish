@@ -16,14 +16,13 @@ set -gx COPYFILE_DISABLE true
 # PATH {{{
 append-to-path ~/bin
 append-to-path /usr/local/dotfiles/bin
-append-to-path ~/Library/Python/2.7/bin
 append-to-path /usr/local/opt/findutils/libexec/gnubin
 prepend-to-path /usr/local/sbin
-set -gx PG_CONFIG /Applications/Postgres.app/Contents/Versions/9.6/bin
+set -gx PG_CONFIG /Applications/Postgres.app/Contents/Versions/latest/bin
 append-to-path $PG_CONFIG
 # }}}
 
-set JDK jdk1.8.0_112.jdk
+set JDK adaptopenjdk-16.jdk
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/$JDK/Contents/Home
 
 # Go {{{

@@ -45,8 +45,8 @@ function setupFish() {
   else
     chsh -s /usr/bin/fish
   fi
-  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-  fisher fzf rvm nyarly/fish-rake-complete brgmnn/fish-docker-compose gitignore nvm
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+  fisher install PatrickF1/fzf.fish nyarly/fish-rake-complete brgmnn/fish-docker-compose
   rsync -avh --ignore-times --no-perms --progress /usr/local/dotfiles/fish/ ~/.config/fish
 }
 
@@ -74,6 +74,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   PYTHON_PACKAGES=(
     ipython
     pygments
+    spotify-cli-linux
     virtualenv
     virtualenvwrapper
   )
