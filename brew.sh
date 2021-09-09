@@ -16,6 +16,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Make sure we’re using the latest Homebrew.
 mv ~/.git-templates/hooks ~/.git-templates/hooks.bak
+brew tap heroku/brew
 brew update
 
 # Upgrade any already-installed formulae.
