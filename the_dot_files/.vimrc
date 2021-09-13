@@ -29,7 +29,7 @@ Plugin 'w0rp/ale'
 " Utilities
 Plugin 'airblade/vim-gitgutter'
 Plugin 'airblade/vim-rooter'      " change the working directory to the project root when you open a file or directory
-" Plugin 'craigemery/vim-autotag'   " update ctags on the fly
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'danro/rename.vim'
 Plugin 'dbeniamine/todo.txt-vim'
 Plugin 'godlygeek/tabular'        " Let vim line things up automatically
@@ -46,21 +46,26 @@ Plugin 'tpope/vim-surround'
 Plugin 'zivyangll/git-blame.vim'
 
 " Language-related
+Plugin 'Quramy/vim-js-pretty-template'
+" Plugin 'andrewradev/ember_tools' -- install by cloning
 Plugin 'b4b4r07/vim-sqlfmt'
 Plugin 'dag/vim-fish'
+Plugin 'dsawardekar/ember.vim'
 Plugin 'fatih/vim-go'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'hashivim/vim-hashicorp-tools'
+Plugin 'joukevandermaas/vim-ember-hbs'
 Plugin 'kballard/vim-swift'
-Plugin 'kchmck/vim-coffee-script'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'moll/vim-node'            " gf inside require("...") to jump to source and module files
 Plugin 'mzlogin/vim-markdown-toc' " :GenTocGFM"
+Plugin 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plugin 'nullvoxpopuli/coc-ember'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
@@ -70,12 +75,13 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'junegunn/seoul256.vim'
 
 " Not currently in use but helpful in the past
-" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'craigemery/vim-autotag'   " update ctags on the fly
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'elixir-lang/vim-elixir'
+" Plugin 'kchmck/vim-coffee-script'
 " Plugin 'nginx.vim'
 " Plugin 'rust-lang/rust.vim'
-" Plugin 'trevordmiller/nova-vim'
+" Plugin 'tpope/vim-cucumber'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -120,6 +126,19 @@ cnoremap <silent> <CR> <CR>:set nonu<CR>
 set foldmethod=indent
 set foldlevelstart=2
 set foldcolumn=2
+set nofoldenable
+
+" Keep the plugin up to date
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-ember',
+  \ 'coc-go',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-tsserver',
+  \ 'coc-yaml',
+\ ]
 
 " Git Blame
 nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
@@ -192,6 +211,13 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
 :command Txml  :%!tidy -q -i -config ~/.html-tidy --show-errors 0 -xml
+
+"" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_regexp = 1
 
 "" SQLFmt
 let g:sqlfmt_command = "sqlformat"
