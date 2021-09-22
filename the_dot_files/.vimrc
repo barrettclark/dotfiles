@@ -19,9 +19,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'bling/vim-bufferline'
+Plugin 'craigemery/vim-autotag'   " update ctags on the fly
 Plugin 'gmarik/Vundle.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'majutsushi/tagbar'
+Plugin 'preservim/tagbar'         " F8 opens tagbar
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
@@ -75,7 +76,6 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'junegunn/seoul256.vim'
 
 " Not currently in use but helpful in the past
-" Plugin 'craigemery/vim-autotag'   " update ctags on the fly
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'elixir-lang/vim-elixir'
 " Plugin 'kchmck/vim-coffee-script'
@@ -176,6 +176,7 @@ au FileType gitcommit set tw=72
 " :ts
 " See also: grep -H -r 'what_you_search' * | less
 let g:autotagTagsFile=".tags"
+let g:autotagStartMethod='fork'
 nmap <F8> :TagbarToggle<CR>
 " To generate tags (if vim-autotags does not), call this from the ex line
 " :!ctags
