@@ -136,8 +136,8 @@ sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 # Cask to install binaries
 if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap AdoptOpenJDK/openjdk
-  brew tap caskroom/cask
-  brew tap caskroom/cask-fonts
+  brew tap homebrew/cask
+  brew tap homebrew/cask-fonts
 fi
 
 /usr/bin/env ruby <<-EORUBY
