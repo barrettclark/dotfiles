@@ -89,6 +89,7 @@ brew upgrade
     "netcat",
     "ngrok",
     "node",
+    "nomad",
     "npm",
     "openssh",
     "p7zip",

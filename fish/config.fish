@@ -8,7 +8,7 @@ set gray (set_color -o black)
 # Interactive/login shells {{{
 
 set fish_plugins brew rvm
-# rvm default
+rvm default
 
 if status --is-login
   source $HOME/.config/fish/env.fish
