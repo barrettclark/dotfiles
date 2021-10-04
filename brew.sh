@@ -96,6 +96,7 @@ brew upgrade
     "pandoc",
     "pv",
     "python3",
+    "qmk/qmk/qmk",
     "rainbarf",
     "readline",
     "reattach-to-user-namespace",
@@ -103,6 +104,7 @@ brew upgrade
     "rename",
     "rlwrap",
     "rpm",
+    "shared-mime-info",
     "sl",
     "speedtest-cli",
     "sqlite",
@@ -139,6 +141,7 @@ if [ ! -d "/usr/local/Caskroom" ]; then
   brew tap AdoptOpenJDK/openjdk
   brew tap homebrew/cask
   brew tap homebrew/cask-fonts
+  brew tap homebrew/cask-drivers
 fi
 
 /usr/bin/env ruby <<-EORUBY
@@ -150,6 +153,7 @@ fi
     "charles",
     "chromedriver",
     "corelocationcli",
+    "discord",
     "disk-inventory-x",
     "docker",
     "dropbox",
@@ -172,6 +176,7 @@ fi
     "mtmr",
     "pocket-casts",
     "postman",
+    "qmk-toolbox",
     "quicklook-json",
     "r",
     "rowanj-gitx",

@@ -2,6 +2,7 @@ fortune | cowsay
 set -gx EDITOR /usr/local/bin/vim
 set -gx BUNDLER_EDITOR $EDITOR
 set -gx TERM "screen-256color"
+set -Ux LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 
 # Manpage settings {{{
 set -gx MANPAGER "less -X"

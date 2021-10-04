@@ -48,7 +48,7 @@ Plugin 'zivyangll/git-blame.vim'
 
 " Language-related
 Plugin 'Quramy/vim-js-pretty-template'
-" Plugin 'andrewradev/ember_tools' -- install by cloning
+Plugin 'andrewradev/ember_tools'  "install by cloning?
 Plugin 'b4b4r07/vim-sqlfmt'
 Plugin 'dag/vim-fish'
 Plugin 'dsawardekar/ember.vim'
@@ -113,7 +113,9 @@ set smartcase                   " ... unless they contain at least one capital l
 "" My settings
 set linebreak                  " break lines at word (requires wrap lines)
 set showbreak=+++              " wrap broken line prefix
-set textwidth=120              " linewrap
+set textwidth=100              " linewrap
+set formatoptions+=1           " break before single-character word
+set formatoptions+=2           " use the indentation of the second line
 set showmatch                  " highlight matching brace
 set autoindent                 " auto-indent new lines
 set cursorline
@@ -144,7 +146,7 @@ let g:coc_global_extensions = [
 nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
 
 " Show commits for every source line
-nnoremap <Leader>gb :Gblame<CR>  " git blame
+nnoremap <Leader>gb :Git blame<CR>  " git blame
 
 "" Color scheme settings
 let g:seoul256_background = 234
