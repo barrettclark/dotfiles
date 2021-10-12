@@ -28,13 +28,12 @@ abbr -a ber bundle exec rake
 abbr -a dcb docker-compose up --build --remove-orphans
 abbr -a dcd docker-compose down --remove-orphans
 abbr -a gb git branch
-abbr -a gbc 'git branch | grep -v master | xargs git branch -d'
-abbr -a gbc2 'git branch | grep -v main | xargs git branch -d'
+abbr -a gbc 'git branch | grep -v (git-master-or-main) | xargs git branch -d'
 abbr -a gc git commit
-abbr -a gcm git checkout master
+abbr -a gcm git checkout (git-master-or-main)
 abbr -a gd 'git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 abbr -a gf git fetch
-abbr -a gpom git push origin master
+abbr -a gpom git push origin (git-master-or-main)
 abbr -a gs git status
 abbr -a tf terraform
 abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
