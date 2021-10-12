@@ -42,6 +42,7 @@ brew upgrade
     "ctags",
     "curl",
     "dbus",
+    "delve",
     "dep",
     "enscript",
     "exercism",

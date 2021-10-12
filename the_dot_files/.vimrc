@@ -121,6 +121,7 @@ set autoindent                 " auto-indent new lines
 set cursorline
 set showmode
 set autochdir
+set mouse=n
 nnoremap : :set nu<CR>:
 cnoremap <silent> <CR> <CR>:set nonu<CR>
 
