@@ -114,6 +114,7 @@ brew upgrade
     "terraform",
     "tidy-html5",
     "tmux",
+    "tmuxp",
     "tmux-mem-cpu-load",
     "todo-txt",
     "tree",
