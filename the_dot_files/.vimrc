@@ -52,7 +52,7 @@ Plugin 'andrewradev/ember_tools'  "install by cloning?
 Plugin 'b4b4r07/vim-sqlfmt'
 Plugin 'dag/vim-fish'
 Plugin 'dsawardekar/ember.vim'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'hashivim/vim-hashicorp-tools'
 Plugin 'joukevandermaas/vim-ember-hbs'

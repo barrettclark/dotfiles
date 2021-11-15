@@ -36,6 +36,7 @@ abbr -a gf git fetch
 abbr -a gpom git push origin (git-master-or-main)
 abbr -a gs git status
 abbr -a tf terraform
+abbr -a tfd ~/go/bin/terraform
 abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 
 alias md5sum gmd5sum

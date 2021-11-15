@@ -187,6 +187,7 @@ fi
     "spotify",
     "sublime-text",
     "todotxt",
+    "tweetbot",
     "vagrant",
     "virtualbox",
     "visual-studio-code",
