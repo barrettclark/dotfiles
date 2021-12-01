@@ -12,8 +12,11 @@ end
 require 'irb/completion'
 require 'irb/ext/save-history'
 require 'pp'
+# require 'wirb'
+# Wirb.start
+# Wirb.load_schema(:ultra)
 
-IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:SAVE_HISTORY] = 10000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:AUTO_INDENT] = true
@@ -40,7 +43,6 @@ if RUBY_VERSION.to_f < 2.0
   rescue LoadError
   end
 end
-
 
 require 'benchmark'
 def benchmark(n, &block)
