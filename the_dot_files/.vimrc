@@ -45,6 +45,12 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'zivyangll/git-blame.vim'
 
+" NERDTree
+Plug 'preservim/nerdtree' |
+      \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+      \ Plug 'ryanoasis/vim-devicons' |
+      \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 " Language-related
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'git@github.com:AndrewRadev/ember_tools.vim.git'
@@ -78,7 +84,7 @@ Plug 'junegunn/seoul256.vim'
 call plug#end()
 
 syntax enable
-set encoding=utf-8
+set encoding=UTF-8
 set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
 
@@ -122,7 +128,7 @@ set foldlevelstart=2
 set foldcolumn=2
 set nofoldenable
 
-" Keep the plugin up to date
+" Keep the COC plugin up to date
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-ember',
@@ -198,6 +204,36 @@ let g:go_fmt_command = "goimports"
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
 :command Txml  :%!tidy -q -i -config ~/.html-tidy --show-errors 0 -xml
+
+" NERDTree config
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+function! NERDTreeToggleInCurDir()
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    if (expand("%:t") != '')
+      exe ":NERDTreeFind"
+    else
+      exe ":NERDTreeToggle"
+    endif
+  endif
+endfunction
+
+" nnoremap <leader>nf :NERDTreeFind<cr>
+nnoremap <leader>nf :call NERDTreeToggleInCurDir()<cr>
+
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+let g:airline_powerline_fonts = 1
+let g:NERDTreeGitStatusUseNerdFonts = 1
 
 "" ctrlp
 let g:ctrlp_map = '<c-p>'
