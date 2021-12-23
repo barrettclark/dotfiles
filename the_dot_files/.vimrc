@@ -6,85 +6,76 @@ endif
 "" Default launchpoint http://mislav.uniqpath.com/2011/12/vim-revisited/
 set nocompatible                " choose no compatibility with legacy vi
 
-" Vundle config
-filetype off
-" set the runtime path to include Vundle and initialize
+" vim-plug config
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" :PlugInstall    - installs plugins; append `!` to update or just :PlugUpdate
+" :PlugUpdate     - update plugins
+" :PlugClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PlugUpgrade    - upgrade vim-plug itself
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'bling/vim-bufferline'
-Plugin 'craigemery/vim-autotag'   " update ctags on the fly
-Plugin 'gmarik/Vundle.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'preservim/tagbar'         " F8 opens tagbar
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'w0rp/ale'
+call plug#begin('~/.vim/plugged')
+Plug 'bling/vim-bufferline'
+Plug 'craigemery/vim-autotag'   " update ctags on the fly
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'preservim/tagbar'         " F8 opens tagbar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
 
 " Utilities
-Plugin 'airblade/vim-gitgutter'
-Plugin 'airblade/vim-rooter'      " change the working directory to the project root when you open a file or directory
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'danro/rename.vim'
-Plugin 'dbeniamine/todo.txt-vim'
-Plugin 'godlygeek/tabular'        " Let vim line things up automatically
-Plugin 'jiangmiao/auto-pairs'     " Insert or delete brackets, parens, quotes in pair
-Plugin 'junegunn/gv.vim'          " :GV git commit browser to highlight pairs
-Plugin 'kamykn/spelunker.vim'
-Plugin 'mileszs/ack.vim'          " :Ack in vim
-Plugin 'prettier/vim-prettier'
-Plugin 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other cool tricks)
-Plugin 'tpope/vim-endwise'        " end structures automatically
-Plugin 'tpope/vim-fugitive'       " vim Git wrapper
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-surround'
-Plugin 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-rooter'      " change the working directory to the project root when you open a file or directory
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'danro/rename.vim'
+Plug 'dbeniamine/todo.txt-vim'
+Plug 'godlygeek/tabular'        " Let vim line things up automatically
+Plug 'jiangmiao/auto-pairs'     " Insert or delete brackets, parens, quotes in pair
+Plug 'junegunn/gv.vim'          " :GV git commit browser to highlight pairs
+Plug 'kamykn/spelunker.vim'
+Plug 'mileszs/ack.vim'          " :Ack in vim
+Plug 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other cool tricks)
+Plug 'tpope/vim-endwise'        " end structures automatically
+Plug 'tpope/vim-fugitive'       " vim Git wrapper
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-surround'
+Plug 'zivyangll/git-blame.vim'
 
 " Language-related
-Plugin 'Quramy/vim-js-pretty-template'
-Plugin 'andrewradev/ember_tools'  "install by cloning?
-Plugin 'b4b4r07/vim-sqlfmt'
-Plugin 'dag/vim-fish'
-Plugin 'dsawardekar/ember.vim'
-Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'hashivim/vim-hashicorp-tools'
-Plugin 'joukevandermaas/vim-ember-hbs'
-Plugin 'kballard/vim-swift'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'moll/vim-node'            " gf inside require("...") to jump to source and module files
-Plugin 'mzlogin/vim-markdown-toc' " :GenTocGFM"
-Plugin 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-Plugin 'nullvoxpopuli/coc-ember'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'vim-ruby/vim-ruby'
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'git@github.com:AndrewRadev/ember_tools.vim.git'
+Plug 'b4b4r07/vim-sqlfmt'
+Plug 'dag/vim-fish'
+Plug 'dsawardekar/ember.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'hail2u/vim-css3-syntax'
+Plug 'hashivim/vim-hashicorp-tools'
+Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'kballard/vim-swift'
+Plug 'leafgarland/typescript-vim'
+Plug 'moll/vim-node'            " gf inside require("...") to jump to source and module files
+Plug 'mzlogin/vim-markdown-toc' " :GenTocGFM"
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plug 'nullvoxpopuli/coc-ember'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'vim-ruby/vim-ruby'
 
 " Color scheme for vim
-Plugin 'junegunn/seoul256.vim'
+Plug 'junegunn/seoul256.vim'
 
-" Not currently in use but helpful in the past
-" Plugin 'derekwyatt/vim-scala'
-" Plugin 'elixir-lang/vim-elixir'
-" Plugin 'kchmck/vim-coffee-script'
-" Plugin 'nginx.vim'
-" Plugin 'rust-lang/rust.vim'
-" Plugin 'tpope/vim-cucumber'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" Initialize plugin system
+call plug#end()
 
 syntax enable
 set encoding=utf-8
@@ -156,7 +147,6 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="72,".join(range(80,120),",")
 
 "" Filetypes for syntax highlighting
-autocmd BufNewFile,BufRead *.json set ft=javascript
 au BufRead,BufNewFile *.bdy setfiletype sql
 au BufRead,BufNewFile *.fnc setfiletype sql
 au BufRead,BufNewFile *.grt setfiletype sql
@@ -204,13 +194,6 @@ let g:airline#extensions#bufferline#enabled = 0
 
 "" vim-go settings
 let g:go_fmt_command = "goimports"
-
-"" Prettier formatting
-let g:prettier#autoformat = 0
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#trailing_comma = 'es5'
-let g:prettier#config#single_quote = 'true'
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
