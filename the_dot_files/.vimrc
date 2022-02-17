@@ -28,12 +28,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 
 " Utilities
+Plug 'SirVer/ultisnips'         " snippets
 Plug 'airblade/vim-gitgutter'
 Plug 'airblade/vim-rooter'      " change the working directory to the project root when you open a file or directory
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'danro/rename.vim'
 Plug 'dbeniamine/todo.txt-vim'
+Plug 'git@github.com:tpope/vim-dispatch.git'  " run commands in vim asynch
 Plug 'godlygeek/tabular'        " Let vim line things up automatically
+Plug 'honza/vim-snippets'       " snippets
 Plug 'jiangmiao/auto-pairs'     " Insert or delete brackets, parens, quotes in pair
 Plug 'junegunn/gv.vim'          " :GV git commit browser to highlight pairs
 Plug 'kamykn/spelunker.vim'
@@ -49,7 +52,9 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'preservim/nerdtree' |
       \ Plug 'Xuyuanp/nerdtree-git-plugin' |
       \ Plug 'ryanoasis/vim-devicons' |
-      \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+      \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
+      \ Plug 'unkiwii/vim-nerdtree-sync' |
+      \ Plug 'tyok/nerdtree-ack'
 
 " Language-related
 Plug 'Quramy/vim-js-pretty-template'
@@ -119,8 +124,13 @@ set cursorline
 set showmode
 set autochdir
 set mouse=n
-nnoremap : :set nu<CR>:
-cnoremap <silent> <CR> <CR>:set nonu<CR>
+
+" Line numbers - always on all the time
+set number
+
+"" Line numbers - display only when the ex line is active
+" nnoremap : :set nu<CR>:
+" cnoremap <silent> <CR> <CR>:set nonu<CR>
 
 " fold in the cheese
 set foldmethod=indent
@@ -146,9 +156,17 @@ nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
 " Show commits for every source line
 nnoremap <Leader>gb :Git blame<CR>  " git blame
 
+" copy relative path to system clipboard (src/foo.txt)
+nnoremap <leader>cf :let @*=expand("%")<CR>
+
+" copy absolute path to system clipboard (/something/src/foo.txt)
+nnoremap <leader>cF :let @*=expand("%:p")<CR>
+
 "" Color scheme settings
 let g:seoul256_background = 234
 colorscheme seoul256
+highlight CursorLine ctermbg=black term=none cterm=none
+highlight Error cterm=reverse ctermbg=white ctermfg=red
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="72,".join(range(80,120),",")
 
@@ -201,46 +219,56 @@ let g:airline#extensions#bufferline#enabled = 0
 "" vim-go settings
 let g:go_fmt_command = "goimports"
 
+" rspec
+let g:rspec_command = "Dispatch bin/rspec {spec}"
+
 "" html tidy
 :command Thtml :%!tidy -q -i -config ~/.html-tidy --show-errors 0
 :command Txml  :%!tidy -q -i -config ~/.html-tidy --show-errors 0 -xml
 
 " NERDTree config
-nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
 
-function! NERDTreeToggleInCurDir()
-  " If NERDTree is open in the current buffer
-  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-    exe ":NERDTreeClose"
-  else
-    if (expand("%:t") != '')
-      exe ":NERDTreeFind"
-    else
-      exe ":NERDTreeToggle"
-    endif
-  endif
-endfunction
-
-" nnoremap <leader>nf :NERDTreeFind<cr>
-nnoremap <leader>nf :call NERDTreeToggleInCurDir()<cr>
+" close the last buffer (file)
+nnoremap <leader>c :bp\|bd #<CR>
 
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
 
+" Start NERDTree with the current file shown in the file tree
+" autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeCWD | wincmd p | endif
+
 " Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let g:airline_powerline_fonts = 1
+let g:NERDSpaceDelims = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1
+let g:NERDTreeHighlightCursorline = 1
+let g:NERDTreeShowHidden = 1
+let g:airline_powerline_fonts = 1
+let g:nerdtree_sync_cursorline = 1
 
-"" ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+"" CtrlP
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_by_filename = 1
-let g:ctrlp_regexp = 1
+" let g:ctrlp_regexp = 1
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+ " Use the nearest .git directory as the cwd
+let g:ctrlp_working_path_mode = 'ra'
+" ...unless you specifically force it (Useful for things like Rails subprojects)
+let g:ctrlp_root_markers = ['.ctrlp']
+
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>t :CtrlP<CR>
+nmap <leader>m :CtrlPBufTag<CR>
+nmap <leader>M :CtrlPTag<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 
 "" SQLFmt
 let g:sqlfmt_command = "sqlformat"
