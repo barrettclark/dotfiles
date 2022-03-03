@@ -1,0 +1,9 @@
+brakeman
+bundler
+gem-wrappers
+rails_best_practices
+rake
+reek
+rubocop
+rubygems-bundler
+rvm

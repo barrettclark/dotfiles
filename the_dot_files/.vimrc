@@ -280,13 +280,23 @@ let g:vim_markdown_folding_disabled = 1
 "" ale
 let g:airline#extensions#ale#enabled = 1
 
+" Only run linters named in ale_linters settings.
+" let g:ale_linters_explicit = 1
+let g:ale_sign_column_always = 1
+
+" Ctrl-e to go to the next error
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
+
 " lint on save only
 " let g:ale_lint_on_text_changed = 'never'
 " disable this option if you don't want linters to run on opening a file
 " let g:ale_lint_on_enter = 0
 
 " let g:ale_ruby_reek_executable = 'bundle'
-let g:ale_linters = {'go': ['gometalinter', 'gopls']}
+let g:ale_linters = {
+\   'go': ['gometalinter', 'gopls'],
+\   'ruby': ['brakeman', 'rails_best_practices', 'reek', 'rubocop'],
+\}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'css': ['prettier'],
