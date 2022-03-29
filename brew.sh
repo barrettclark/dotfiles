@@ -121,6 +121,7 @@ brew upgrade
     "urlview",
     "vault",
     "vim --override-system-vi",
+    "watchman",
     "webkit2png",
     "wget --with-iri",
     "yarn",
