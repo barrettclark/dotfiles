@@ -3,9 +3,6 @@ if $SHELL =~ 'bin/fish'
   set shell=/bin/sh
 endif
 
-"" Default launchpoint http://mislav.uniqpath.com/2011/12/vim-revisited/
-set nocompatible                " choose no compatibility with legacy vi
-
 " vim-plug config
 " Brief help
 " :PlugInstall    - installs plugins; append `!` to update or just :PlugUpdate
@@ -29,24 +26,24 @@ Plug 'w0rp/ale'
 
 " Utilities
 Plug 'SirVer/ultisnips'         " snippets
-Plug 'airblade/vim-gitgutter'
 Plug 'airblade/vim-rooter'      " change the working directory to the project root when you open a file or directory
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'danro/rename.vim'
 Plug 'dbeniamine/todo.txt-vim'
 Plug 'git@github.com:tpope/vim-dispatch.git'  " run commands in vim asynch
-Plug 'godlygeek/tabular'        " Let vim line things up automatically
 Plug 'honza/vim-snippets'       " snippets
 Plug 'jiangmiao/auto-pairs'     " Insert or delete brackets, parens, quotes in pair
-Plug 'junegunn/gv.vim'          " :GV git commit browser to highlight pairs
-Plug 'kamykn/spelunker.vim'
+Plug 'kamykn/spelunker.vim'     " Improves spell checking
 Plug 'mileszs/ack.vim'          " :Ack in vim
 Plug 'tomtom/tcomment_vim'      " comment lines with <Leader>__ (and other cool tricks)
 Plug 'tpope/vim-endwise'        " end structures automatically
+Plug 'tpope/vim-surround'       " surround words/phrases -- ysiw' will surround word with single quote
+
+" Git utilities
+Plug 'airblade/vim-gitgutter'   " show git status in the gutter
+Plug 'junegunn/gv.vim'          " :GV open git commit browser; :GV! will only list commits that affected the current file
 Plug 'tpope/vim-fugitive'       " vim Git wrapper
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'zivyangll/git-blame.vim'
+Plug 'tpope/vim-rhubarb'        " :GBrowse to open current file in GitHub
 
 " NERDTree
 Plug 'preservim/nerdtree' |
@@ -57,25 +54,24 @@ Plug 'preservim/nerdtree' |
       \ Plug 'tyok/nerdtree-ack'
 
 " Language-related
-Plug 'Quramy/vim-js-pretty-template'
-Plug 'git@github.com:AndrewRadev/ember_tools.vim.git'
 Plug 'b4b4r07/vim-sqlfmt'
 Plug 'dag/vim-fish'
-Plug 'dsawardekar/ember.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hail2u/vim-css3-syntax'
 Plug 'hashivim/vim-hashicorp-tools'
-Plug 'joukevandermaas/vim-ember-hbs'
-Plug 'kballard/vim-swift'
-Plug 'leafgarland/typescript-vim'
-Plug 'moll/vim-node'            " gf inside require("...") to jump to source and module files
 Plug 'mzlogin/vim-markdown-toc' " :GenTocGFM"
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-Plug 'nullvoxpopuli/coc-ember'
 Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'tmux-plugins/vim-tmux'
+
+" JavaScript
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'leafgarland/typescript-vim'
+Plug 'moll/vim-node'            " gf inside require('...') to jump to source and module files
+Plug 'pangloss/vim-javascript'
+
+" Ruby
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
@@ -94,17 +90,14 @@ set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
 
 "" Whitespace
+set backspace=indent,eol,start  " backspace through everything in insert mode
+set expandtab                   " use spaces, not tabs (optional)
 set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
-set expandtab                   " use spaces, not tabs (optional)
-set backspace=indent,eol,start  " backspace through everything in insert mode
+set list lcs=tab:▸\ ,trail:·,nbsp:_ " Show “invisible” characters
 
 " Carriage return will clear search highlighting, `n` will still find next
 noremap <leader><CR> :noh<CR>
-
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,nbsp:_
-set list
 
 "" Searching
 set hlsearch                    " highlight matches
@@ -113,20 +106,20 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
 "" My settings
-set linebreak                  " break lines at word (requires wrap lines)
-set showbreak=+++              " wrap broken line prefix
-set textwidth=100              " linewrap
+set autochdir                  " set the working directory to the current file
+set autoindent                 " auto-indent new lines
+set cursorline                 " highlight the current line
 set formatoptions+=1           " break before single-character word
 set formatoptions+=2           " use the indentation of the second line
+set lazyredraw                 " Don't update while executing macros
+set linebreak                  " break lines at word (requires wrap lines)
+set nocompatible               " choose no compatibility with legacy vi
+set number                     " Line numbers - always on all the time
+set scrolloff=4                " keep at least 4 lines below the cursor
+set showbreak=+++              " wrap broken line prefix
 set showmatch                  " highlight matching brace
-set autoindent                 " auto-indent new lines
-set cursorline
-set showmode
-set autochdir
-set mouse=n
-
-" Line numbers - always on all the time
-set number
+set showmode                   " always show what mode we're currently editing in
+set textwidth=100              " linewrap
 
 "" Line numbers - display only when the ex line is active
 " nnoremap : :set nu<CR>:
@@ -138,23 +131,24 @@ set foldlevelstart=2
 set foldcolumn=2
 set nofoldenable
 
+" Source (reload) your vimrc
+nmap <leader>so :source $MYVIMRC<cr>
+
 " Keep the COC plugin up to date
 let g:coc_global_extensions = [
   \ 'coc-css',
-  \ 'coc-ember',
   \ 'coc-go',
   \ 'coc-highlight',
   \ 'coc-html',
   \ 'coc-json',
+  \ 'coc-markdownlint',
+  \ 'coc-pyright',
   \ 'coc-tsserver',
   \ 'coc-yaml',
 \ ]
 
-" Git Blame
-nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
-
 " Show commits for every source line
-nnoremap <Leader>gb :Git blame<CR>  " git blame
+nnoremap <Leader>gb :Git blame<CR>
 
 " copy relative path to system clipboard (src/foo.txt)
 nnoremap <leader>cf :let @*=expand("%")<CR>
@@ -162,7 +156,7 @@ nnoremap <leader>cf :let @*=expand("%")<CR>
 " copy absolute path to system clipboard (/something/src/foo.txt)
 nnoremap <leader>cF :let @*=expand("%:p")<CR>
 
-"" Color scheme settings
+" Color scheme settings
 let g:seoul256_background = 234
 colorscheme seoul256
 highlight CursorLine ctermbg=black term=none cterm=none
@@ -204,10 +198,6 @@ set tags=./.tags,.tags,.git/.tags
 " split horizontally with <leader> s
 nmap <leader>v :vsplit<CR> <C-w><C-w>
 nmap <leader>s :split<CR> <C-w><C-w>
-
-" Tabluarize on first occurrance
-" :TabFirst =
-command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
 
 "" Vim Airline
 set laststatus=2
@@ -292,10 +282,10 @@ nmap <silent> <C-e> <Plug>(ale_next_wrap)
 " disable this option if you don't want linters to run on opening a file
 " let g:ale_lint_on_enter = 0
 
-" let g:ale_ruby_reek_executable = 'bundle'
+let g:ale_ruby_reek_executable = 'bundle'
 let g:ale_linters = {
 \   'go': ['gometalinter', 'gopls'],
-\   'ruby': ['brakeman', 'rails_best_practices', 'reek', 'rubocop'],
+\   'ruby': ['brakeman', 'debride', 'reek', 'rubocop', 'sorbet'],
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
