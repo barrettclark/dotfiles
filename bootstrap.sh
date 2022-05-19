@@ -74,7 +74,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   PYTHON_PACKAGES=(
     ipython
     pygments
-    spotify-cli-linux
+    sqlparse
     virtualenv
     virtualenvwrapper
   )
