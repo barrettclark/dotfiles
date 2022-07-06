@@ -1,5 +1,4 @@
 tap "adoptopenjdk/openjdk"
-tap "caskroom/fonts"
 tap "hashicorp/internal", "git@github.com:hashicorp/homebrew-internal.git"
 tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
 tap "heroku/brew"
@@ -11,7 +10,6 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "mutagen-io/mutagen"
 tap "osx-cross/arm"
-tap "osx-cross/avr"
 tap "qmk/qmk"
 
 brew "ack"
@@ -43,6 +41,7 @@ brew "freetds"
 brew "fzf"
 brew "gawk"
 brew "geckodriver"
+brew "gh"
 brew "git"
 brew "git-gui"
 brew "git-lfs"
@@ -168,5 +167,4 @@ mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "SwiftoDo Desktop", id: 1143641091
-mas "TrackSift 2", id: 908737079
 mas "iMovie", id: 408981434
