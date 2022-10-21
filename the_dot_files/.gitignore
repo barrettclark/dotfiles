@@ -54,3 +54,7 @@ Temporary Items
 .reek.yml
 .hadolint.yaml
 .tool-versions
+
+# Sensitive data from VS Code Makefile Tools plugin
+# https://github.com/microsoft/vscode-makefile-tools/issues/329
+.vscode/*log
