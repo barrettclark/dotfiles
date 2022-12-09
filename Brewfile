@@ -142,7 +142,6 @@ cask "kitematic"
 cask "macdown"
 cask "mojibar"
 cask "mtmr"
-<<<<<<< HEAD
 cask "ngrok"
 cask "obsidian"
 cask "pocket-casts"
