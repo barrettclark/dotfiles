@@ -72,11 +72,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo pip3 install --upgrade pip
   sudo pip3 install --upgrade setuptools
   PYTHON_PACKAGES=(
+    autopep8
+    flake8
     ipython
     pygments
+    pylint
     sqlparse
     virtualenv
     virtualenvwrapper
+    yapf
   )
   sudo pip3 install ${PYTHON_PACKAGES[@]}
   # npm install -g csslint fx markdownlint-cli moment prettier
