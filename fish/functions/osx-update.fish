@@ -12,6 +12,7 @@ function osx-update --description "Update Homebrew, vim plugins, tmux plugins, r
 
   # tmux plugin manager
   ~/.tmux/plugins/tpm/bin/clean_plugins
+  ~/.tmux/plugins/tpm/bin/install_plugins
   ~/.tmux/plugins/tpm/bin/update_plugins all
 
   # rvm
