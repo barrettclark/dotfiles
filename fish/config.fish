@@ -12,7 +12,6 @@ rvm default
 
 if status --is-login
   source $HOME/.config/fish/env.fish
-  source /usr/local/opt/asdf/asdf.fish
 end
 
 # Load HashiCorp file, if applicable/available
@@ -42,4 +41,5 @@ abbr -a todo 'todo.sh -d ~/Dropbox/todo/todo.cfg'
 alias md5sum gmd5sum
 alias less 'less -r'
 
-status --is-interactive; and source (jenv init -|psub)
+# Generated for envman. Do not edit.
+test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"

@@ -46,7 +46,7 @@ function setupFish() {
     chsh -s /usr/bin/fish
   fi
   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-  fisher install PatrickF1/fzf.fish nyarly/fish-rake-complete brgmnn/fish-docker-compose
+  fisher install PatrickF1/fzf.fish nyarly/fish-rake-complete brgmnn/fish-docker-compose rstacruz/fish-asdf
   rsync -avh --ignore-times --no-perms --progress /usr/local/dotfiles/fish/ ~/.config/fish
 }
 
