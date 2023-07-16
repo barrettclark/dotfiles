@@ -187,3 +187,6 @@ abbr gpom="git push origin $(git-master-or-main)"
 
 export STARSHIP_CONFIG="/usr/local/dotfiles/zsh/myth-prompt-themes/colorful/pointed/starship/left_only/starship.toml"
 eval "$(starship init zsh)"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -56,12 +56,13 @@ function setupZsh() {
   else
     chsh -s /usr/bin/zsh
   fi
-  git clone https://github.com/zsh-git-prompt/zsh-git-prompt.git $ZSH_CUSTOM/plugins/zsh-git-prompt
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-fast-syntax-highlighting
-  git clone https://github.com/marlonrichert/zsh-autocomplete.git --depth 1 $ZSH_CUSTOM/plugins/zsh-autocomplete
-  git clone https://github.com/olets/zsh-abbr --single-branch --branch main --depth 1 $ZSH_CUSTOM/plugins/zsh-abbr
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  git clone https://github.com/zsh-git-prompt/zsh-git-prompt.git ~/.oh-my-zsh/custom/plugins/zsh-git-prompt
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+  git clone https://github.com/marlonrichert/zsh-autocomplete.git --depth 1 ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
+  git clone https://github.com/olets/zsh-abbr --single-branch --branch main --depth 1 ~/.oh-my-zsh/custom/plugins/zsh-abbr
   cp /usr/local/dotfiles/zsh/.zshrc $HOME
   source ~/.zshrc
 }
@@ -84,6 +85,7 @@ function setupTmux() {
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+  git submodule update --init --recursive
   rsync -avh --ignore-times --no-perms --progress the_dot_files/ $HOME
   sudo pip3 install --upgrade pip
   sudo pip3 install --upgrade setuptools
