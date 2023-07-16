@@ -1,0 +1,6 @@
+# Flush Directory Service cache
+function flush-dns() {
+  sudo killall -HUP mDNSResponder
+  sudo killall mDNSResponderHelper
+  sudo dscacheutil -flushcache
+}

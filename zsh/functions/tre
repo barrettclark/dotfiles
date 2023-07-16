@@ -1,0 +1,4 @@
+# Tree with hidden files and color enabled
+function tre() {
+  tree -aC -I '.git|node_modules|bower_components' --dirsfirst $1 | less -FRNX
+}

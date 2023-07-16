@@ -32,14 +32,13 @@ function setupBash() {
   rsync -avh --ignore-times --no-perms --progress bash_dot_files/ $HOME
   rsync -avh --ignore-times --no-perms --progress bin/ $HOME/bin
   setupSettings
-  source ~/.bash_profile;
+  source ~/.bash_profile
 }
 
 function setupFish() {
   setupSettings
   rm -rf ~/.config/fish
   if [[ -f /usr/local/bin/fish ]]; then
-    # OSX + homebrew
     echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
     chsh -s /usr/local/bin/fish
   else
@@ -48,6 +47,23 @@ function setupFish() {
   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
   fisher install PatrickF1/fzf.fish nyarly/fish-rake-complete brgmnn/fish-docker-compose rstacruz/fish-asdf
   rsync -avh --ignore-times --no-perms --progress /usr/local/dotfiles/fish/ ~/.config/fish
+}
+
+function setupZsh() {
+  if [[ -f /usr/local/bin/zsh ]]; then
+    echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+    chsh -s /usr/local/bin/zsh
+  else
+    chsh -s /usr/bin/zsh
+  fi
+  git clone https://github.com/zsh-git-prompt/zsh-git-prompt.git $ZSH_CUSTOM/plugins/zsh-git-prompt
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-fast-syntax-highlighting
+  git clone https://github.com/marlonrichert/zsh-autocomplete.git --depth 1 $ZSH_CUSTOM/plugins/zsh-autocomplete
+  git clone https://github.com/olets/zsh-abbr --single-branch --branch main --depth 1 $ZSH_CUSTOM/plugins/zsh-abbr
+  cp /usr/local/dotfiles/zsh/.zshrc $HOME
+  source ~/.zshrc
 }
 
 function setupVim() {
@@ -84,7 +100,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   )
   sudo pip3 install ${PYTHON_PACKAGES[@]}
   # npm install -g csslint fx markdownlint-cli moment prettier
-  while getopts ":bfholtv" opt; do
+  while getopts ":bfholtvz" opt; do
     case $opt in
       b)
         echo " *** Bootstrap Bash ***"
@@ -115,6 +131,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
       v)
         echo " *** Bootstrap vim ***"
         setupVim
+        ;;
+      z)
+        echo " *** Bootstrap zsh ***"
+        setupZsh
         ;;
     esac
   done

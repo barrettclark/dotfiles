@@ -1,0 +1,13 @@
+# Begin formatted tmux session
+function tmux-up() {
+  session_name=$1
+  if [ $(tmux has-session -t $session_name) ]; then
+    tmux attach -t $session_name
+  else
+    if [ -f ~/.tmuxp/$session_name.yaml ]; then
+      tmuxp load $session_name
+    else
+      tmuxp load -s $session_name default
+    fi
+  fi
+}

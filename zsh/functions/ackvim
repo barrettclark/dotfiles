@@ -1,0 +1,4 @@
+# generate a list of files that contain a search term and open them in vim at the first occurrence
+function ackvim () {
+  vim +/$1 $(ack -l $1)
+}

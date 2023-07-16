@@ -1,0 +1,5 @@
+# Remove orphaned docker images
+function docker-prune() {
+  docker network prune
+  docker system prune
+}

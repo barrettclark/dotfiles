@@ -1,0 +1,9 @@
+# Return whether the repo uses main or master
+function git-master-or-main() {
+  MAIN=$(git branch --list main)
+  if [[ $MAIN =~ "main" ]]; then
+    echo main
+  else
+    echo master
+  fi
+}

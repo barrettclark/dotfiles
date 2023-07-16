@@ -1,0 +1,4 @@
+# Remove orphaned docker images
+function docker-rmi() {
+  docker rmi $(docker images -a | grep "^<none>" | awk '{print $3}') > /dev/null 2>&1
+}

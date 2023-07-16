@@ -1,0 +1,4 @@
+# Kill a tmux session by name
+function tmux-kill() {
+  tmux kill-session -t $1
+}

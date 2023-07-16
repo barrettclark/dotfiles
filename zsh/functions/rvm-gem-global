@@ -1,0 +1,4 @@
+# install gem for all gemsets in the current rvm ruby
+function rvm-gem-global() {
+  rvm @global do gem install $1
+}

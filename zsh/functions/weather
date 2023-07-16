@@ -1,0 +1,4 @@
+# Get weather for city or zipcode
+function weather() {
+  curl -4 "http://wttr.in/$1?u"
+}

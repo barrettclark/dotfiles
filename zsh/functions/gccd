@@ -1,0 +1,13 @@
+# git clone and cd into directory
+function gccd() {
+  # This is based on https://gist.github.com/noeldiaz/075ba3af7acfde333a687b1d71ff0dcf
+  REPO=$1
+  CLONEPATH=$2
+
+  if [ -z $CLONEPATH ]; then
+    CLONEPATH=${$(basename $1)/.git/}
+  fi
+
+  git clone $REPO $CLONEPATH
+  cd $CLONEPATH
+}
