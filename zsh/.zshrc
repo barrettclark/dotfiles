@@ -168,25 +168,26 @@ fpath=(/usr/local/dotfiles/zsh/functions $fpath);
 autoload -U $fpath[1]/*(.:t)
 
 # abbreviations
-abbr be="bundle exec"
-abbr beg="bundle exec rails g"
-abbr ber="bundle exec rake"
-abbr dcb="docker-compose up --build --remove-orphans"
-abbr dcd="docker-compose down --remove-orphans"
-abbr gb="git branch"
-abbr gc="git commit"
-abbr gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
-abbr gf="git fetch"
-abbr gs="git status"
-abbr tf="terraform"
-abbr tfd="~/go/bin/terraform"
-abbr todo="todo.sh -d ~/Dropbox/todo/todo.cfg"
-abbr gbc="git branch | grep -v '$(git-master-or-main)' | xargs git branch -d"
-abbr gcm="git checkout '$(git-master-or-main)'"
-abbr gpom="git push origin '$(git-master-or-main)'"
+abbr be="bundle exec" --quiet
+abbr beg="bundle exec rails g" --quiet
+abbr ber="bundle exec rake" --quiet
+abbr dcb="docker-compose up --build --remove-orphans" --quiet
+abbr dcd="docker-compose down --remove-orphans" --quiet
+abbr gb="git branch" --quiet
+abbr gc="git commit" --quiet
+abbr gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r' --quiet
+abbr gf="git fetch" --quiet
+abbr gs="git status" --quiet
+abbr tf="terraform" --quiet
+abbr tfd="~/go/bin/terraform" --quiet
+abbr todo="todo.sh -d ~/Dropbox/todo/todo.cfg" --quiet
+abbr gbc="git branch | grep -v '$(git-master-or-main)' | xargs git branch -d" --quiet
+abbr gcm="git checkout '$(git-master-or-main)'" --quiet
+abbr gpom="git push origin '$(git-master-or-main)'" --quiet
 
 export STARSHIP_CONFIG="/usr/local/dotfiles/zsh/myth-prompt-themes/colorful/pointed/starship/left_only/starship.toml"
 eval "$(starship init zsh)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/sbin:$PATH"
