@@ -1,5 +1,9 @@
-tap "hashicorp/internal", "git@github.com:hashicorp/homebrew-internal.git"
-tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
+if File.exists?("~/.hashicorp.env")
+  tap "hashicorp/internal", "git@github.com:hashicorp/homebrew-internal.git"
+  tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
+  brew "hashicorp/security/doormat-cli"
+end
+
 tap "heroku/brew"
 tap "homebrew/bundle"
 # tap "homebrew/cask"
@@ -60,7 +64,6 @@ brew "graphicsmagick"
 brew "graphviz"
 brew "grep"
 brew "gtk+"
-brew "hashicorp/security/doormat-cli"
 brew "heroku"
 brew "hey"
 brew "highlight"
