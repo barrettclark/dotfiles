@@ -20,7 +20,7 @@ function osx-update() {
   rvm get stable
 
   # node packages
-  npm update -g --cache-min 60
+  npm update -g --prefer-offline
 
   # OSX update
   reattach-to-user-namespace mas upgrade

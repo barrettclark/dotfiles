@@ -162,6 +162,7 @@ cask "ultimaker-cura"
 cask "virtualbox"
 cask "visual-studio-code"
 cask "wkhtmltopdf"
+cask "xscreensaver"
 cask "zoom"
 
 # Java
