@@ -3,9 +3,6 @@ function osx-update() {
   # homebrew
   /usr/local/dotfiles/brew.sh
 
-  # omz update
-  omz update
-
   # vim plugins
   vim +PlugClean! +qall
   vim +PlugUpdate +qall
@@ -19,6 +16,9 @@ function osx-update() {
   # rvm
   rvm get stable
 
+  # asdf
+  asdf plugin update --all
+
   # node packages
   npm update -g --prefer-offline
 
@@ -26,4 +26,7 @@ function osx-update() {
   reattach-to-user-namespace mas upgrade
   sudo softwareupdate --all --install --force
   echo "To reboot: sudo shutdown -r now"
+
+  # omz update
+  omz update
 }
