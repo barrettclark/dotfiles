@@ -144,7 +144,7 @@ export MANPAGER="less -X"
 # Todo.sh settings
 export TODOTXT_DEFAULT_ACTION="ls"
 
-export GOPATH="~/go"
+export GOPATH="/Users/$(whoami)/go"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
