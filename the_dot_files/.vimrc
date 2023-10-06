@@ -44,6 +44,7 @@ Plug 'airblade/vim-gitgutter'   " show git status in the gutter
 Plug 'junegunn/gv.vim'          " :GV open git commit browser; :GV! will only list commits that affected the current file
 Plug 'tpope/vim-fugitive'       " vim Git wrapper
 Plug 'tpope/vim-rhubarb'        " :GBrowse to open current file in GitHub
+Plug 'yasuhiroki/github-actions-yaml.vim'
 
 " NERDTree
 Plug 'preservim/nerdtree' |
@@ -70,6 +71,11 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'leafgarland/typescript-vim'
 Plug 'moll/vim-node'            " gf inside require('...') to jump to source and module files
 Plug 'pangloss/vim-javascript'
+
+" Ember
+Plug 'dsawardekar/ember.vim'
+Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'nullvoxpopuli/coc-ember', {'do': 'yarn install --frozen-lockfile'}
 
 " Ruby
 Plug 'tpope/vim-bundler'
@@ -143,9 +149,14 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-markdownlint',
   \ 'coc-pyright',
+  \ 'coc-sql',
   \ 'coc-tsserver',
   \ 'coc-yaml',
 \ ]
+
+" make <cr> select the first completion item and confirm the completion when no item has been
+" selected
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " Show commits for every source line
 nnoremap <Leader>gb :Git blame<CR>
@@ -283,17 +294,22 @@ nmap <silent> <C-e> <Plug>(ale_next_wrap)
 " let g:ale_lint_on_enter = 0
 
 let g:ale_ruby_reek_executable = 'bundle'
+let g:ale_python_executable='python3'
+let g:ale_python_pylint_use_global=1
 let g:ale_linters = {
 \   'go': ['gometalinter', 'gopls'],
+\   'python': ['flake8', 'pylint'],
 \   'ruby': ['brakeman', 'debride', 'reek', 'rubocop', 'sorbet'],
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'css': ['prettier'],
 \   'javascript': ['eslint', 'prettier'],
-\   'json': ['jq'],
+\   'json': ['jq', 'prettier'],
+\   'python': ['autopep8', 'yapf'],
 \   'ruby': ['rubocop'],
 \   'scss': ['prettier'],
+\   'sql': ['sqlformat'],
 \   'yaml': ['prettier'],
 \}
 
