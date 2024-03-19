@@ -92,6 +92,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   PYTHON_PACKAGES=(
     autopep8
     flake8
+    httplib2
     ipython
     pygments
     pylint
