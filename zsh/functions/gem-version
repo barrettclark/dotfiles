@@ -1,4 +1,4 @@
 # Tell me the latest version of the given gem
 function gem-version() {
-  curl https://rubygems.org/api/v1/versions/$1/latest.json | jq
+  curl --silent https://rubygems.org/api/v1/versions/$1/latest.json | jq '.version'
 }

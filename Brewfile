@@ -17,6 +17,7 @@ tap "qmk/qmk"
 brew "zsh"
 brew "starship"
 
+brew "achannarasappa/tap/ticker"
 brew "ack"
 brew "ansifilter"
 brew "asdf"
@@ -142,7 +143,6 @@ cask "gimp"
 cask "google-chrome"
 cask "google-drive"
 cask "istat-menus"
-cask "kindle"
 cask "macdown"
 cask "mtmr"
 cask "ngrok"
@@ -172,6 +172,8 @@ cask "zoom"
 # Clojure
 # brew "leiningen"
 
+mas "1Password for Safari", id: 1569813296
+mas "Amazon Kindle", id: 302584613
 mas "GarageBand", id: 682658836
 mas "JSONPeep", id: 1458969831
 mas "Keynote", id: 409183694
