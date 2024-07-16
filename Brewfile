@@ -1,8 +1,8 @@
-if File.exists?("~/.hashicorp.env")
-  tap "hashicorp/internal", "git@github.com:hashicorp/homebrew-internal.git"
-  tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
-  brew "hashicorp/security/doormat-cli"
-end
+# if File.exists?("~/.hashicorp.env")
+#   tap "hashicorp/internal", "git@github.com:hashicorp/homebrew-internal.git"
+#   tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
+#   brew "hashicorp/security/doormat-cli"
+# end
 
 tap "hashicorp/tap"
 tap "heroku/brew"
@@ -156,7 +156,6 @@ cask "slack"
 cask "spotify"
 cask "sublime-text"
 cask "todotxt"
-cask "ultimaker-cura"
 cask "visual-studio-code"
 cask "wkhtmltopdf"
 cask "xscreensaver"
