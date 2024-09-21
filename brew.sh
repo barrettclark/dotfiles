@@ -24,7 +24,7 @@ fi
 brew update
 
 # Upgrade any already-installed formulae.
-brew upgrade
+# brew upgrade
 
 # Run brew bundle to install things
 brew bundle --verbose --file=/usr/local/dotfiles/Brewfile
