@@ -58,6 +58,9 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
 # Disable the over-the-top focus ring animation
 defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 
+# Adjust toolbar title rollover delay
+defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
+
 # Disable smooth scrolling
 # (Uncomment if you’re on an older Mac that messes up the animation)
 #defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
@@ -190,7 +193,7 @@ sudo systemsetup -settimezone "America/Chicago" > /dev/null
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Stop iTunes from responding to the keyboard media keys
-launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 ###############################################################################
 # Energy saving                                                               #
@@ -254,7 +257,7 @@ defaults write com.apple.screencapture type -string "png"
 defaults write com.apple.screencapture disable-shadow -bool true
 
 # Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
 
 # Enable HiDPI display modes (requires restart)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
@@ -359,12 +362,6 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Empty Trash securely by default
 defaults write com.apple.finder EmptyTrashSecurely -bool true
-
-# Enable AirDrop over Ethernet and on unsupported Macs running Lion
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
-
-# Enable the MacBook Air SuperDrive on any Mac
-sudo nvram boot-args="mbasd=1"
 
 # Show the ~/Library folder
 chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
@@ -576,11 +573,11 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
 ###############################################################################
-# Mail and iTunes                                                             #
+# Mail and Music
 ###############################################################################
 
 # Enable half-star ratings
-defaults write com.apple.iTunes allow-half-stars -bool TRUE
+defaults write com.apple.music allow-half-stars -bool TRUE
 
 # Disable send and reply animations in Mail.app
 defaults write com.apple.mail DisableReplyAnimations -bool true
@@ -831,10 +828,6 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Google Chrome & Google Chrome Canary                                        #
 ###############################################################################
 
-# Allow installing user scripts via GitHub Gist or Userscripts.org
-defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
-defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
-
 # Disable the all too sensitive backswipe on trackpads
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
@@ -913,26 +906,26 @@ cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ 
 # Twitter.app                                                                 #
 ###############################################################################
 
-# Disable smart quotes as it’s annoying for code tweets
-defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool false
-
-# Show the app window when clicking the menu bar icon
-defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
-
-# Enable the hidden ‘Develop’ menu
-defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true
-
-# Open links in the background
-defaults write com.twitter.twitter-mac openLinksInBackground -bool true
-
-# Allow closing the ‘new tweet’ window by pressing `Esc`
-defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
-
-# Show full names rather than Twitter handles
-defaults write com.twitter.twitter-mac ShowFullNames -bool true
-
-# Hide the app in the background if it’s not the front-most window
-defaults write com.twitter.twitter-mac HideInBackground -bool true
+# # Disable smart quotes as it’s annoying for code tweets
+# defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool false
+#
+# # Show the app window when clicking the menu bar icon
+# defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
+#
+# # Enable the hidden ‘Develop’ menu
+# defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true
+#
+# # Open links in the background
+# defaults write com.twitter.twitter-mac openLinksInBackground -bool true
+#
+# # Allow closing the ‘new tweet’ window by pressing `Esc`
+# defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
+#
+# # Show full names rather than Twitter handles
+# defaults write com.twitter.twitter-mac ShowFullNames -bool true
+#
+# # Hide the app in the background if it’s not the front-most window
+# defaults write com.twitter.twitter-mac HideInBackground -bool true
 
 ###############################################################################
 # Tweetbot.app                                                                #
