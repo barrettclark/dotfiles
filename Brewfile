@@ -8,7 +8,6 @@
 tap "hashicorp/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
-# tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "mutagen-io/mutagen"
 tap "osx-cross/arm"
@@ -121,7 +120,6 @@ brew "zopfli"
 # cask "sequel-pro"
 # cask "sleek"
 cask "1password"
-cask "bambu-studio"
 cask "caffeine"
 cask "cleanmymac"
 cask "corelocationcli"
@@ -161,6 +159,10 @@ cask "visual-studio-code"
 cask "wkhtmltopdf"
 cask "xscreensaver"
 cask "zoom"
+
+# 3D printing
+cask "autodesk-fusion"
+cask "bambu-studio"
 
 # Java
 # tap "adoptopenjdk/openjdk"
