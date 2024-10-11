@@ -1,0 +1,11 @@
+session_name: lftm
+windows:
+  - focus: 'true'
+    options:
+      main-pane-height: 60%
+      automatic-rename: 'off'
+    shell_command_before:
+      - cd ~/Dropbox/Documents/lftm
+    panes:
+      - focus: true
+      - blank

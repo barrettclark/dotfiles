@@ -1,0 +1,13 @@
+session_name: dotfiles
+windows:
+  - layout: main-vertical
+    focus: 'true'
+    options:
+      main-pane-width: 55%
+      automatic-rename: 'off'
+    shell_command_before:
+      - cd /usr/local/dotfiles
+    panes:
+      - focus: true
+      - shell_command: ticker --sort=user
+      - blank

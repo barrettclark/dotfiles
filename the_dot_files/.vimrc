@@ -188,6 +188,7 @@ au BufRead,BufNewFile *.tab setfiletype sql
 au BufRead,BufNewFile *.usr setfiletype sql
 au BufRead,BufNewFile *.vw setfiletype sql
 au BufRead,BufNewFile Dockerfile* setfiletype dockerfile
+au BufRead,BufNewFile *.hcl setfiletype terraform
 
 "" git commit message length
 au FileType gitcommit set tw=72
