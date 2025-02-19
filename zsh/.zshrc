@@ -88,6 +88,8 @@ plugins=(
   command-not-found
   copypath
   dotenv
+  fast-syntax-highlighting
+  zsh-syntax-highlighting
   git
   gitignore
   jsontools
@@ -95,11 +97,9 @@ plugins=(
   safe-paste
   terraform
   tmux
+  zsh-abbr
   zsh-autocomplete
   zsh-autosuggestions
-  fast-syntax-highlighting
-  zsh-abbr
-  zsh-syntax-highlighting
 )
 
 # Load HashiCorp settings if the file exists
@@ -108,7 +108,7 @@ if [ -f ~/.hashicorp.env ]; then
   ZSH_DOTENV_FILE=~/.hashicorp.env
 fi
 
-source "/usr/local/opt/asdf/libexec/asdf.sh"
+source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 source $ZSH/oh-my-zsh.sh
 source "$ZSH_CUSTOM/plugins/zsh-git-prompt/zshrc.sh"
 
@@ -168,22 +168,23 @@ fpath=(/usr/local/dotfiles/zsh/functions $fpath);
 autoload -U $fpath[1]/*(.:t)
 
 # abbreviations
-abbr be="bundle exec" --quiet
-abbr beg="bundle exec rails g" --quiet
-abbr ber="bundle exec rake" --quiet
-abbr dcb="docker-compose up --build --remove-orphans" --quiet
-abbr dcd="docker-compose down --remove-orphans" --quiet
-abbr gb="git branch" --quiet
-abbr gc="git commit" --quiet
-abbr gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r' --quiet
-abbr gf="git fetch" --quiet
-abbr gs="git status" --quiet
-abbr tf="terraform" --quiet
-abbr tfd="~/go/bin/terraform" --quiet
-abbr todo="todo.sh -d ~/Dropbox/todo/todo.cfg" --quiet
-abbr gbc="git branch | grep -v '$(git-master-or-main)' | xargs git branch -d" --quiet
-abbr gcm="git checkout '$(git-master-or-main)'" --quiet
-abbr gpom="git push origin '$(git-master-or-main)'" --quiet
+source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
+abbr -U be="bundle exec"
+abbr -U beg="bundle exec rails g"
+abbr -U ber="bundle exec rake"
+abbr -U dcb="docker-compose up --build --remove-orphans"
+abbr -U dcd="docker-compose down --remove-orphans"
+abbr -U gb="git branch"
+abbr -U gc="git commit"
+abbr -U gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
+abbr -U gf="git fetch"
+abbr -U gs="git status"
+abbr -U tf="terraform"
+abbr -U tfd="~/go/bin/terraform"
+abbr -U todo="todo.sh -d ~/Dropbox/todo/todo.cfg"
+abbr -U gbc="git branch | grep -v '$(git-master-or-main)' | xargs git branch -d"
+abbr -U gcm="git checkout '$(git-master-or-main)'"
+abbr -U gpom="git push origin '$(git-master-or-main)'"
 
 export STARSHIP_CONFIG="/usr/local/dotfiles/zsh/myth-prompt-themes/colorful/pointed/starship/left_only/starship.toml"
 eval "$(starship init zsh)"
