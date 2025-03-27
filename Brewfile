@@ -132,6 +132,7 @@ brew "yapf"
 
 cask "1password"
 cask "caffeine"
+cask "calibre"
 cask "cleanmymac"
 cask "cleanshot"
 cask "corelocationcli"
@@ -182,7 +183,7 @@ cask "xscreensaver"
 # cask "zoom"
 
 # 3D printing
-cask "autodesk-fusion"
+# cask "autodesk-fusion"
 cask "bambu-studio"
 
 # Java
@@ -194,10 +195,10 @@ cask "bambu-studio"
 
 mas "1Password for Safari", id: 1569813296
 mas "Amazon Kindle", id: 302584613
-mas "GarageBand", id: 682658836
+# mas "GarageBand", id: 682658836
 mas "JSONPeep", id: 1458969831
 mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+# mas "Numbers", id: 409203825
+# mas "Pages", id: 409201541
 mas "SwiftoDo Desktop", id: 1143641091
-mas "iMovie", id: 408981434
+# mas "iMovie", id: 408981434
