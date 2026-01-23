@@ -9,9 +9,9 @@ endif
 " :PlugUpdate     - update plugins
 " :PlugClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " :PlugUpgrade    - upgrade vim-plug itself
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -168,12 +168,17 @@ nnoremap <leader>cf :let @*=expand("%")<CR>
 nnoremap <leader>cF :let @*=expand("%:p")<CR>
 
 " Color scheme settings
+set termguicolors
 let g:seoul256_background = 234
 colorscheme seoul256
 highlight CursorLine ctermbg=black term=none cterm=none
 highlight Error cterm=reverse ctermbg=white ctermfg=red
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="72,".join(range(80,120),",")
+
+" Make vim-gitgutter more responsive
+set updatetime=300
+set signcolumn=yes " Prevents the screen from 'jumping' when linting icons appear
 
 "" Filetypes for syntax highlighting
 au BufRead,BufNewFile *.bdy setfiletype sql
@@ -189,6 +194,7 @@ au BufRead,BufNewFile *.usr setfiletype sql
 au BufRead,BufNewFile *.vw setfiletype sql
 au BufRead,BufNewFile Dockerfile* setfiletype dockerfile
 au BufRead,BufNewFile *.hcl setfiletype terraform
+au BufRead,BufNewFile *.todotxt setfiletype todo
 
 "" git commit message length
 au FileType gitcommit set tw=72
