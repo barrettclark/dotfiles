@@ -162,7 +162,6 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
-let g:ale_ruby_reek_executable = 'bundle'
 let g:ale_python_executable='python3'
 let g:ale_python_pylint_use_global=1
 
@@ -170,7 +169,6 @@ let g:ale_linters = {
 \   'go': ['gometalinter', 'gopls'],
 \   'javascript': ['eslint'],
 \   'python': ['flake8', 'pylint'],
-\   'ruby': ['rubocop'],
 \   'terraform': ['terraform'],
 \   'typescript': ['eslint', 'tsserver'],
 \}
@@ -180,7 +178,6 @@ let g:ale_fixers = {
 \   'javascript': ['eslint', 'prettier'],
 \   'json': ['jq', 'prettier'],
 \   'python': ['autopep8', 'yapf'],
-\   'ruby': ['rubocop'],
 \   'sql': ['sqlformat'],
 \   'terraform': ['terraform'],
 \   'typescript': ['eslint', 'prettier'],
