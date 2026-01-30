@@ -12,6 +12,27 @@ function setupRVM() {
   \curl -sSL https://get.rvm.io | bash -s -- --autolibs=read-fail
 }
 
+function setupDotfileSymlinks() {
+  # Create symlinks for primary dotfiles (called by specific setup functions)
+  # Backs up existing files before symlinking
+  echo "Creating dotfile symlinks..."
+
+  # Create backup directory if needed
+  if [[ -f ~/.zshrc ]] || [[ -f ~/.vimrc ]] || [[ -f ~/.tmux.conf ]]; then
+    mkdir -p ~/.dotfiles_backup
+    [[ -f ~/.zshrc ]] && cp ~/.zshrc ~/.dotfiles_backup/
+    [[ -f ~/.vimrc ]] && cp ~/.vimrc ~/.dotfiles_backup/
+    [[ -f ~/.tmux.conf ]] && cp ~/.tmux.conf ~/.dotfiles_backup/
+    echo "Backed up existing dotfiles to ~/.dotfiles_backup/"
+  fi
+
+  # Create symlinks
+  ln -sf /usr/local/dotfiles/zsh/.zshrc ~/.zshrc
+  ln -sf /usr/local/dotfiles/the_dot_files/.vimrc ~/.vimrc
+  ln -sf /usr/local/dotfiles/the_dot_files/.tmux.conf ~/.tmux.conf
+  echo "✓ Symlinks created"
+}
+
 function setupSettings() {
   # Fonts Mac
   if [[ -d ~/Library/Fonts ]]; then
@@ -59,17 +80,26 @@ function setupZsh() {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   git clone https://github.com/zsh-git-prompt/zsh-git-prompt.git ~/.oh-my-zsh/custom/plugins/zsh-git-prompt
   git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
   git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
-  git clone https://github.com/marlonrichert/zsh-autocomplete.git --depth 1 ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
-  git clone https://github.com/olets/zsh-abbr --single-branch --branch main --depth 1 ~/.oh-my-zsh/custom/plugins/zsh-abbr
-  cp /usr/local/dotfiles/zsh/.zshrc $HOME
+  # Note: zsh-syntax-highlighting removed (redundant with fast-syntax-highlighting)
+  # Note: zsh-autocomplete removed (too aggressive, using zsh-autosuggestions instead)
+  # Note: zsh-abbr installed via Homebrew, not as plugin
+
+  # Symlink .zshrc instead of copying
+  if [[ -f ~/.zshrc ]]; then
+    mv ~/.zshrc ~/.zshrc.backup
+  fi
+  ln -sf /usr/local/dotfiles/zsh/.zshrc ~/.zshrc
   source ~/.zshrc
 }
 
 function setupVim() {
   rm -rf ~/.vim
-  cp the_dot_files/.vimrc ~/
+  # Symlink .vimrc instead of copying
+  if [[ -f ~/.vimrc ]]; then
+    mv ~/.vimrc ~/.vimrc.backup
+  fi
+  ln -sf /usr/local/dotfiles/the_dot_files/.vimrc ~/.vimrc
   rsync -avh --ignore-times --no-perms --progress .vim/colors ~/.vim
   rsync -avh --ignore-times --no-perms --progress .vim/syntax ~/.vim
   git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
@@ -78,6 +108,11 @@ function setupVim() {
 
 function setupTmux() {
   rm -rf ~/.tmux/plugins
+  # Symlink .tmux.conf instead of copying
+  if [[ -f ~/.tmux.conf ]]; then
+    mv ~/.tmux.conf ~/.tmux.conf.backup
+  fi
+  ln -sf /usr/local/dotfiles/the_dot_files/.tmux.conf ~/.tmux.conf
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   tmux source ~/.tmux.conf
 }
@@ -86,7 +121,9 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   git submodule update --init --recursive
-  rsync -avh --ignore-times --no-perms --progress the_dot_files/ $HOME
+  # Note: Main dotfiles (.zshrc, .vimrc, .tmux.conf) are now symlinked via setup functions
+  # Only rsync non-primary dotfiles
+  rsync -avh --ignore-times --no-perms --progress --exclude='.vimrc' --exclude='.tmux.conf' the_dot_files/ $HOME
   sudo pip3 install --upgrade pip
   sudo pip3 install --upgrade setuptools
   PYTHON_PACKAGES=(
@@ -103,7 +140,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   )
   sudo pip3 install ${PYTHON_PACKAGES[@]}
   # npm install -g csslint fx markdownlint-cli moment prettier
-  while getopts ":bfholtvz" opt; do
+  while getopts ":bfholtsvz" opt; do
     case $opt in
       b)
         echo " *** Bootstrap Bash ***"
@@ -127,6 +164,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo " *** Bootstrap Linux ***"
         bootstrap_linux.sh
         ;;
+      s)
+        echo " *** Create dotfile symlinks ***"
+        setupDotfileSymlinks
+        ;;
       t)
         echo " *** Bootstrap tmux plugins ***"
         setupTmux
@@ -144,9 +185,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi;
 
 unset setupBash;
+unset setupDotfileSymlinks;
 unset setupFish;
 unset setupHomebrew;
 unset setupRVM;
 unset setupSettings;
 unset setupTmux;
 unset setupVim;
+unset setupZsh;

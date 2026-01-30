@@ -19,7 +19,7 @@ This is originally based on [mathias's dotfiles](mathiasbynens/dotfiles), and is
 There is a main bootstrap script (`bootstrap.sh`) that does all the bootstrapping. You pass it options as follows:
 
 ```bash
-./bootstrap.sh -b -f -h -o -l -t -v
+./bootstrap.sh -b -f -h -o -l -s -t -v -z
 ```
 
 Any or many of the options can be passed in. The options are as follows:
@@ -30,21 +30,42 @@ Any or many of the options can be passed in. The options are as follows:
 * -h = Homebrew
 * -o = OSX (and Homebrew)
 * -l = linux
+* -s = symlink dotfiles (.zshrc, .vimrc, .tmux.conf)
 * -t = tmux
 * -v = vim
+* -z = zsh
+```
+
+**Note:** Primary dotfiles (`.zshrc`, `.vimrc`, `.tmux.conf`) are now **symlinked** to the repo instead of copied. This means:
+- Edits to `~/.zshrc` edit the repo version automatically
+- Changes are tracked in git
+- Easy to deploy to multiple machines
+- Single source of truth
+
+To manually create symlinks on an existing setup:
+```bash
+./bootstrap.sh -s
 ```
 
 ### Installing a fresh Mac
 
-This will install general dotfiles, fish, vim, tmux, OSX things.
+This will install general dotfiles, zsh, vim, tmux, OSX things.
 
 * Setup an SSH key with GitHub
 * Clone the dotfiles into `/usr/local/dotfiles`
-  _ First change the owner of `/usr/local` to your user
-  _ The first time you run the `git` command it will ask to install the command line tools. No need to install Xcode!
-* Install LastPass in Safari
-* Bootstrap ALLTHETHINGS `/usr/local/dotfiles/bootstrap.sh -votf [NAME]` \* I have started using wine varieties for computer names
+  * First change the owner of `/usr/local` to your user
+  * The first time you run the `git` command it will ask to install the command line tools. No need to install Xcode!
+* Install 1Password in Safari
+* Bootstrap ALLTHETHINGS `/usr/local/dotfiles/bootstrap.sh -votz [NAME]`
+  * I have started using wine varieties for computer names
 * Install App Store purchases
+
+**Current zsh config notes:**
+- Using `fast-syntax-highlighting` (not the slower `zsh-syntax-highlighting`)
+- Using `zsh-autosuggestions` (not the aggressive `zsh-autocomplete`)
+- Removed `rake-fast` plugin (not needed for non-Ruby work)
+- Bash aliases are sourced for cross-shell compatibility
+- Terraform abbreviations included (`tfi`, `tfp`, `tfa`, etc.)
 
 ### Linux Setup
 
