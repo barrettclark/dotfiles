@@ -90,8 +90,8 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
-# git stuff
-alias gs='git status '
-alias gitk='gitk 2>/dev/null'
-alias gk='gitk --all&'
-alias gx='gitx --all'
+# git stuff (commented out to avoid conflicts with oh-my-zsh git plugin)
+# alias gs='git status '
+# alias gitk='gitk 2>/dev/null'
+# alias gk='gitk --all&'
+# alias gx='gitx --all'

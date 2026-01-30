@@ -89,16 +89,13 @@ plugins=(
   copypath
   dotenv
   fast-syntax-highlighting
-  zsh-syntax-highlighting
   git
   gitignore
   jsontools
-  rake-fast
   safe-paste
   terraform
   tmux
   zsh-abbr
-  zsh-autocomplete
   zsh-autosuggestions
 )
 
@@ -133,7 +130,7 @@ export LC_ALL=$LANG
 # fi
 
 # fortune | cowsay
-export EDITOR="/usr/local/bin/vim"
+export EDITOR="vim"  # Let PATH resolve to Homebrew version
 export BUNDLER_EDITOR=$EDITOR
 export TERM="screen-256color"
 export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
@@ -160,6 +157,11 @@ export GOPATH="/Users/$(whoami)/go"
 alias md5sum="gmd5sum"
 alias less="less -r"
 
+# Load bash aliases (git aliases commented out to avoid conflicts with oh-my-zsh)
+if [ -f /usr/local/dotfiles/bash_dot_files/.bash_aliases ]; then
+  source /usr/local/dotfiles/bash_dot_files/.bash_aliases
+fi
+
 # Functions
 # add /usr/local/dotfiles/zsh/functions to fpath, and then lazy autoload
 # every file in there as a function
@@ -181,6 +183,14 @@ abbr -U gf="git fetch"
 abbr -U gs="git status"
 abbr -U tf="terraform"
 abbr -U tfd="~/go/bin/terraform"
+abbr -U tfi="terraform init"
+abbr -U tfp="terraform plan"
+abbr -U tfa="terraform apply"
+abbr -U tfv="terraform validate"
+abbr -U tfw="terraform workspace"
+abbr -U tfo="terraform output"
+abbr -U tfs="terraform state"
+abbr -U tfsh="terraform show"
 abbr -U todo="todo.sh -d ~/Dropbox/todo/todo.cfg"
 abbr -U gbc="git branch | grep -v '$(git-master-or-main)' | xargs git branch -d"
 abbr -U gcm="git checkout '$(git-master-or-main)'"
