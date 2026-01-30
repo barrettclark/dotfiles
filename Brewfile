@@ -20,7 +20,7 @@ brew "starship"
 brew "olets/tap/zsh-abbr"
 
 brew "achannarasappa/tap/ticker"
-brew "ack"
+brew "ripgrep"
 brew "ansible"
 brew "ansifilter"
 brew "asdf"
