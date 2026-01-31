@@ -109,8 +109,52 @@ Now you can run the installer script from GitHub. Trust me, it's fiiiiine.
 wget -O - https://raw.githubusercontent.com/barrettclark/dotfiles/master/bootstrap_linux.sh | bash
 ```
 
+### Synology NAS Setup
+
+For Synology NAS devices running DSM - sets up zsh and vim only (tmux not included).
+
+**Prerequisites:**
+1. Install packages via Synology Package Center:
+   - Git Server (for git)
+   - Text Editor (includes vim)
+2. Enable SSH in Control Panel > Terminal & SNMP
+
+**Setup:**
+1. SSH into your Synology
+2. Clone the dotfiles to your home directory:
+   ```bash
+   cd ~
+   git clone https://github.com/barrettclark/dotfiles.git
+   cd dotfiles
+   ```
+
+3. Run the Synology bootstrap:
+   ```bash
+   ./bootstrap_synology.sh
+   ```
+
+4. Log out and back in - zsh will start automatically
+   - Or start using zsh now: `exec zsh`
+
+**What gets installed:**
+- oh-my-zsh with plugins (autosuggestions, fast-syntax-highlighting)
+- vim with vim-plug and all configured plugins
+- Symlinks to dotfiles from ~/dotfiles
+- Auto-start zsh via .profile (safer than changing /etc/passwd)
+
+**How it works:**
+The bootstrap adds zsh auto-start to your `.profile` instead of modifying `/etc/passwd`. This means:
+- zsh starts automatically on login
+- If zsh breaks, you can still log in with sh and fix it
+- No risk of being locked out of your NAS
+
+**Known limitations:**
+- `zsh-abbr` won't work (requires Homebrew) - abbreviations won't expand
+- Some vim plugins may not work (language servers require additional setup)
+- Starship prompt requires separate installation
+- tmux not included (install manually if needed)
+
 ## Credits
 
 Initial dotfiles forked from mathiasbynens/dotfiles
-Fish functions from nvie/dotfiles
 Fish functions from nvie/dotfiles

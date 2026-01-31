@@ -39,6 +39,7 @@ Plug 'ryanoasis/vim-devicons'    " File icons for NERDTree
 
 " Languages
 Plug 'b4b4r07/vim-sqlfmt'       " SQL formatting
+Plug 'ekalinin/Dockerfile.vim'   " Docker syntax highlighting
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-hashicorp-tools'  " Terraform, Vault, etc
 Plug 'leafgarland/typescript-vim'
@@ -143,6 +144,7 @@ noremap <leader>ss :call StripWhitespace()<CR>
 " SQL extensions
 au BufRead,BufNewFile *.bdy,*.fnc,*.grt,*.mvw,*.pkb,*.pkg,*.prc,*.spc,*.tab,*.usr,*.vw setfiletype sql
 au BufRead,BufNewFile Dockerfile* setfiletype dockerfile
+au BufRead,BufNewFile docker-compose*.{yml,yaml},compose.{yml,yaml} set filetype=yaml.docker-compose
 au BufRead,BufNewFile *.hcl setfiletype terraform
 au BufRead,BufNewFile *.todotxt setfiletype todo
 au FileType gitcommit set tw=72
@@ -190,6 +192,7 @@ let g:terraform_fmt_on_save=1
 
 " vim-go
 let g:go_fmt_command = "goimports"
+let g:go_version_warning = 0  " Disable version warning on older systems
 
 " NERDTree (manual toggle only, NO auto-open)
 nnoremap <C-n> :NERDTree<CR>

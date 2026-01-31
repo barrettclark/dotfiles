@@ -95,7 +95,6 @@ plugins=(
   safe-paste
   terraform
   tmux
-  zsh-abbr
   zsh-autosuggestions
 )
 
@@ -105,9 +104,21 @@ if [ -f ~/.hashicorp.env ]; then
   ZSH_DOTENV_FILE=~/.hashicorp.env
 fi
 
-source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+# Load asdf if it exists (Mac Homebrew or other installations)
+if [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
+  source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+elif [ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]; then
+  source "/usr/local/opt/asdf/libexec/asdf.sh"
+elif [ -f "$HOME/.asdf/asdf.sh" ]; then
+  source "$HOME/.asdf/asdf.sh"
+fi
+
 source $ZSH/oh-my-zsh.sh
-source "$ZSH_CUSTOM/plugins/zsh-git-prompt/zshrc.sh"
+
+# Load zsh-git-prompt if it exists
+if [ -f "$ZSH_CUSTOM/plugins/zsh-git-prompt/zshrc.sh" ]; then
+  source "$ZSH_CUSTOM/plugins/zsh-git-prompt/zshrc.sh"
+fi
 
 # User configuration
 
@@ -157,47 +168,70 @@ export GOPATH="/Users/$(whoami)/go"
 alias md5sum="gmd5sum"
 alias less="less -r"
 
+# Auto-detect dotfiles directory
+if [ -d "/usr/local/dotfiles" ]; then
+  DOTFILES_DIR="/usr/local/dotfiles"
+elif [ -d "$HOME/dotfiles" ]; then
+  DOTFILES_DIR="$HOME/dotfiles"
+fi
+
 # Load bash aliases (git aliases commented out to avoid conflicts with oh-my-zsh)
-if [ -f /usr/local/dotfiles/bash_dot_files/.bash_aliases ]; then
-  source /usr/local/dotfiles/bash_dot_files/.bash_aliases
+if [ -n "$DOTFILES_DIR" ] && [ -f "$DOTFILES_DIR/bash_dot_files/.bash_aliases" ]; then
+  source "$DOTFILES_DIR/bash_dot_files/.bash_aliases"
 fi
 
 # Functions
-# add /usr/local/dotfiles/zsh/functions to fpath, and then lazy autoload
+# add dotfiles zsh/functions to fpath, and then lazy autoload
 # every file in there as a function
 # https://unix.stackexchange.com/a/526429
-fpath=(/usr/local/dotfiles/zsh/functions $fpath);
-autoload -U $fpath[1]/*(.:t)
+if [ -n "$DOTFILES_DIR" ] && [ -d "$DOTFILES_DIR/zsh/functions" ]; then
+  fpath=($DOTFILES_DIR/zsh/functions $fpath)
+  # Only try to autoload if there are actually files in the directory
+  if [ "$(ls -A $DOTFILES_DIR/zsh/functions 2>/dev/null)" ]; then
+    autoload -U $DOTFILES_DIR/zsh/functions/*(.:t)
+  fi
+fi
 
-# abbreviations
-source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
-abbr -U be="bundle exec"
-abbr -U beg="bundle exec rails g"
-abbr -U ber="bundle exec rake"
-abbr -U dcb="docker-compose up --build --remove-orphans"
-abbr -U dcd="docker-compose down --remove-orphans"
-abbr -U gb="git branch"
-abbr -U gc="git commit"
-abbr -U gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
-abbr -U gf="git fetch"
-abbr -U gs="git status"
-abbr -U tf="terraform"
-abbr -U tfd="~/go/bin/terraform"
-abbr -U tfi="terraform init"
-abbr -U tfp="terraform plan"
-abbr -U tfa="terraform apply"
-abbr -U tfv="terraform validate"
-abbr -U tfw="terraform workspace"
-abbr -U tfo="terraform output"
-abbr -U tfs="terraform state"
-abbr -U tfsh="terraform show"
-abbr -U todo="todo.sh -d ~/Dropbox/todo/todo.cfg"
-abbr -U gbc="git branch | grep -v '$(git-master-or-main)' | xargs git branch -d"
-abbr -U gcm="git checkout '$(git-master-or-main)'"
-abbr -U gpom="git push origin '$(git-master-or-main)'"
+# abbreviations (only if zsh-abbr is installed via Homebrew)
+if [ -f "/opt/homebrew/share/zsh-abbr/zsh-abbr.zsh" ]; then
+  source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
+elif [ -f "/usr/local/share/zsh-abbr/zsh-abbr.zsh" ]; then
+  source /usr/local/share/zsh-abbr/zsh-abbr.zsh
+fi
 
-export STARSHIP_CONFIG="/usr/local/dotfiles/zsh/myth-prompt-themes/colorful/pointed/starship/left_only/starship.toml"
-eval "$(starship init zsh)"
+# Only set abbreviations if zsh-abbr is available
+if (( $+commands[abbr] )); then
+  abbr -U be="bundle exec"
+  abbr -U beg="bundle exec rails g"
+  abbr -U ber="bundle exec rake"
+  abbr -U dcb="docker-compose up --build --remove-orphans"
+  abbr -U dcd="docker-compose down --remove-orphans"
+  abbr -U gb="git branch"
+  abbr -U gc="git commit"
+  abbr -U gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
+  abbr -U gf="git fetch"
+  abbr -U gs="git status"
+  abbr -U tf="terraform"
+  abbr -U tfd="~/go/bin/terraform"
+  abbr -U tfi="terraform init"
+  abbr -U tfp="terraform plan"
+  abbr -U tfa="terraform apply"
+  abbr -U tfv="terraform validate"
+  abbr -U tfw="terraform workspace"
+  abbr -U tfo="terraform output"
+  abbr -U tfs="terraform state"
+  abbr -U tfsh="terraform show"
+  abbr -U todo="todo.sh -d ~/Dropbox/todo/todo.cfg"
+  abbr -U gbc="git branch | grep -v '$(git-master-or-main)' | xargs git branch -d"
+  abbr -U gcm="git checkout '$(git-master-or-main)'"
+  abbr -U gpom="git push origin '$(git-master-or-main)'"
+fi
+
+# Starship prompt (if starship and config exist)
+if (( $+commands[starship] )) && [ -n "$DOTFILES_DIR" ] && [ -f "$DOTFILES_DIR/zsh/myth-prompt-themes/colorful/pointed/starship/left_only/starship.toml" ]; then
+  export STARSHIP_CONFIG="$DOTFILES_DIR/zsh/myth-prompt-themes/colorful/pointed/starship/left_only/starship.toml"
+  eval "$(starship init zsh)"
+fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
