@@ -144,7 +144,6 @@ noremap <leader>ss :call StripWhitespace()<CR>
 " SQL extensions
 au BufRead,BufNewFile *.bdy,*.fnc,*.grt,*.mvw,*.pkb,*.pkg,*.prc,*.spc,*.tab,*.usr,*.vw setfiletype sql
 au BufRead,BufNewFile Dockerfile* setfiletype dockerfile
-au BufRead,BufNewFile docker-compose*.{yml,yaml},compose.{yml,yaml} set filetype=yaml.docker-compose
 au BufRead,BufNewFile *.hcl setfiletype terraform
 au BufRead,BufNewFile *.todotxt setfiletype todo
 au FileType gitcommit set tw=72
