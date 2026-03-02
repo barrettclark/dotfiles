@@ -108,6 +108,7 @@ brew "fpp"                    # Facebook PathPicker
 brew "fzf"                    # Fuzzy finder
 brew "gpp"
 brew "highlight"
+brew "jless"                  # CLI JSON tree view
 brew "jq"                     # JSON processor
 brew "markdown"
 brew "p7zip"
