@@ -67,7 +67,40 @@ This will install general dotfiles, zsh, vim, tmux, OSX things.
 - Bash aliases are sourced for cross-shell compatibility
 - Terraform abbreviations included (`tfi`, `tfp`, `tfa`, etc.)
 
-### Linux Setup
+### Ubuntu Server Setup
+
+For headless Ubuntu Server 24 machines (arr-stack, database hosts, etc.):
+
+1. Setup an SSH key with GitHub
+2. Clone the dotfiles into `/usr/local/dotfiles`:
+   ```bash
+   sudo chown $USER /usr/local
+   git clone git@github.com:barrettclark/dotfiles.git /usr/local/dotfiles
+   cd /usr/local/dotfiles
+   ```
+3. Run the Ubuntu Server bootstrap:
+   ```bash
+   ./bootstrap_ubuntu_server.sh
+   ```
+4. Log out and back in (or `exec zsh`)
+5. In tmux, press `prefix + I` to install tmux plugins
+
+**What gets installed:**
+- Core packages: zsh, vim, tmux, git, curl, ripgrep, jq, htop, tree, etc.
+- Starship prompt
+- oh-my-zsh with plugins (autosuggestions, fast-syntax-highlighting)
+- vim-plug with all configured plugins
+- TPM (tmux plugin manager)
+- Symlinks for .zshrc, .vimrc, .tmux.conf
+
+**Known limitations:**
+- No zsh-abbr (requires Homebrew) - abbreviations won't expand
+- Some vim language server plugins require additional setup
+
+**Current servers:**
+- `manhattan` (192.0.2.200) - Beelink, Ubuntu Server 24, arr-stack + Postgres
+
+### Linux Setup (legacy)
 
 I also use a Linux box from time to time, so here is how I bootstrap that puppy:
 
