@@ -187,11 +187,12 @@ cask "calibre"
 cask "kobo"
 cask "macdown"
 cask "obsidian"
+cask "qlmarkdown"
 
 #==============================================================================
 # Casks - Development Tools
 #==============================================================================
-cask "docker"
+cask "docker-desktop"
 cask "ngrok"
 cask "qmk-toolbox"
 cask "quicklook-json"
@@ -203,7 +204,9 @@ cask "wkhtmltopdf"
 #==============================================================================
 # Casks - AI & ML
 #==============================================================================
-cask "ollama"
+brew "anomalyco/tap/opencode"
+cask "claude-code"
+cask "ollama-app"
 
 #==============================================================================
 # Casks - Media & Entertainment
