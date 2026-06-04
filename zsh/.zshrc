@@ -83,7 +83,6 @@ DISABLE_AUTO_TITLE="true"
 # git clone https://github.com/olets/zsh-abbr --single-branch --branch main --depth 1 $ZSH_CUSTOM/plugins/zsh-abbr
 plugins=(
   aliases
-  asdf
   colorize
   command-not-found
   copypath
@@ -102,15 +101,6 @@ plugins=(
 if [ -f ~/.hashicorp.env ]; then
   ZSH_DOTENV_PROMPT=false
   ZSH_DOTENV_FILE=~/.hashicorp.env
-fi
-
-# Load asdf if it exists (Mac Homebrew or other installations)
-if [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
-  source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
-elif [ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]; then
-  source "/usr/local/opt/asdf/libexec/asdf.sh"
-elif [ -f "$HOME/.asdf/asdf.sh" ]; then
-  source "$HOME/.asdf/asdf.sh"
 fi
 
 source $ZSH/oh-my-zsh.sh

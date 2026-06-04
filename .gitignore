@@ -1,6 +1,7 @@
 *license*
 .netrc
 Brewfile.lock.json
-fish/tcs.env
 node_modules
 package-lock.json
+.claude
+.claude.json

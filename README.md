@@ -19,16 +19,24 @@ This is originally based on [mathias's dotfiles](mathiasbynens/dotfiles), and is
 There is a main bootstrap script (`bootstrap.sh`) that does all the bootstrapping. You pass it options as follows:
 
 ```bash
-./bootstrap.sh -b -h -m -o -l -s -t -v -z
+./bootstrap.sh -a
+```
+
+Or pass individual options:
+
+```bash
+./bootstrap.sh -b -d -h -m -o -l -s -t -v -z
 ```
 
 Any or many of the options can be passed in. The options are as follows:
 
 ```
+* -a = all (full Mac setup: Homebrew, dotfiles, symlinks, mise, zsh, vim, tmux)
 * -b = bash shell
+* -d = sync dotfiles (rsync the_dot_files/ → $HOME)
 * -h = Homebrew
 * -m = mise (install tools, remove asdf artifacts)
-* -o = OSX (and Homebrew)
+* -o = OSX defaults (and Homebrew)
 * -l = linux
 * -s = symlink dotfiles (.zshrc, .vimrc, .tmux.conf)
 * -t = tmux

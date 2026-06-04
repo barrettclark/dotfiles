@@ -1,4 +1,4 @@
-# Update Homebrew, vim plugins, tmux plugins, rvm, npm, OSX
+# Update Homebrew, vim plugins, tmux plugins, rvm, mise, npm, OSX
 function osx-update() {
   # homebrew
   /usr/local/dotfiles/brew.sh
@@ -16,8 +16,8 @@ function osx-update() {
   # rvm
   rvm get stable
 
-  # asdf
-  asdf plugin update --all
+  # mise
+  mise upgrade
 
   # node packages
   npm update -g --prefer-offline

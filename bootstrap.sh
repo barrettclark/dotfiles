@@ -62,7 +62,27 @@ function setupMise() {
     /usr/local/dotfiles/the_dot_files/.config/mise/ ~/.config/mise/
   mise install
   rm -f ~/.asdfrc ~/.tool-versions
+  rm -rf ~/.asdf
   echo "✓ mise tools installed, asdf artifacts removed"
+}
+
+function setupDotfiles() {
+  rsync -avh --ignore-times --no-perms --progress \
+    --exclude='.vimrc' --exclude='.tmux.conf' \
+    --exclude='.claude' --exclude='.claude.json' \
+    /usr/local/dotfiles/the_dot_files/ $HOME
+  echo "✓ Dotfiles rsynced"
+}
+
+function setupAll() {
+  echo " *** Full Mac Bootstrap ***"
+  setupHomebrew
+  setupDotfiles
+  setupDotfileSymlinks
+  setupMise
+  setupZsh
+  setupVim
+  setupTmux
 }
 
 function setupZsh() {
@@ -116,17 +136,20 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   git submodule update --init --recursive
-  # Note: Main dotfiles (.zshrc, .vimrc, .tmux.conf) are now symlinked via setup functions
-  # Only rsync non-primary dotfiles when doing a full setup (not for targeted tools like -m)
-  if [[ "$@" =~ [bhostzvl] ]]; then
-    rsync -avh --ignore-times --no-perms --progress --exclude='.vimrc' --exclude='.tmux.conf' the_dot_files/ $HOME
-  fi
   # npm install -g csslint fx markdownlint-cli moment prettier
-  while getopts ":bmholtsvz" opt; do
+  while getopts ":abdhmoltsvz" opt; do
     case $opt in
+      a)
+        echo " *** Full Mac Bootstrap ***"
+        setupAll
+        ;;
       b)
         echo " *** Bootstrap Bash ***"
         setupBash
+        ;;
+      d)
+        echo " *** Sync dotfiles ***"
+        setupDotfiles
         ;;
       m)
         echo " *** Bootstrap mise ***"
@@ -166,7 +189,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   done
 fi;
 
+unset setupAll;
 unset setupBash;
+unset setupDotfiles;
 unset setupDotfileSymlinks;
 unset setupMise;
 unset setupHomebrew;

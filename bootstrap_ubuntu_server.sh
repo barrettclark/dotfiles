@@ -164,6 +164,8 @@ function setup_other_dotfiles() {
   rsync -avh --ignore-times --no-perms --progress \
     --exclude='.vimrc' \
     --exclude='.tmux.conf' \
+    --exclude='.claude' \
+    --exclude='.claude.json' \
     "$DOTFILES_DIR/the_dot_files/" "$HOME/"
   rsync -avh --ignore-times --no-perms --progress \
     "$DOTFILES_DIR/bash_dot_files/" "$HOME/"
@@ -182,6 +184,7 @@ function install_mise() {
   fi
   "$HOME/.local/bin/mise" install
   rm -f ~/.asdfrc ~/.tool-versions
+  rm -rf ~/.asdf
   echo "✓ mise tools installed, asdf artifacts removed"
 }
 
