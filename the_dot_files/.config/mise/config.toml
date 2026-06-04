@@ -1,0 +1,9 @@
+[settings]
+legacy_version_file = true
+
+[settings.python]
+github_attestations = false
+
+[tools]
+node = "lts"
+python = "latest"

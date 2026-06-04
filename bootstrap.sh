@@ -56,18 +56,10 @@ function setupBash() {
   source ~/.bash_profile
 }
 
-function setupFish() {
-  setupSettings
-  rm -rf ~/.config/fish
-  if [[ -f /usr/local/bin/fish ]]; then
-    echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
-    chsh -s /usr/local/bin/fish
-  else
-    chsh -s /usr/bin/fish
-  fi
-  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-  fisher install PatrickF1/fzf.fish nyarly/fish-rake-complete brgmnn/fish-docker-compose rstacruz/fish-asdf
-  rsync -avh --ignore-times --no-perms --progress /usr/local/dotfiles/fish/ ~/.config/fish
+function setupMise() {
+  mise install
+  rm -f ~/.asdfrc ~/.tool-versions
+  echo "✓ mise tools installed, asdf artifacts removed"
 }
 
 function setupZsh() {
@@ -140,15 +132,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   )
   sudo pip3 install ${PYTHON_PACKAGES[@]}
   # npm install -g csslint fx markdownlint-cli moment prettier
-  while getopts ":bfholtsvz" opt; do
+  while getopts ":bmholtsvz" opt; do
     case $opt in
       b)
         echo " *** Bootstrap Bash ***"
         setupBash
         ;;
-      f)
-        echo " *** Bootstrap Fish shell ***"
-        setupFish
+      m)
+        echo " *** Bootstrap mise ***"
+        setupMise
         ;;
       h)
         echo " *** Bootstrap Homebrew ***"
@@ -186,7 +178,7 @@ fi;
 
 unset setupBash;
 unset setupDotfileSymlinks;
-unset setupFish;
+unset setupMise;
 unset setupHomebrew;
 unset setupRVM;
 unset setupSettings;

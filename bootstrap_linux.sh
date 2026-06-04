@@ -13,7 +13,7 @@ sudo apt-get -qq -y autoremove
 sudo apt-get -qq -y install --fix-missing build-essential \
   bash-completion wget curl vim git tree ctags sqlite python_pip \
   redis-server tmux memcached cowsay fortune gradle highlight mosquitto \
-  golang docker cmake openssh-server jq r-base fish
+  golang docker cmake openssh-server jq r-base
 
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt-get install -qq -y nodejs

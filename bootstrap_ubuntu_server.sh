@@ -172,6 +172,19 @@ function setup_other_dotfiles() {
   echo "✓ Other dotfiles synced"
 }
 
+function install_mise() {
+  if command -v mise >/dev/null 2>&1 || [ -f "$HOME/.local/bin/mise" ]; then
+    echo "✓ mise already installed"
+  else
+    echo "Installing mise..."
+    curl https://mise.run | sh
+    echo "✓ mise installed"
+  fi
+  "$HOME/.local/bin/mise" install
+  rm -f ~/.asdfrc ~/.tool-versions
+  echo "✓ mise tools installed, asdf artifacts removed"
+}
+
 #==============================================================================
 # Main
 #==============================================================================
@@ -201,6 +214,7 @@ setup_zsh
 setup_vim
 setup_tmux
 setup_other_dotfiles
+install_mise
 
 echo ""
 echo "✓ Bootstrap complete!"
@@ -209,6 +223,7 @@ echo "Next steps:"
 echo "  1. Log out and back in - zsh will start automatically"
 echo "  2. Or start using zsh now: exec zsh"
 echo "  3. In tmux, press prefix + I to install tmux plugins"
+echo "  4. Run 'mise list' to verify installed tools"
 echo ""
 echo "Known limitations on Ubuntu Server:"
 echo "  - No zsh-abbr (requires Homebrew) - abbreviations won't expand"

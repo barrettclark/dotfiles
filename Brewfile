@@ -52,11 +52,10 @@ brew "wget"
 #==============================================================================
 # Programming Languages & Runtimes
 #==============================================================================
-brew "asdf"                   # Version manager
 brew "go"
 brew "lua"
-brew "node"
-brew "npm"
+brew "mise"                   # Version manager
+
 brew "python3"
 brew "rust"
 brew "yarn"

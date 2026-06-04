@@ -1,0 +1,21 @@
+# md2docx — convert a Markdown manager doc to Word
+#
+# Usage: md2docx <file.md>
+#
+# To install, add this line to your ~/.zshrc:
+#   source ~/.agents/skills/manager-duties/scripts/md2docx.zsh
+
+md2docx() {
+  local input="$1"
+  if [[ -z "$input" ]]; then
+    echo "Usage: md2docx <file.md>" >&2
+    return 1
+  fi
+  if [[ ! -f "$input" ]]; then
+    echo "File not found: $input" >&2
+    return 1
+  fi
+  local output="${input:r}.docx"
+  grep -v '^---$' "$input" | pandoc -o "$output"
+  echo "→ $output"
+}

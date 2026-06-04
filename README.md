@@ -19,15 +19,15 @@ This is originally based on [mathias's dotfiles](mathiasbynens/dotfiles), and is
 There is a main bootstrap script (`bootstrap.sh`) that does all the bootstrapping. You pass it options as follows:
 
 ```bash
-./bootstrap.sh -b -f -h -o -l -s -t -v -z
+./bootstrap.sh -b -h -m -o -l -s -t -v -z
 ```
 
 Any or many of the options can be passed in. The options are as follows:
 
 ```
 * -b = bash shell
-* -f = fish shell
 * -h = Homebrew
+* -m = mise (install tools, remove asdf artifacts)
 * -o = OSX (and Homebrew)
 * -l = linux
 * -s = symlink dotfiles (.zshrc, .vimrc, .tmux.conf)
