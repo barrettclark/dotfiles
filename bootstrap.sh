@@ -57,6 +57,9 @@ function setupBash() {
 }
 
 function setupMise() {
+  mkdir -p ~/.config/mise
+  rsync -avh --ignore-times --no-perms --progress \
+    /usr/local/dotfiles/the_dot_files/.config/mise/ ~/.config/mise/
   mise install
   rm -f ~/.asdfrc ~/.tool-versions
   echo "✓ mise tools installed, asdf artifacts removed"
@@ -114,23 +117,10 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   git submodule update --init --recursive
   # Note: Main dotfiles (.zshrc, .vimrc, .tmux.conf) are now symlinked via setup functions
-  # Only rsync non-primary dotfiles
-  rsync -avh --ignore-times --no-perms --progress --exclude='.vimrc' --exclude='.tmux.conf' the_dot_files/ $HOME
-  sudo pip3 install --upgrade pip
-  sudo pip3 install --upgrade setuptools
-  PYTHON_PACKAGES=(
-    autopep8
-    flake8
-    httplib2
-    ipython
-    pygments
-    pylint
-    sqlparse
-    virtualenv
-    virtualenvwrapper
-    yapf
-  )
-  sudo pip3 install ${PYTHON_PACKAGES[@]}
+  # Only rsync non-primary dotfiles when doing a full setup (not for targeted tools like -m)
+  if [[ "$@" =~ [bhostzvl] ]]; then
+    rsync -avh --ignore-times --no-perms --progress --exclude='.vimrc' --exclude='.tmux.conf' the_dot_files/ $HOME
+  fi
   # npm install -g csslint fx markdownlint-cli moment prettier
   while getopts ":bmholtsvz" opt; do
     case $opt in
