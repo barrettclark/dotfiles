@@ -7,11 +7,6 @@ function setupHomebrew() {
   /usr/local/dotfiles/brew.sh
 }
 
-function setupRVM() {
-  gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-  \curl -sSL https://get.rvm.io | bash -s -- --autolibs=read-fail
-}
-
 function setupDotfileSymlinks() {
   # Create symlinks for primary dotfiles (called by specific setup functions)
   # Backs up existing files before symlinking
@@ -63,7 +58,8 @@ function setupMise() {
   mise install
   rm -f ~/.asdfrc ~/.tool-versions
   rm -rf ~/.asdf
-  echo "✓ mise tools installed, asdf artifacts removed"
+  rm -rf ~/.rvm
+  echo "✓ mise tools installed, asdf/rvm artifacts removed"
 }
 
 function setupDotfiles() {
@@ -163,7 +159,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo " *** Bootstrap macOS ***"
         ./bootstrap_macos.sh $2
         setupHomebrew
-        setupRVM
         ;;
       l)
         echo " *** Bootstrap Linux ***"
@@ -195,7 +190,6 @@ unset setupDotfiles;
 unset setupDotfileSymlinks;
 unset setupMise;
 unset setupHomebrew;
-unset setupRVM;
 unset setupSettings;
 unset setupTmux;
 unset setupVim;

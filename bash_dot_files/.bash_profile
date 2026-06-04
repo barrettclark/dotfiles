@@ -38,9 +38,6 @@ if [ -f ~/.ssh/id_rsa ]; then
     ssh-add ~/.ssh/id_rsa
 fi
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -e /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
   source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'

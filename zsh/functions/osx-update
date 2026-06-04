@@ -1,4 +1,4 @@
-# Update Homebrew, vim plugins, tmux plugins, rvm, mise, npm, OSX
+# Update Homebrew, vim plugins, tmux plugins, mise, npm, OSX
 function osx-update() {
   # homebrew
   /usr/local/dotfiles/brew.sh
@@ -12,9 +12,6 @@ function osx-update() {
   ~/.tmux/plugins/tpm/bin/clean_plugins
   ~/.tmux/plugins/tpm/bin/install_plugins
   ~/.tmux/plugins/tpm/bin/update_plugins all
-
-  # rvm
-  rvm get stable
 
   # mise
   mise upgrade

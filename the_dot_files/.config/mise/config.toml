@@ -7,3 +7,5 @@ github_attestations = false
 [tools]
 node = "lts"
 python = "latest"
+ruby = "latest"
+
