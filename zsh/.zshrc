@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 
 # fzf shell bindings (brew only)
 if command -v brew >/dev/null 2>&1; then
-  fzf_prefix="$(brew --prefix fzf)"
+  fzf_prefix="$(brew --prefix fzf 2>/dev/null)"
   [[ -f "$fzf_prefix/shell/completion.zsh" ]] && source "$fzf_prefix/shell/completion.zsh"
   [[ -f "$fzf_prefix/shell/key-bindings.zsh" ]] && source "$fzf_prefix/shell/key-bindings.zsh"
 fi
