@@ -8,7 +8,8 @@ alias h="history"
 alias j="jobs"
 
 if [[ -d /usr/local/Cellar/todo-txt ]]; then
-  source /usr/local/Cellar/todo-txt/2.10/etc/bash_completion.d/todo_completion complete -F _todo t
+  todo_completion=$(echo /usr/local/Cellar/todo-txt/*/etc/bash_completion.d/todo_completion)
+  [[ -f "$todo_completion" ]] && source "$todo_completion" complete -F _todo t
   alias t="todo.sh -d $HOME/Dropbox/todo/todo.cfg"
 fi
 

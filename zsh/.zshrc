@@ -8,17 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=(
-#   "agnoster"
-#   "amuse"
-#   "robbyrussell"
-# )
+ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,17 +72,13 @@ DISABLE_AUTO_TITLE="true"
 # git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
 # git clone https://github.com/olets/zsh-abbr --single-branch --branch main --depth 1 $ZSH_CUSTOM/plugins/zsh-abbr
 plugins=(
-  aliases
-  colorize
   command-not-found
-  copypath
   dotenv
   fast-syntax-highlighting
   git
   gitignore
   jsontools
   safe-paste
-  terraform
   tmux
   zsh-autosuggestions
 )
@@ -105,23 +91,26 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-# Load zsh-git-prompt if it exists
-if [ -f "$ZSH_CUSTOM/plugins/zsh-git-prompt/zshrc.sh" ]; then
-  source "$ZSH_CUSTOM/plugins/zsh-git-prompt/zshrc.sh"
+# fzf shell bindings (brew only)
+if command -v brew >/dev/null 2>&1; then
+  fzf_prefix="$(brew --prefix fzf)"
+  [[ -f "$fzf_prefix/shell/completion.zsh" ]] && source "$fzf_prefix/shell/completion.zsh"
+  [[ -f "$fzf_prefix/shell/key-bindings.zsh" ]] && source "$fzf_prefix/shell/key-bindings.zsh"
 fi
 
+bindkey -s '^f' 'tmux-sessionizer\n'
+
 # User configuration
-
-# command for zsh-completions
-autoload -U compinit && compinit
-
-ZSH_THEME_GIT_PROMPT_CACHE=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
+
+HISTSIZE=100000
+SAVEHIST=100000
+setopt HIST_IGNORE_ALL_DUPS SHARE_HISTORY HIST_REDUCE_BLANKS
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -208,6 +197,8 @@ if (( $+commands[abbr] )); then
   abbr -U tfa="terraform apply"
   abbr -U tfv="terraform validate"
   abbr -U tfw="terraform workspace"
+  abbr -U tfw_new="terraform workspace new"
+  abbr -U tfw_sel="terraform workspace select"
   abbr -U tfo="terraform output"
   abbr -U tfs="terraform state"
   abbr -U tfsh="terraform show"
@@ -224,3 +215,4 @@ if (( $+commands[starship] )) && [ -n "$DOTFILES_DIR" ] && [ -f "$DOTFILES_DIR/z
 fi
 
 export PATH="/usr/local/sbin:$PATH"
+typeset -U path
