@@ -29,6 +29,7 @@ function install_packages() {
     build-essential \
     cmake \
     curl \
+    fzf \
     git \
     htop \
     jq \
@@ -75,10 +76,6 @@ function setup_zsh() {
 
   # Install zsh plugins
   echo "Installing zsh plugins..."
-
-  if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-git-prompt ]; then
-    git clone https://github.com/zsh-git-prompt/zsh-git-prompt.git ~/.oh-my-zsh/custom/plugins/zsh-git-prompt
-  fi
 
   if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
@@ -174,6 +171,15 @@ function setup_other_dotfiles() {
   echo "✓ Other dotfiles synced"
 }
 
+function install_tflint() {
+  if command -v tflint >/dev/null 2>&1; then
+    echo "✓ tflint already installed"
+    return
+  fi
+  curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+  echo "✓ tflint installed"
+}
+
 function install_mise() {
   if command -v mise >/dev/null 2>&1 || [ -f "$HOME/.local/bin/mise" ]; then
     echo "✓ mise already installed"
@@ -217,6 +223,7 @@ setup_zsh
 setup_vim
 setup_tmux
 setup_other_dotfiles
+install_tflint
 install_mise
 
 echo ""

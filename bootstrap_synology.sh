@@ -35,10 +35,6 @@ function setup_zsh() {
   # Install zsh plugins
   echo "Installing zsh plugins..."
 
-  if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-git-prompt ]; then
-    git clone https://github.com/zsh-git-prompt/zsh-git-prompt.git ~/.oh-my-zsh/custom/plugins/zsh-git-prompt
-  fi
-
   if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   fi
