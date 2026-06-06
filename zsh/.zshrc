@@ -122,7 +122,7 @@ setopt HIST_IGNORE_ALL_DUPS SHARE_HISTORY HIST_REDUCE_BLANKS
 # fortune | cowsay
 export EDITOR="vim"  # Let PATH resolve to Homebrew version
 export BUNDLER_EDITOR=$EDITOR
-export TERM="screen-256color"
+[[ -z "$TMUX" ]] && export TERM="xterm-256color"
 export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
 
 # Manpage settings
