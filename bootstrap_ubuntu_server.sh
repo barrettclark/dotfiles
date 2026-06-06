@@ -176,7 +176,7 @@ function install_tflint() {
     echo "✓ tflint already installed"
     return
   fi
-  curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
   echo "✓ tflint installed"
 }
 
