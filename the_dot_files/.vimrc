@@ -22,7 +22,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'                 " Linting and fixing
 
 " Utilities
-Plug 'ctrlpvim/ctrlp.vim'       " Fuzzy file finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Fuzzy finder
+Plug 'junegunn/fzf.vim'         " fzf commands for vim
 Plug 'dbeniamine/todo.txt-vim'  " Todo.txt support
 Plug 'mileszs/ack.vim'          " Search (configured for ripgrep)
 Plug 'tomtom/tcomment_vim'      " Commenting with gc
@@ -47,9 +48,7 @@ Plug 'moll/vim-node'            " Node.js helpers
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
 Plug 'vim-ruby/vim-ruby'
 
 " Color scheme
@@ -91,6 +90,10 @@ set showmatch                   " Highlight matching brace
 set showmode                    " Show current mode
 set textwidth=100               " Linewrap at 100 chars
 
+" Persistent undo
+set undofile
+set undodir=~/.vim/undodir
+
 " Folding
 set foldmethod=indent
 set foldlevelstart=2
@@ -109,6 +112,11 @@ let &colorcolumn="72,".join(range(80,120),",")
 " Git
 set updatetime=300              " Make vim-gitgutter more responsive
 set signcolumn=yes              " Prevents screen jumping when linting
+
+" macOS-specific
+if has('macunix')
+  set clipboard=unnamed
+endif
 
 ""
 "" Keybindings
@@ -170,7 +178,7 @@ let g:ale_linters = {
 \   'go': ['gometalinter', 'gopls'],
 \   'javascript': ['eslint'],
 \   'python': ['flake8', 'pylint'],
-\   'terraform': ['terraform'],
+\   'terraform': ['tflint'],
 \   'typescript': ['eslint', 'tsserver'],
 \}
 
@@ -180,7 +188,6 @@ let g:ale_fixers = {
 \   'json': ['jq', 'prettier'],
 \   'python': ['autopep8', 'yapf'],
 \   'sql': ['sqlformat'],
-\   'terraform': ['terraform'],
 \   'typescript': ['eslint', 'prettier'],
 \   'yaml': ['prettier'],
 \}
@@ -203,20 +210,12 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:NERDTreeShowHidden = 1
 
-" CtrlP
-let g:ctrlp_by_filename = 1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|node_modules)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['.ctrlp']
-
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>t :CtrlP<CR>
-nmap <leader>m :CtrlPBufTag<CR>
-nmap <leader>M :CtrlPTag<CR>
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+" fzf
+nmap <leader>b :Buffers<CR>
+nmap <leader>t :Files<CR>
+nmap <leader>m :BTags<CR>
+nmap <leader>M :Tags<CR>
+nmap <leader>T :GFiles<CR>
 
 " Ack.vim (use ripgrep)
 if executable('rg')
