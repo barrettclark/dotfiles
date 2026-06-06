@@ -1,13 +1,11 @@
 session_name: terraform
+start_directory: ~/Projects/terraform
 windows:
-  - layout: main-vertical
-    focus: 'true'
+  - window_name: terraform
+    layout: main-vertical
     options:
       main-pane-width: 55%
-      automatic-rename: 'off'
-    shell_command_before:
-      - cd ~/Projects/terraform
     panes:
-      - focus: true
-      - blank
-      - blank
+      - shell_command: vim
+      - shell_command:
+      - shell_command:
