@@ -1,0 +1,26 @@
+# Interactive tmux session selector for ~/Projects
+function tmux-sessionizer() {
+  if [[ $# -eq 1 ]]; then
+    selected="$1"
+  else
+    if command -v fd >/dev/null 2>&1; then
+      selected=$(fd --type d --max-depth 2 . ~/Projects 2>/dev/null | fzf)
+    else
+      selected=$(find ~/Projects -mindepth 1 -maxdepth 2 -type d 2>/dev/null | fzf)
+    fi
+  fi
+
+  [[ -z "$selected" ]] && exit 0
+
+  selected_name=$(basename "$selected" | tr '.' '_')
+
+  if ! tmux has-session -t "$selected_name" 2>/dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+  fi
+
+  if [[ -n "$TMUX" ]]; then
+    tmux switch-client -t "$selected_name"
+  else
+    tmux attach-session -t "$selected_name"
+  fi
+}
