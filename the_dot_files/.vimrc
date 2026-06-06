@@ -91,6 +91,9 @@ set showmode                    " Show current mode
 set textwidth=100               " Linewrap at 100 chars
 
 " Persistent undo
+if !isdirectory($HOME . '/.vim/undodir')
+  call mkdir($HOME . '/.vim/undodir', 'p', 0700)
+endif
 set undofile
 set undodir=~/.vim/undodir
 
