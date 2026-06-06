@@ -62,7 +62,7 @@ function sniff() {
   if [[ $(uname) == 'Darwin' ]]; then
     iface=$(route -n get default 2>/dev/null | awk '/interface/{print $2}')
   else
-    iface=$(ip route 2>/dev/null | awk '/default/{print $5; exit}')
+    iface=$(command ip route 2>/dev/null | awk '/default/{print $5; exit}')
   fi
   sudo ngrep -d "${iface:-en0}" -t '^(GET|POST) ' 'tcp and port 80'
 }
@@ -72,7 +72,7 @@ function httpdump() {
   if [[ $(uname) == 'Darwin' ]]; then
     iface=$(route -n get default 2>/dev/null | awk '/interface/{print $2}')
   else
-    iface=$(ip route 2>/dev/null | awk '/default/{print $5; exit}')
+    iface=$(command ip route 2>/dev/null | awk '/default/{print $5; exit}')
   fi
   sudo tcpdump -i "${iface:-en0}" -n -s 0 -w - | grep -a -o -E "Host: .*|GET /.*"
 }
@@ -89,7 +89,7 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # URL-encode strings
-alias urlencode='python3 -c "import sys, urllib.parse; print(urllib.parse.quote_plus(sys.stdin.read().strip()))"'
+alias urlencode='python3 -c "import sys, urllib.parse; s = sys.argv[1] if len(sys.argv) > 1 else sys.stdin.read(); print(urllib.parse.quote_plus(s.strip()))"'
 
 # Merge PDF files
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
