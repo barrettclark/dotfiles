@@ -40,7 +40,7 @@ alias cl="clear; ls -lah"
 alias sudo='sudo '
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -57,8 +57,25 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
 # View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+function sniff() {
+  local iface
+  if [[ $(uname) == 'Darwin' ]]; then
+    iface=$(route -n get default 2>/dev/null | awk '/interface/{print $2}')
+  else
+    iface=$(ip route 2>/dev/null | awk '/default/{print $5; exit}')
+  fi
+  sudo ngrep -d "${iface:-en0}" -t '^(GET|POST) ' 'tcp and port 80'
+}
+
+function httpdump() {
+  local iface
+  if [[ $(uname) == 'Darwin' ]]; then
+    iface=$(route -n get default 2>/dev/null | awk '/interface/{print $2}')
+  else
+    iface=$(ip route 2>/dev/null | awk '/default/{print $5; exit}')
+  fi
+  sudo tcpdump -i "${iface:-en0}" -n -s 0 -w - | grep -a -o -E "Host: .*|GET /.*"
+}
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
@@ -72,7 +89,7 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python3 -c "import sys, urllib.parse; print(urllib.parse.quote_plus(sys.stdin.read().strip()))"'
 
 # Merge PDF files
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
