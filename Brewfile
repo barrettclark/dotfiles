@@ -138,13 +138,11 @@ brew "qmk/qmk/qmk"
 #==============================================================================
 # Fun & Misc
 #==============================================================================
-brew "achannarasappa/tap/ticker"  # Stock ticker
 brew "cowsay"
 brew "exercism"               # Coding exercises
 brew "fortune"
 brew "hey"                    # HTTP load generator
 brew "lolcat"
-brew "sl"                     # Steam locomotive
 brew "speedtest-cli"
 brew "todo-txt"
 
@@ -169,7 +167,6 @@ brew "sqlite"
 # Casks - Productivity & Utilities
 #==============================================================================
 cask "1password"
-cask "caffeine"
 cask "cleanmymac"
 cask "cleanshot"
 cask "corelocationcli"
@@ -191,7 +188,6 @@ cask "qlmarkdown"
 #==============================================================================
 # Casks - Development Tools
 #==============================================================================
-cask "docker-desktop"
 cask "ngrok"
 cask "qmk-toolbox"
 cask "quicklook-json"
@@ -205,7 +201,6 @@ cask "wkhtmltopdf"
 #==============================================================================
 brew "anomalyco/tap/opencode"
 cask "claude-code"
-cask "ollama-app"
 
 #==============================================================================
 # Casks - Media & Entertainment
@@ -221,7 +216,6 @@ cask "xscreensaver"
 # Casks - 3D Printing
 #==============================================================================
 cask "bambu-studio"
-# cask "autodesk-fusion"
 
 #==============================================================================
 # Casks - Fonts
