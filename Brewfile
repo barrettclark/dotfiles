@@ -21,7 +21,6 @@ tap "qmk/qmk"
 #==============================================================================
 brew "bash"
 brew "bash-completion"
-brew "reattach-to-user-namespace"
 brew "starship"
 brew "tmux"
 brew "tmux-mem-cpu-load"
@@ -72,6 +71,7 @@ brew "hashicorp/tap/sentinel"
 brew "hashicorp/tap/terraform"
 brew "hashicorp/tap/vault"
 brew "hashicorp/tap/waypoint"
+brew "tflint"
 brew "tfenv"                  # Terraform version manager
 
 #==============================================================================
