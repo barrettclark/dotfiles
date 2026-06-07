@@ -9,12 +9,12 @@
 # Taps
 #==============================================================================
 tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/services"
+tap "heroku/brew"
 tap "mutagen-io/mutagen"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
+tap "terraform-linters/tap"
 
 #==============================================================================
 # Shell & Terminal
@@ -47,14 +47,15 @@ brew "rename"
 brew "ssh-copy-id"
 brew "tree"
 brew "wget"
+brew "zlib"
 
 #==============================================================================
 # Programming Languages & Runtimes
 #==============================================================================
+brew "gcc"
 brew "go"
 brew "lua"
 brew "mise"                   # Version manager
-
 brew "python3"
 brew "rust"
 brew "yarn"
@@ -71,7 +72,7 @@ brew "hashicorp/tap/sentinel"
 brew "hashicorp/tap/terraform"
 brew "hashicorp/tap/vault"
 brew "hashicorp/tap/waypoint"
-brew "tflint"
+cask "tflint"
 brew "tfenv"                  # Terraform version manager
 
 #==============================================================================
@@ -79,30 +80,37 @@ brew "tfenv"                  # Terraform version manager
 #==============================================================================
 brew "ansible"
 brew "awscli"
+brew "heroku/brew/heroku"
 
 #==============================================================================
 # Development Tools
 #==============================================================================
 brew "cmake"
 brew "dbus"
+brew "geckodriver"
+brew "gh"
 brew "git"
 brew "git-gui"
 brew "git-lfs"
 brew "gnupg"
+brew "golangci-lint"
 brew "graphviz"
 brew "mas"                    # Mac App Store CLI
 brew "mkcert"
 brew "netcat"
 brew "universal-ctags"
 brew "vim"
+brew "watchman"
 
 #==============================================================================
 # File & Text Processing
 #==============================================================================
+brew "ack"
 brew "ansifilter"
 brew "bat"                    # Better cat
 brew "cloc"                   # Count lines of code
 brew "enscript"               # Text to PostScript
+brew "fmt"
 brew "fpp"                    # Facebook PathPicker
 brew "fzf"                    # Fuzzy finder
 brew "gpp"
@@ -122,12 +130,22 @@ brew "zopfli"                 # Compression tool
 # Graphics & Media Tools
 #==============================================================================
 brew "autotrace"
+brew "ffmpeg"
 brew "graphicsmagick"
 brew "gtk+"
 brew "librsvg"
 brew "libxml2"
 brew "lynx"
 brew "webkit2png"
+
+#==============================================================================
+# Database Tools
+#==============================================================================
+brew "libpq"
+brew "pgloader"
+brew "postgresql@16"
+brew "redis"
+brew "sqlite"
 
 #==============================================================================
 # Keyboard/Hardware Development
@@ -159,11 +177,6 @@ brew "virtualenvwrapper"
 brew "yapf"
 
 #==============================================================================
-# Database Tools
-#==============================================================================
-brew "sqlite"
-
-#==============================================================================
 # Casks - Productivity & Utilities
 #==============================================================================
 cask "1password"
@@ -174,6 +187,9 @@ cask "disk-inventory-x"
 cask "dropbox"
 cask "google-drive"
 cask "istat-menus"
+cask "mtmr"
+cask "nordvpn"
+cask "synology-image-assistant"
 cask "todotxt"
 
 #==============================================================================
@@ -181,14 +197,16 @@ cask "todotxt"
 #==============================================================================
 cask "calibre"
 cask "kobo"
-cask "macdown"
+cask "macdown-3000"
 cask "obsidian"
 cask "qlmarkdown"
 
 #==============================================================================
 # Casks - Development Tools
 #==============================================================================
+cask "db-browser-for-sqlite"
 cask "ngrok"
+cask "pgadmin4"
 cask "qmk-toolbox"
 cask "quicklook-json"
 cask "rowanj-gitx"
@@ -203,19 +221,29 @@ brew "anomalyco/tap/opencode"
 cask "claude-code"
 
 #==============================================================================
+# Casks - Browsers & Communication
+#==============================================================================
+cask "google-chrome"
+cask "slack"
+cask "zoom"
+
+#==============================================================================
 # Casks - Media & Entertainment
 #==============================================================================
 cask "discord"
 cask "gimp"
 cask "plex"
 cask "plexamp"
+cask "pocket-casts"
 cask "spotify"
+cask "vlc"
 cask "xscreensaver"
 
 #==============================================================================
-# Casks - 3D Printing
+# Casks - 3D Printing & Hardware
 #==============================================================================
 cask "bambu-studio"
+cask "raspberry-pi-imager"
 
 #==============================================================================
 # Casks - Fonts
@@ -236,8 +264,11 @@ cask "font-source-code-pro"
 #==============================================================================
 mas "1Password for Safari", id: 1569813296
 mas "Amazon Kindle", id: 302584613
+mas "Amphetamine", id: 937984704
+mas "Disk Diag", id: 672206759
 mas "JSONPeep", id: 1458969831
 mas "Keynote", id: 409183694
+mas "PhotoSweeper", id: 463362050
 mas "SwiftoDo Desktop", id: 1143641091
 
 # Commented out - not regularly used
@@ -251,16 +282,10 @@ mas "SwiftoDo Desktop", id: 1143641091
 #==============================================================================
 # probably no longer needed
 # cask "chromedriver"
+# cask "firefox"
 # cask "postman"
 # cask "sequel-pro"
 # cask "sleek"
-# cask "firefox"
-# cask "mtmr"
-
-# controlled by HashiCorp
-# cask "google-chrome"
-# cask "slack"
-# cask "zoom"
 
 # Java (not currently needed)
 # tap "adoptopenjdk/openjdk"
