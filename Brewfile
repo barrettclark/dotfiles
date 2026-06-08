@@ -188,7 +188,7 @@ cask "dropbox"
 cask "google-drive"
 cask "istat-menus"
 cask "mtmr"
-cask "nordvpn"
+cask "nordvpn" unless File.exist?(File.expand_path("~/.hashicorp.env"))
 cask "synology-image-assistant"
 cask "todotxt"
 
@@ -224,8 +224,8 @@ cask "claude-code"
 # Casks - Browsers & Communication
 #==============================================================================
 cask "google-chrome"
-cask "slack"
-cask "zoom"
+cask "slack" unless File.exist?(File.expand_path("~/.hashicorp.env"))
+cask "zoom" unless File.exist?(File.expand_path("~/.hashicorp.env"))
 
 #==============================================================================
 # Casks - Media & Entertainment

@@ -171,15 +171,6 @@ function setup_other_dotfiles() {
   echo "✓ Other dotfiles synced"
 }
 
-function install_tflint() {
-  if command -v tflint >/dev/null 2>&1; then
-    echo "✓ tflint already installed"
-    return
-  fi
-  curl -fsSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
-  echo "✓ tflint installed"
-}
-
 function install_mise() {
   if command -v mise >/dev/null 2>&1 || [ -f "$HOME/.local/bin/mise" ]; then
     echo "✓ mise already installed"
@@ -223,7 +214,6 @@ setup_zsh
 setup_vim
 setup_tmux
 setup_other_dotfiles
-install_tflint
 install_mise
 
 echo ""
