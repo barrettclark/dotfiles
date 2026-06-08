@@ -1,9 +1,9 @@
-# if File.exists?("~/.hashicorp.env")
-#   tap "hashicorp/internal", "git@github.com:hashicorp/homebrew-internal.git"
-#   tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
-#   brew "hashicorp/security/doormat-cli"
-#   brew "hashicorp/internal/roam"
-# end
+if File.exist?(File.expand_path("~/.hashicorp.env"))
+  tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
+  brew "hashicorp/security/doormat-cli"
+  brew "acli"
+  brew "jira-cli"
+end
 
 #==============================================================================
 # Taps
@@ -224,7 +224,7 @@ cask "claude-code"
 # Casks - Browsers & Communication
 #==============================================================================
 cask "google-chrome"
-cask "slack" unless File.exist?(File.expand_path("~/.hashicorp.env"))
+cask "slack"
 cask "zoom" unless File.exist?(File.expand_path("~/.hashicorp.env"))
 
 #==============================================================================
