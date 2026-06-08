@@ -1,13 +1,7 @@
-if File.exist?(File.expand_path("~/.hashicorp.env"))
-  tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
-  brew "hashicorp/security/doormat-cli"
-  brew "acli"
-  brew "jira-cli"
-end
-
 #==============================================================================
 # Taps
 #==============================================================================
+tap "atlassian/homebrew-acli"
 tap "hashicorp/tap"
 tap "heroku/brew"
 tap "mutagen-io/mutagen"
@@ -15,6 +9,16 @@ tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
 tap "terraform-linters/tap"
+
+#==============================================================================
+# HashiCorp Things
+#==============================================================================
+if File.exist?(File.expand_path("~/.hashicorp.env"))
+  tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
+  brew "hashicorp/security/doormat-cli"
+  brew "acli"
+  brew "jira-cli"
+end
 
 #==============================================================================
 # Shell & Terminal
