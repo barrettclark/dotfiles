@@ -1,0 +1,12 @@
+session_name: claude-data
+windows:
+  - layout: even-horizontal
+    focus: 'true'
+    options:
+      automatic-rename: 'off'
+    shell_command_before:
+      - cd /Users/barrettclark/Projects/claude-data
+    panes:
+      - focus: true
+        shell_command: claude
+      - blank
