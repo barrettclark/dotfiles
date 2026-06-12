@@ -1,17 +1,33 @@
 # Begin formatted tmux session
 function tmux-up() {
-  session_name=$1
-  if tmux has-session -t $session_name 2>/dev/null; then
+  local session_name=$1
+  if tmux has-session -t "=$session_name" 2>/dev/null; then
     if [[ -n $TMUX ]]; then
-      tmux switch-client -t $session_name
+      tmux switch-client -t "$session_name"
     else
-      tmux attach -t $session_name
+      tmux attach -t "$session_name"
     fi
   else
-    if [ -f ~/.tmuxp/$session_name.yaml ]; then
-      TMUX="" tmuxp load -d $session_name && tmux switch-client -t $session_name
-    else
-      TMUX="" tmuxp load -d -s $session_name default && tmux switch-client -t $session_name
+    # Create a yaml from the default template if one doesn't exist yet
+    if [ ! -f ~/.tmuxp/$session_name.yaml ]; then
+      sed "s/^# session_name:.*/session_name: $session_name/" \
+        ~/.tmuxp/default.yaml > ~/.tmuxp/$session_name.yaml
+    fi
+    # tmuxp 1.70.0 bug: new sessions are immediately killed if default-command
+    # contains a missing binary (e.g. reattach-to-user-namespace after uninstall),
+    # causing an AssertionError in builder.build(). Clear it for the load and restore.
+    local saved_default_command
+    saved_default_command=$(tmux show-options -gv default-command 2>/dev/null)
+    tmux set-option -gq default-command ""
+    TMUX="" tmuxp load --yes "$session_name"
+    local load_exit=$?
+    [[ -n $saved_default_command ]] && tmux set-option -gq default-command "$saved_default_command"
+    if [[ $load_exit -eq 0 ]]; then
+      if [[ -n $TMUX ]]; then
+        tmux switch-client -t "$session_name"
+      else
+        tmux attach -t "$session_name"
+      fi
     fi
   fi
 }
