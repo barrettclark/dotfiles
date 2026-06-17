@@ -15,8 +15,9 @@ tap "terraform-linters/tap"
 #==============================================================================
 if File.exist?(File.expand_path("~/.hashicorp.env"))
   tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
-  brew "hashicorp/security/doormat-cli"
   brew "acli"
+  brew "hashicorp/security/doormat-cli"
+  brew "hashicorp/tap/tfctl"
   brew "jira-cli"
 end
 
@@ -219,9 +220,10 @@ cask "visual-studio-code"
 cask "wkhtmltopdf"
 
 #==============================================================================
-# Casks - AI & ML
+# AI & ML
 #==============================================================================
 brew "anomalyco/tap/opencode"
+brew "beads"
 cask "claude-code"
 
 #==============================================================================
