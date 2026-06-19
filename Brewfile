@@ -1,7 +1,6 @@
 #==============================================================================
 # Taps
 #==============================================================================
-tap "atlassian/homebrew-acli"
 tap "hashicorp/tap"
 tap "heroku/brew"
 tap "mutagen-io/mutagen"
@@ -14,6 +13,7 @@ tap "terraform-linters/tap"
 # HashiCorp Things
 #==============================================================================
 if File.exist?(File.expand_path("~/.hashicorp.env"))
+  tap "atlassian/homebrew-acli"
   tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
   brew "acli"
   brew "hashicorp/security/doormat-cli"
@@ -209,6 +209,7 @@ cask "qlmarkdown"
 #==============================================================================
 # Casks - Development Tools
 #==============================================================================
+brew "poppler"                 # Read PDF
 cask "db-browser-for-sqlite"
 cask "ngrok"
 cask "pgadmin4"
