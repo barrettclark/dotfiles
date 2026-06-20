@@ -70,11 +70,19 @@ function setupDotfiles() {
   echo "✓ Dotfiles rsynced"
 }
 
+function setupClaude() {
+  mkdir -p ~/.claude
+  ln -sf /usr/local/dotfiles/claude/CLAUDE.md ~/.claude/CLAUDE.md
+  ln -sf /usr/local/dotfiles/claude/statusline-command.sh ~/.claude/statusline-command.sh
+  echo "✓ Claude symlinks created"
+}
+
 function setupAll() {
   echo " *** Full Mac Bootstrap ***"
   setupHomebrew
   setupDotfiles
   setupDotfileSymlinks
+  setupClaude
   setupMise
   setupZsh
   setupVim
@@ -82,8 +90,11 @@ function setupAll() {
 }
 
 function setupZsh() {
-  if [[ -f /usr/local/bin/zsh ]]; then
-    echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+  if [[ -f /opt/homebrew/bin/zsh ]]; then
+    grep -qxF /opt/homebrew/bin/zsh /etc/shells || echo "/opt/homebrew/bin/zsh" | sudo tee -a /etc/shells
+    chsh -s /opt/homebrew/bin/zsh
+  elif [[ -f /usr/local/bin/zsh ]]; then
+    grep -qxF /usr/local/bin/zsh /etc/shells || echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
     chsh -s /usr/local/bin/zsh
   else
     chsh -s /usr/bin/zsh
@@ -133,7 +144,7 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   git submodule update --init --recursive
   # npm install -g csslint fx markdownlint-cli moment prettier
-  while getopts ":abdhmoltsvz" opt; do
+  while getopts ":abchdmoltsvz" opt; do
     case $opt in
       a)
         echo " *** Full Mac Bootstrap ***"
@@ -142,6 +153,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
       b)
         echo " *** Bootstrap Bash ***"
         setupBash
+        ;;
+      c)
+        echo " *** Bootstrap Claude ***"
+        setupClaude
         ;;
       d)
         echo " *** Sync dotfiles ***"
@@ -186,6 +201,7 @@ fi;
 
 unset setupAll;
 unset setupBash;
+unset setupClaude;
 unset setupDotfiles;
 unset setupDotfileSymlinks;
 unset setupMise;

@@ -74,7 +74,7 @@ brew "hashicorp/tap/hcp"
 brew "hashicorp/tap/nomad"
 brew "hashicorp/tap/packer"
 brew "hashicorp/tap/sentinel"
-brew "hashicorp/tap/terraform"
+brew "hashicorp/tap/terraform", link: false
 brew "hashicorp/tap/vault"
 brew "hashicorp/tap/waypoint"
 cask "tflint"
@@ -211,14 +211,12 @@ cask "qlmarkdown"
 #==============================================================================
 brew "poppler"                 # Read PDF
 cask "db-browser-for-sqlite"
+cask "gitx"
 cask "ngrok"
 cask "pgadmin4"
 cask "qmk-toolbox"
-cask "quicklook-json"
-cask "rowanj-gitx"
 cask "sublime-text"
 cask "visual-studio-code"
-cask "wkhtmltopdf"
 
 #==============================================================================
 # AI & ML

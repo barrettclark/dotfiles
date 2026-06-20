@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Apple Silicon Homebrew (must come before oh-my-zsh so tools are in PATH)
+[ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -214,5 +217,9 @@ if (( $+commands[starship] )) && [ -n "$DOTFILES_DIR" ] && [ -f "$DOTFILES_DIR/z
   eval "$(starship init zsh)"
 fi
 
-export PATH="/usr/local/sbin:$PATH"
+[ -d /usr/local/sbin ] && export PATH="/usr/local/sbin:$PATH"
 typeset -U path
+export PATH="$HOME/.bun/bin:$PATH"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
