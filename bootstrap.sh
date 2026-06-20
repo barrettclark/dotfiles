@@ -93,6 +93,7 @@ function setupZsh() {
   if [[ -f /opt/homebrew/bin/zsh ]]; then
     grep -qxF /opt/homebrew/bin/zsh /etc/shells || echo "/opt/homebrew/bin/zsh" | sudo tee -a /etc/shells
     chsh -s /opt/homebrew/bin/zsh
+    sudo ln -sf /opt/homebrew/bin/zsh /usr/local/bin/zsh
   elif [[ -f /usr/local/bin/zsh ]]; then
     grep -qxF /usr/local/bin/zsh /etc/shells || echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
     chsh -s /usr/local/bin/zsh
