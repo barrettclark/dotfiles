@@ -2,6 +2,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "FzfLua",
     keys = {
       { "<leader>t", "<cmd>FzfLua files<CR>", desc = "Files" },
       { "<leader>T", "<cmd>FzfLua git_files<CR>", desc = "Git files" },
@@ -15,6 +16,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFindFile" },
     keys = {
       { "<C-n>", "<cmd>NvimTreeOpen<CR>", desc = "Open file tree" },
       { "<leader>d", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file tree" },
