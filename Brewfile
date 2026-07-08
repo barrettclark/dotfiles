@@ -83,7 +83,6 @@ brew "tfenv"                  # Terraform version manager
 #==============================================================================
 # Cloud & Infrastructure
 #==============================================================================
-brew "ansible"
 brew "awscli"
 brew "heroku/brew/heroku"
 
@@ -239,7 +238,6 @@ cask "discord"
 cask "gimp"
 cask "plex"
 cask "plexamp"
-cask "pocket-casts"
 cask "spotify"
 cask "vlc"
 cask "xscreensaver"
@@ -268,7 +266,6 @@ cask "font-source-code-pro"
 # Mac App Store
 #==============================================================================
 mas "1Password for Safari", id: 1569813296
-mas "Amazon Kindle", id: 302584613
 mas "Amphetamine", id: 937984704
 mas "Disk Diag", id: 672206759
 mas "JSONPeep", id: 1458969831
@@ -281,6 +278,7 @@ mas "SwiftoDo Desktop", id: 1143641091
 # mas "Numbers", id: 409203825
 # mas "Pages", id: 409201541
 # mas "iMovie", id: 408981434
+# mas "Amazon Kindle", id: 302584613
 
 #==============================================================================
 # Archived/Unused
