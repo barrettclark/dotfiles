@@ -1,12 +1,10 @@
-# Update Homebrew, vim plugins, tmux plugins, mise, OSX
+# Update Homebrew, neovim plugins, tmux plugins, mise, OSX
 function osx-update() {
   # homebrew
   /usr/local/dotfiles/brew.sh
 
-  # vim plugins
-  vim +PlugClean! +qall
-  vim +PlugUpdate +qall
-  vim +PlugUpgrade +qall
+  # neovim plugins (clean + install + update; commits lazy-lock.json changes are manual)
+  nvim --headless "+Lazy! sync" +qa
 
   # tmux plugin manager
   ~/.tmux/plugins/tpm/bin/clean_plugins
