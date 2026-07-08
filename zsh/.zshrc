@@ -141,6 +141,7 @@ export MANPAGER="less -X"
 export TODOTXT_DEFAULT_ACTION="ls"
 
 export GOPATH="/Users/$(whoami)/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

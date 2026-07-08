@@ -1,5 +1,5 @@
 # Ghostty — https://ghostty.org/docs/config
-# Theme approximates seoul256 (ghostty ships the iTerm2-Color-Schemes set)
+# Seoulbones Dark was chosen because ghostty doesn't ship Seoul256
 theme = Seoulbones Dark
 
 font-family = Hack Nerd Font Mono

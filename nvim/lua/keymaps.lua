@@ -3,9 +3,6 @@ local map = vim.keymap.set
 -- Clear search highlighting
 map("n", "<leader><CR>", "<cmd>noh<CR>", { desc = "Clear search highlight" })
 
--- Reload config
-map("n", "<leader>so", "<cmd>source $MYVIMRC<CR>", { desc = "Reload init.lua" })
-
 -- Git blame (fugitive, installed in Task 5)
 map("n", "<leader>gb", "<cmd>Git blame<CR>", { desc = "Git blame" })
 

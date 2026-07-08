@@ -26,6 +26,10 @@ function setupDotfileSymlinks() {
   ln -sf /usr/local/dotfiles/the_dot_files/.vimrc ~/.vimrc
   ln -sf /usr/local/dotfiles/the_dot_files/.tmux.conf ~/.tmux.conf
   mkdir -p ~/.config
+  if [[ -d ~/.config/nvim && ! -L ~/.config/nvim ]]; then
+    mkdir -p ~/.dotfiles_backup
+    mv ~/.config/nvim ~/.dotfiles_backup/nvim.config.bak
+  fi
   ln -sfn /usr/local/dotfiles/nvim ~/.config/nvim
   echo "✓ Symlinks created"
 }
@@ -122,6 +126,10 @@ function setupVim() {
   # Neovim: symlink config and sync plugins headlessly.
   # (.vimrc stays rsynced for Ubuntu/Synology; macOS uses nvim.)
   mkdir -p ~/.config
+  if [[ -d ~/.config/nvim && ! -L ~/.config/nvim ]]; then
+    mkdir -p ~/.dotfiles_backup
+    mv ~/.config/nvim ~/.dotfiles_backup/nvim.config.bak
+  fi
   ln -sfn /usr/local/dotfiles/nvim ~/.config/nvim
   nvim --headless "+Lazy! sync" +qa
   echo "✓ Neovim plugins synced"
