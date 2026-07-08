@@ -123,7 +123,13 @@ setopt HIST_IGNORE_ALL_DUPS SHARE_HISTORY HIST_REDUCE_BLANKS
 # fi
 
 # fortune | cowsay
-export EDITOR="vim"  # Let PATH resolve to Homebrew version
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR="nvim"
+  alias vim="nvim"
+  alias vimdiff="nvim -d"
+else
+  export EDITOR="vim"
+fi
 export BUNDLER_EDITOR=$EDITOR
 [[ -z "$TMUX" ]] && export TERM="xterm-256color"
 export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
