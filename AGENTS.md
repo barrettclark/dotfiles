@@ -72,8 +72,10 @@ vim +PlugInstall +qall
 ```
 
 LSP servers install via mason (`:Mason`): gopls, terraform-ls, pyright, ruff,
-ts_ls, eslint, ruby-lsp, jsonls. Treesitter is pinned to `branch = "master"`
-(legacy configs API). Formatting via conform.nvim — Go/Terraform on save,
+ts_ls, eslint, ruby-lsp, jsonls. Treesitter uses `branch = "main"` (master is
+archived and breaks on nvim 0.12+); parser builds need `tree-sitter-cli`
+(Brewfile) and land in `~/.local/share/nvim/site/parser/`. Formatting via
+conform.nvim — Go/Terraform on save,
 everything else via `\F`; sqlformat is a custom formatter (`-r -k upper`).
 
 AI plugins: coder/claudecode.nvim (`\a*` keymaps, connect with `/ide` from the
