@@ -42,8 +42,10 @@ Flags for `bootstrap.sh`: `-a` (all), `-b` (bash), `-d` (dotfiles), `-h` (Homebr
 git submodule update --init --recursive
 ```
 
-- `.tmux/` — barrettclark/.tmux (tmux config with local overrides)
 - `zsh/myth-prompt-themes/` — barrettclark/myth-prompt-themes (Starship prompt theme)
+
+(The old `.tmux` submodule was removed 2026-07 — tmux config lives entirely in
+`the_dot_files/.tmux.conf`; `~/.tmux/` is just local TPM plugin/resurrect data.)
 
 ## Shell quirks
 
