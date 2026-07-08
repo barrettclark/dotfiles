@@ -1,0 +1,12 @@
+# Ghostty — https://ghostty.org/docs/config
+# Theme approximates seoul256 (ghostty ships the iTerm2-Color-Schemes set)
+theme = Seoulbones Dark
+
+font-family = Hack Nerd Font Mono
+font-size = 13
+
+macos-option-as-alt = true
+window-padding-x = 4
+window-padding-y = 4
+cursor-style = block
+shell-integration = zsh
