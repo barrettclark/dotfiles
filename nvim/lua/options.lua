@@ -44,3 +44,6 @@ opt.signcolumn = "yes"
 if vim.fn.has("macunix") == 1 then
   opt.clipboard = "unnamed"
 end
+
+-- Auto-reload files changed outside nvim
+opt.autoread = true

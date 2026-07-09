@@ -1,0 +1,16 @@
+# sqls configuration
+# https://github.com/sqls-server/sqls#configuration
+#
+# Uncomment and fill in connection details to enable completion and hover
+# for table/column names. Without connections, sqls still provides basic
+# SQL diagnostics and keyword completion.
+#
+# connections:
+#   - driver: postgresql
+#     dataSourceName: host=127.0.0.1 port=5432 user=postgres password=password dbname=mydb sslmode=disable
+#
+#   - driver: mysql
+#     dataSourceName: root:password@tcp(127.0.0.1:3306)/mydb
+#
+#   - driver: sqlite3
+#     dataSourceName: /path/to/database.db

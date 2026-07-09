@@ -8,8 +8,9 @@ return {
         opts = {
           -- installs the servers and auto-enables them (mason-lspconfig v2)
           ensure_installed = {
-            "gopls", "terraformls", "pyright", "ruff",
-            "ts_ls", "eslint", "ruby_lsp", "jsonls",
+            "dockerls", "eslint", "gopls", "jsonls",
+            "marksman", "pyright", "ruff", "ruby_lsp",
+            "sqls", "taplo", "terraformls", "ts_ls", "yamlls",
           },
         },
       },
@@ -22,6 +23,17 @@ return {
           json = {
             schemas = require("schemastore").json.schemas(),
             validate = { enable = true },
+          },
+        },
+      })
+
+      -- YAML schemas (mirrors jsonls + schemastore setup)
+      vim.lsp.config("yamlls", {
+        settings = {
+          yaml = {
+            schemas = require("schemastore").yaml.schemas(),
+            validate = true,
+            schemaStore = { enable = false, url = "" }, -- use schemastore.nvim instead
           },
         },
       })

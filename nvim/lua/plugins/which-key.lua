@@ -6,8 +6,8 @@ return {
       -- popup appears after you pause mid-sequence (vim.o.timeoutlen, 1000ms)
       spec = {
         { "<leader>a", group = "claude" },
-        { "<leader>o", group = "opencode" },
         { "<leader>c", group = "close/copy-path" },
+        { "<leader>o", group = "opencode" },
         { "<leader>r", group = "grep/rename" },
         { "<leader>s", group = "split/strip" },
       },

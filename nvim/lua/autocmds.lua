@@ -12,6 +12,12 @@ vim.filetype.add({
   },
 })
 
+-- Auto-reload files changed outside nvim (pairs with opt.autoread)
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  command = "checktime",
+})
+
 -- Commit messages wrap at 72
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "gitcommit",

@@ -73,6 +73,14 @@ function setupDotfiles() {
     --exclude='.vimrc' --exclude='.tmux.conf' \
     --exclude='.claude' --exclude='.claude.json' \
     /usr/local/dotfiles/the_dot_files/ $HOME
+  # sqls config (only written if not already present — preserves local DB connections)
+  mkdir -p ~/.config/sqls
+  if [[ ! -f ~/.config/sqls/config.yml ]]; then
+    cp /usr/local/dotfiles/the_dot_files/.config/sqls/config.yml ~/.config/sqls/config.yml
+    echo "✓ sqls config written to ~/.config/sqls/config.yml"
+  else
+    echo "✓ sqls config already exists, skipping"
+  fi
   echo "✓ Dotfiles rsynced"
 }
 

@@ -8,7 +8,7 @@ return {
       require("nvim-treesitter").install({
         "bash", "dockerfile", "go", "gomod", "hcl", "javascript", "json",
         "lua", "markdown", "markdown_inline", "python", "ruby", "sql",
-        "terraform", "typescript", "vim", "vimdoc", "yaml",
+        "terraform", "toml", "typescript", "vim", "vimdoc", "yaml",
       })
 
       -- main branch doesn't auto-start highlighting; enable per buffer

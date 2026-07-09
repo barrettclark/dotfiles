@@ -16,13 +16,15 @@ return {
     opts = {
       formatters_by_ft = {
         go = { "goimports" },
-        terraform = { "terraform_fmt" },
         javascript = { "eslint_d", "prettier" },
-        typescript = { "eslint_d", "prettier" },
         json = { "jq" },
-        yaml = { "prettier" },
+        markdown = { "prettier" },
         python = { "ruff_format" },
         sql = { "sqlformat" },
+        terraform = { "terraform_fmt" },
+        toml = { "taplo" },
+        typescript = { "eslint_d", "prettier" },
+        yaml = { "prettier" },
         ["_"] = { "trim_whitespace", "trim_newlines" }, -- ALE '*' fixers
       },
       formatters = {
