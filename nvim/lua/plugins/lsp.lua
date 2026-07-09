@@ -17,6 +17,10 @@ return {
       { "b0o/schemastore.nvim" },
     },
     config = function()
+      -- Advertise nvim-cmp completion capabilities to all LSP servers
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      vim.lsp.config("*", { capabilities = capabilities })
+
       -- JSON schemas (new capability vs ALE)
       vim.lsp.config("jsonls", {
         settings = {
