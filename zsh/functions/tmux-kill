@@ -1,4 +1,19 @@
-# Kill a tmux session by name
+# Kill a named tmux session directly, or pick interactively via fzf
 function tmux-kill() {
-  tmux kill-session -t $1
+  if [[ -n "$1" ]]; then
+    tmux kill-session -t "$1"
+    return
+  fi
+
+  local sessions
+  sessions=$(tmux list-sessions -F '#{session_name}' 2>/dev/null) || {
+    echo "No tmux sessions." && return 1
+  }
+
+  local selected
+  selected=$(echo "$sessions" | fzf --multi --prompt="Kill session(s)> " --preview='tmux list-windows -t {}')
+
+  [[ -z "$selected" ]] && return 0
+
+  echo "$selected" | xargs -I{} tmux kill-session -t {}
 }
