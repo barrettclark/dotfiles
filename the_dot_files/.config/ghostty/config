@@ -1,6 +1,7 @@
 # Ghostty — https://ghostty.org/docs/config
 # Seoulbones Dark was chosen because ghostty doesn't ship Seoul256
-theme = Seoulbones Dark
+#theme = Seoulbones Dark
+theme = chalkboard
 
 font-family = Hack Nerd Font Mono
 font-size = 13

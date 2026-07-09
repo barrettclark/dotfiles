@@ -85,9 +85,9 @@ context, `\op` prompt library).
 ## Terminal
 
 Ghostty (cask) with config at `the_dot_files/.config/ghostty/config` (rsynced).
-Theme is Seoulbones Dark with Hack Nerd Font Mono (ghostty doesn't ship a
-Seoul256 theme; Seoulbones is the closest approximation). Terminal.app kept
-as fallback.
+Theme is chalkboard with Hack Nerd Font Mono (Seoulbones Dark kept
+commented as the previous choice — ghostty doesn't ship a Seoul256 theme).
+Terminal.app kept as fallback.
 
 ## Tmux
 

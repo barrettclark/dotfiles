@@ -87,10 +87,12 @@ function setupAll() {
   echo " *** Full Mac Bootstrap ***"
   setupHomebrew
   setupDotfiles
-  setupDotfileSymlinks
   setupClaude
   setupMise
   setupZsh
+  # Symlinks must come after setupZsh: the oh-my-zsh installer replaces
+  # ~/.zshrc with a plain file, clobbering the symlink.
+  setupDotfileSymlinks
   setupVim
   setupTmux
 }
