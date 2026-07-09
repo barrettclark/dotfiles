@@ -15,5 +15,5 @@ function tmux-kill() {
 
   [[ -z "$selected" ]] && return 0
 
-  echo "$selected" | xargs -I{} tmux kill-session -t {}
+  echo "$selected" | grep -v '^$' | xargs -I{} tmux kill-session -t {}
 }
