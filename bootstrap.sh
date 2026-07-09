@@ -25,6 +25,12 @@ function setupDotfileSymlinks() {
   ln -sf /usr/local/dotfiles/zsh/.zshrc ~/.zshrc
   ln -sf /usr/local/dotfiles/the_dot_files/.vimrc ~/.vimrc
   ln -sf /usr/local/dotfiles/the_dot_files/.tmux.conf ~/.tmux.conf
+  mkdir -p ~/.config
+  if [[ -d ~/.config/nvim && ! -L ~/.config/nvim ]]; then
+    mkdir -p ~/.dotfiles_backup
+    mv ~/.config/nvim ~/.dotfiles_backup/nvim.config.bak
+  fi
+  ln -sfn /usr/local/dotfiles/nvim ~/.config/nvim
   echo "✓ Symlinks created"
 }
 
@@ -117,16 +123,16 @@ function setupZsh() {
 }
 
 function setupVim() {
-  rm -rf ~/.vim
-  # Symlink .vimrc instead of copying
-  if [[ -f ~/.vimrc ]]; then
-    mv ~/.vimrc ~/.vimrc.backup
+  # Neovim: symlink config and sync plugins headlessly.
+  # (.vimrc stays rsynced for Ubuntu/Synology; macOS uses nvim.)
+  mkdir -p ~/.config
+  if [[ -d ~/.config/nvim && ! -L ~/.config/nvim ]]; then
+    mkdir -p ~/.dotfiles_backup
+    mv ~/.config/nvim ~/.dotfiles_backup/nvim.config.bak
   fi
-  ln -sf /usr/local/dotfiles/the_dot_files/.vimrc ~/.vimrc
-  rsync -avh --ignore-times --no-perms --progress .vim/colors ~/.vim
-  rsync -avh --ignore-times --no-perms --progress .vim/syntax ~/.vim
-  git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
-  vim +PluginInstall +qall
+  ln -sfn /usr/local/dotfiles/nvim ~/.config/nvim
+  nvim --headless "+Lazy! sync" +qa
+  echo "✓ Neovim plugins synced"
 }
 
 function setupTmux() {
@@ -189,7 +195,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         setupTmux
         ;;
       v)
-        echo " *** Bootstrap vim ***"
+        echo " *** Bootstrap neovim ***"
         setupVim
         ;;
       z)

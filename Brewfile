@@ -102,8 +102,9 @@ brew "graphviz"
 brew "mas"                    # Mac App Store CLI
 brew "mkcert"
 brew "netcat"
+brew "neovim"
+brew "tree-sitter-cli"        # nvim-treesitter (main branch) parser builds
 brew "universal-ctags"
-brew "vim"
 brew "watchman"
 
 #==============================================================================
@@ -210,6 +211,7 @@ cask "qlmarkdown"
 #==============================================================================
 brew "poppler"                 # Read PDF
 cask "db-browser-for-sqlite"
+cask "ghostty"
 cask "gitx"
 cask "ngrok"
 cask "pgadmin4"

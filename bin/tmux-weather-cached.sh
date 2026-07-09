@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Cache file location
-CACHE_FILE="/tmp/tmux-weather-cache"
+CACHE_FILE="${TMPDIR:-/tmp}/tmux-weather-cache-$USER"
 CACHE_DURATION=900  # 15 minutes in seconds
 
 # Check if cache exists and is fresh
@@ -23,12 +23,15 @@ if [[ -f "$CACHE_FILE" ]]; then
 fi
 
 # Cache is stale or doesn't exist, fetch new data
-# Using format=3 for simple output: "Location: emoji temp"
-WEATHER=$(curl -s --max-time 3 "wttr.in/DFW?format=3" 2>/dev/null)
+# No location given: wttr.in geolocates by request IP, so this follows
+# the machine when traveling (VPNs will report the exit node's city).
+# Using format=2 for compact output without the location name: "emoji temp"
+WEATHER=$(curl -sf --max-time 3 "wttr.in/?format=2" 2>/dev/null)
 
-# If curl succeeded, cache and display
-if [[ $? -eq 0 ]] && [[ -n "$WEATHER" ]]; then
-  echo "$WEATHER" > "$CACHE_FILE"
+# Require a degree sign before caching — wttr.in rate-limit/error pages
+# come back with HTTP 200 and would otherwise poison the cache
+if [[ "$WEATHER" == *"°"* ]]; then
+  echo "$WEATHER" > "$CACHE_FILE.tmp" && mv "$CACHE_FILE.tmp" "$CACHE_FILE"
   echo "$WEATHER"
 else
   # If curl failed, try to use old cache as fallback

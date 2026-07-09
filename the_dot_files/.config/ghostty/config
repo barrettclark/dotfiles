@@ -1,0 +1,12 @@
+# Ghostty — https://ghostty.org/docs/config
+# Seoulbones Dark was chosen because ghostty doesn't ship Seoul256
+theme = Seoulbones Dark
+
+font-family = Hack Nerd Font Mono
+font-size = 13
+
+macos-option-as-alt = true
+window-padding-x = 4
+window-padding-y = 4
+cursor-style = block
+shell-integration = zsh

@@ -123,9 +123,16 @@ setopt HIST_IGNORE_ALL_DUPS SHARE_HISTORY HIST_REDUCE_BLANKS
 # fi
 
 # fortune | cowsay
-export EDITOR="vim"  # Let PATH resolve to Homebrew version
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR="nvim"
+  alias vi="nvim"
+  alias vim="nvim"
+  alias vimdiff="nvim -d"
+else
+  export EDITOR="vim"
+fi
 export BUNDLER_EDITOR=$EDITOR
-[[ -z "$TMUX" ]] && export TERM="xterm-256color"
+[[ -z "$TMUX" && "$TERM" != "xterm-ghostty" ]] && export TERM="xterm-256color"
 export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
 
 # Manpage settings
@@ -135,6 +142,7 @@ export MANPAGER="less -X"
 export TODOTXT_DEFAULT_ACTION="ls"
 
 export GOPATH="/Users/$(whoami)/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

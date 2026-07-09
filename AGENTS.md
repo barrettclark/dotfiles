@@ -7,7 +7,8 @@ Personal dotfiles for Barrett Clark (barrett.clark@hashicorp.com). Shell, vim, t
 | Path | Purpose |
 |------|---------|
 | `zsh/.zshrc` | Zsh config — **symlinked** to `~/.zshrc` |
-| `the_dot_files/.vimrc` | Vim config — **symlinked** to `~/.vimrc` |
+| `nvim/` | Neovim config (Lua, lazy.nvim) — **symlinked** to `~/.config/nvim` |
+| `the_dot_files/.vimrc` | Vim config for servers (Ubuntu/Synology) — **symlinked** to `~/.vimrc` |
 | `the_dot_files/.tmux.conf` | Tmux config — **symlinked** to `~/.tmux.conf` |
 | `the_dot_files/` | Remaining dotfiles — **rsynced** (copied) to `$HOME` |
 | `bash_dot_files/` | Bash config, aliases, exports, functions |
@@ -26,8 +27,9 @@ Six scripts, one per platform:
 | Script | Target |
 |--------|--------|
 | `bootstrap.sh -a` | Full Mac (Homebrew → dotfiles → symlinks → mise → zsh → vim → tmux) |
-| `bootstrap.sh -s` | Symlinks only (`.zshrc`, `.vimrc`, `.tmux.conf`) |
+| `bootstrap.sh -s` | Symlinks only (`.zshrc`, `.vimrc`, `.tmux.conf`, `~/.config/nvim`) |
 | `bootstrap.sh -d` | Rsync dotfiles only |
+| `bootstrap.sh -v` | Neovim on Mac: symlink `nvim/` → `~/.config/nvim` + headless `Lazy! sync`; `.vimrc` stays rsynced for Ubuntu/Synology |
 | `bootstrap_macos.sh` | macOS defaults + computer name (takes name arg, wine varieties) |
 | `bootstrap_ubuntu_server.sh` | Headless Ubuntu 24 (zsh, vim, tmux, mise, starship) |
 | `bootstrap_synology.sh` | Synology DSM (zsh, vim via .profile — no /etc/passwd changes) |
@@ -40,8 +42,10 @@ Flags for `bootstrap.sh`: `-a` (all), `-b` (bash), `-d` (dotfiles), `-h` (Homebr
 git submodule update --init --recursive
 ```
 
-- `.tmux/` — barrettclark/.tmux (tmux config with local overrides)
 - `zsh/myth-prompt-themes/` — barrettclark/myth-prompt-themes (Starship prompt theme)
+
+(The old `.tmux` submodule was removed 2026-07 — tmux config lives entirely in
+`the_dot_files/.tmux.conf`; `~/.tmux/` is just local TPM plugin/resurrect data.)
 
 ## Shell quirks
 
@@ -53,13 +57,37 @@ git submodule update --init --recursive
 - `git-master-or-main` zsh function (`zsh/functions/git-master-or-main`) auto-detects default branch name.
 - Computer names follow wine varieties (e.g. `bootstrap_macos.sh pinot-noir`).
 
-## Vim
+## Neovim (Mac) / Vim (servers)
 
-`.vimrc` uses **vim-plug** (`Plug '...'`). On Mac, `bootstrap.sh -v` also installs Vundle (`~/.vim/bundle/Vundle.vim`) as a side effect — this is a known inconsistency. Ubuntu/Synology bootstraps install only vim-plug.
+Mac uses Neovim: `nvim/` (Lua, lazy.nvim) is symlinked to `~/.config/nvim`;
+`bootstrap.sh -v` runs a headless `Lazy! sync`. `vim`/`vimdiff` are aliased to
+`nvim`/`nvim -d` and `EDITOR=nvim`, guarded on `command -v nvim` (`zsh/.zshrc:126-133`).
+`lazy-lock.json` pins plugin versions — commit it when updating plugins.
+
+Ubuntu/Synology keep plain vim with `the_dot_files/.vimrc` (vim-plug). The old
+Vundle side effect in `bootstrap.sh -v` is gone.
 
 ```sh
 vim +PlugInstall +qall
 ```
+
+LSP servers install via mason (`:Mason`): gopls, terraform-ls, pyright, ruff,
+ts_ls, eslint, ruby-lsp, jsonls. Treesitter uses `branch = "main"` (master is
+archived and breaks on nvim 0.12+); parser builds need `tree-sitter-cli`
+(Brewfile) and land in `~/.local/share/nvim/site/parser/`. Formatting via
+conform.nvim — Go/Terraform on save,
+everything else via `\F`; sqlformat is a custom formatter (`-r -k upper`).
+
+AI plugins: coder/claudecode.nvim (`\a*` keymaps, connect with `/ide` from the
+claude CLI) and NickvanDyke/opencode.nvim (`\ot` toggle, `\oa` ask with @this
+context, `\op` prompt library).
+
+## Terminal
+
+Ghostty (cask) with config at `the_dot_files/.config/ghostty/config` (rsynced).
+Theme is Seoulbones Dark with Hack Nerd Font Mono (ghostty doesn't ship a
+Seoul256 theme; Seoulbones is the closest approximation). Terminal.app kept
+as fallback.
 
 ## Tmux
 

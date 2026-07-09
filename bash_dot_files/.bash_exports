@@ -3,7 +3,11 @@
 # export EDITOR='subl -w'
 # export BUNDLER_EDITOR='subl -w'
 # vim for all
-export EDITOR='/usr/local/bin/vim'
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
 export BUNDLER_EDITOR=$EDITOR
 
 # Don’t clear the screen after quitting a manual page
