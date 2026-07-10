@@ -144,6 +144,9 @@ export TODOTXT_DEFAULT_ACTION="ls"
 export GOPATH="/Users/$(whoami)/go"
 export PATH="$GOPATH/bin:$PATH"
 
+# Mise
+eval "$(mise activate zsh)"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
