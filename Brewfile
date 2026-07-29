@@ -16,6 +16,7 @@ if File.exist?(File.expand_path("~/.hashicorp.env"))
   tap "atlassian/homebrew-acli"
   tap "hashicorp/security", "git@github.com:hashicorp/homebrew-security.git"
   brew "acli"
+  brew "bun"
   brew "hashicorp/security/doormat-cli"
   brew "hashicorp/tap/tfctl"
   brew "jira-cli"
