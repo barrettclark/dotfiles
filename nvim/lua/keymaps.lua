@@ -22,3 +22,7 @@ map("n", "<leader>ss", function() require("functions").strip_whitespace() end, {
 
 -- Next diagnostic (replaces ALE <C-e> ale_next_wrap)
 map("n", "<C-e>", function() vim.diagnostic.jump({ count = 1, float = true, wrap = true }) end, { desc = "Next diagnostic" })
+
+-- Comment toggle (mirrors old <Leader>__ from tcomment)
+map("n", "<leader>__", "gcc", { desc = "Comment line", remap = true })
+map("v", "<leader>__", "gc", { desc = "Comment selection", remap = true })

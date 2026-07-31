@@ -47,3 +47,9 @@ end
 
 -- Auto-reload files changed outside nvim
 opt.autoread = true
+
+-- Diagnostics: virtual text on current line, float on hover
+vim.diagnostic.config({
+  virtual_text = { current_line = true },
+  float = { border = "rounded" },
+})

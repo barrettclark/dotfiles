@@ -43,6 +43,9 @@ return {
           -- goimports cold start is ~1.1s (module cache scan); warm runs are ~30ms
           return { timeout_ms = 3000, lsp_format = "fallback" }
         end
+        if ft == "typescript" or ft == "javascript" then
+          return { timeout_ms = 5000, lsp_format = "fallback" }
+        end
         return nil -- all other filetypes: manual <leader>F only
       end,
     },
