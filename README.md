@@ -1,6 +1,6 @@
 # Barrett’s dotfiles
 
-This is originally based on [mathias's dotfiles](mathiasbynens/dotfiles), and is an eternal work in progress.
+This is originally based on [mathias's dotfiles](https://github.com/mathiasbynens/dotfiles), and is an eternal work in progress.
 
 <!-- vim-markdown-toc GFM -->
 
@@ -197,5 +197,5 @@ The bootstrap adds zsh auto-start to your `.profile` instead of modifying `/etc/
 
 ## Credits
 
-Initial dotfiles forked from mathiasbynens/dotfiles
+Initial dotfiles forked from [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
 Fish functions from nvie/dotfiles
