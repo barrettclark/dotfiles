@@ -143,6 +143,8 @@ function setupVim() {
   ln -sfn /usr/local/dotfiles/nvim ~/.config/nvim
   nvim --headless "+Lazy! sync" +qa
   echo "✓ Neovim plugins synced"
+  nvim --headless "+MasonUpdate" +qa
+  echo "✓ Mason LSP packages updated"
 }
 
 function setupTmux() {
@@ -160,7 +162,7 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   git submodule update --init --recursive
-  # npm install -g csslint fx markdownlint-cli moment prettier
+  npm install -g eslint_d fx markdownlint-cli prettier
   while getopts ":abchdmoltsvz" opt; do
     case $opt in
       a)
