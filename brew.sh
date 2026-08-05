@@ -35,9 +35,6 @@ if [ ! -f "/usr/local/bin/sha256sum" ]; then
   sudo -A ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 fi
 
-# Upgrade MacOS applications
-mas upgrade
-
 # Remove outdated versions from the cellar.
 brew cleanup
 brew cleanup -s
