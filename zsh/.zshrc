@@ -86,10 +86,13 @@ plugins=(
   zsh-autosuggestions
 )
 
-# Load HashiCorp settings if the file exists
+# Load machine-local env: work takes precedence over personal
 if [ -f ~/.hashicorp.env ]; then
   ZSH_DOTENV_PROMPT=false
   ZSH_DOTENV_FILE=~/.hashicorp.env
+elif [ -f ~/.personal.env ]; then
+  ZSH_DOTENV_PROMPT=false
+  ZSH_DOTENV_FILE=~/.personal.env
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +113,7 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
+export SUDO_ASKPASS="$HOME/bin/sudo-askpass.sh"
 
 HISTSIZE=100000
 SAVEHIST=100000

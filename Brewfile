@@ -186,6 +186,7 @@ brew "yapf"
 # Casks - Productivity & Utilities
 #==============================================================================
 cask "1password"
+cask "1password-cli"
 cask "cleanmymac"
 cask "cleanshot"
 cask "corelocationcli"

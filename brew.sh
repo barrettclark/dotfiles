@@ -9,10 +9,10 @@
 # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Ask for the administrator password upfront.
-sudo -v
+sudo -A true
 
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do sudo -A -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Move git hooks out of the way if they exist so they don't interfere
 # with Homebrew updating it's repo.
@@ -32,7 +32,7 @@ brew bundle --verbose --file=/usr/local/dotfiles/Brewfile
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 if [ ! -f "/usr/local/bin/sha256sum" ]; then
-  sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+  sudo -A ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 fi
 
 # Upgrade MacOS applications

@@ -19,7 +19,7 @@ function osx-update() {
 
   # OSX update
   mas upgrade
-  sudo softwareupdate --all --install --force
+  sudo -A softwareupdate --all --install --force
   echo "To reboot: sudo shutdown -r now"
 
   # omz update

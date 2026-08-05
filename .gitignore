@@ -1,5 +1,6 @@
 *license*
 .netrc
+.personal.env
 Brewfile.lock.json
 node_modules
 package-lock.json

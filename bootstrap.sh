@@ -2,6 +2,14 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
+function setupSudoAskpass() {
+  mkdir -p ~/bin
+  cp /usr/local/dotfiles/bin/sudo-askpass.sh ~/bin/sudo-askpass.sh
+  chmod +x ~/bin/sudo-askpass.sh
+  export SUDO_ASKPASS="$HOME/bin/sudo-askpass.sh"
+  echo "✓ sudo-askpass.sh deployed to ~/bin"
+}
+
 function setupHomebrew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   /usr/local/dotfiles/brew.sh
@@ -51,6 +59,7 @@ function setupSettings() {
 
 function setupBash() {
   # This copies (rsynchs) everything not specifically excluded to $HOME
+  setupSudoAskpass
   rsync -avh --ignore-times --no-perms --progress bash_dot_files/ $HOME
   rsync -avh --ignore-times --no-perms --progress bin/ $HOME/bin
   setupSettings
@@ -93,6 +102,7 @@ function setupClaude() {
 
 function setupAll() {
   echo " *** Full Mac Bootstrap ***"
+  setupSudoAskpass
   setupHomebrew
   setupDotfiles
   setupClaude
@@ -226,6 +236,7 @@ unset setupDotfileSymlinks;
 unset setupMise;
 unset setupHomebrew;
 unset setupSettings;
+unset setupSudoAskpass;
 unset setupTmux;
 unset setupVim;
 unset setupZsh;
