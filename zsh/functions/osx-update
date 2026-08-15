@@ -9,10 +9,10 @@ function osx-update() {
   # mason LSP updates
   nvim --headless "+MasonUpdate" +qa
 
-  # tmux plugin manager
-  ~/.tmux/plugins/tpm/bin/clean_plugins
-  ~/.tmux/plugins/tpm/bin/install_plugins
-  ~/.tmux/plugins/tpm/bin/update_plugins all
+  # tmux plugins via tpack
+  tpack clean
+  tpack install
+  tpack update
 
   # mise
   mise upgrade

@@ -31,6 +31,7 @@ brew "starship"
 brew "tmux"
 brew "tmux-mem-cpu-load"
 brew "tmuxp"
+brew "tmuxpack/tpack/tpack"
 brew "zsh"
 brew "olets/tap/zsh-abbr"
 

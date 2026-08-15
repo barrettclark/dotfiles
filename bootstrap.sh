@@ -164,8 +164,19 @@ function setupTmux() {
     mv ~/.tmux.conf ~/.tmux.conf.backup
   fi
   ln -sf /usr/local/dotfiles/the_dot_files/.tmux.conf ~/.tmux.conf
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  tmux source ~/.tmux.conf
+  # tpack is installed via Homebrew (tmuxpack/tpack/tpack); no git clone needed.
+  # Press prefix + I inside tmux to install plugins after bootstrap.
+  # Pre-deploy treemux init config so it survives plugin reinstall.
+  mkdir -p ~/.tmux/plugins/treemux/configs
+  cp /usr/local/dotfiles/the_dot_files/.tmux/plugins/treemux/configs/treemux_init.lua \
+    ~/.tmux/plugins/treemux/configs/treemux_init.lua
+  tmux source ~/.tmux.conf 2>/dev/null || true
+  # Deploy and load the tmux-continuum LaunchAgent (Ghostty boot)
+  mkdir -p ~/Library/LaunchAgents
+  sed "s|__HOME__|$HOME|g" /usr/local/dotfiles/the_dot_files/Library/LaunchAgents/Tmux.Start.plist > ~/Library/LaunchAgents/Tmux.Start.plist
+  launchctl unload ~/Library/LaunchAgents/Tmux.Start.plist 2>/dev/null || true
+  launchctl load ~/Library/LaunchAgents/Tmux.Start.plist
+  echo "✓ Tmux LaunchAgent loaded"
 }
 
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
