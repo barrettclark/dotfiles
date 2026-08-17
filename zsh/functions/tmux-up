@@ -19,7 +19,11 @@ function tmux-up() {
     local saved_default_command
     saved_default_command=$(tmux show-options -gv default-command 2>/dev/null)
     tmux set-option -gq default-command ""
-    TMUX="" tmuxp load --yes "$session_name"
+    # -d and `env -u TMUX` keep tmuxp from attaching/switch-clienting itself;
+    # we do that explicitly below. `TMUX=""` alone doesn't unset the var (the
+    # key stays present, empty), so tmuxp still thinks it's inside a client and
+    # calls switch-client, which throws "no current client" on first creation.
+    env -u TMUX tmuxp load --yes -d "$session_name"
     local load_exit=$?
     [[ -n $saved_default_command ]] && tmux set-option -gq default-command "$saved_default_command"
     if [[ $load_exit -eq 0 ]]; then
