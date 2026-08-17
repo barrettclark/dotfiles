@@ -150,7 +150,7 @@ brew "webkit2png"
 #==============================================================================
 brew "libpq"
 brew "pgloader"
-brew "postgresql@16"
+brew "postgresql@18"
 brew "redis"
 brew "sqlite"
 
