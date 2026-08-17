@@ -8,6 +8,7 @@ tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
 tap "terraform-linters/tap"
+tap "tmuxpack/tpack"
 
 #==============================================================================
 # HashiCorp Things
@@ -27,13 +28,13 @@ end
 #==============================================================================
 brew "bash"
 brew "bash-completion"
+brew "olets/tap/zsh-abbr"
 brew "starship"
 brew "tmux"
 brew "tmux-mem-cpu-load"
 brew "tmuxp"
-brew "tmuxpack/tpack/tpack"
+brew "tpack"
 brew "zsh"
-brew "olets/tap/zsh-abbr"
 
 #==============================================================================
 # Core Utilities & Unix Tools

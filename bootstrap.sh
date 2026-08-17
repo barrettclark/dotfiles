@@ -166,10 +166,12 @@ function setupTmux() {
   ln -sf /usr/local/dotfiles/the_dot_files/.tmux.conf ~/.tmux.conf
   # tpack is installed via Homebrew (tmuxpack/tpack/tpack); no git clone needed.
   # Press prefix + I inside tmux to install plugins after bootstrap.
-  # Pre-deploy treemux init config so it survives plugin reinstall.
-  mkdir -p ~/.tmux/plugins/treemux/configs
-  cp /usr/local/dotfiles/the_dot_files/.tmux/plugins/treemux/configs/treemux_init.lua \
-    ~/.tmux/plugins/treemux/configs/treemux_init.lua
+  # Pre-deploy treemux init config outside ~/.tmux/plugins so it doesn't get
+  # mistaken by tpack for a legacy (non-git) plugin install, and so it
+  # survives plugin reinstall.
+  mkdir -p ~/.tmux/treemux-configs
+  cp /usr/local/dotfiles/the_dot_files/.tmux/treemux-configs/treemux_init.lua \
+    ~/.tmux/treemux-configs/treemux_init.lua
   tmux source ~/.tmux.conf 2>/dev/null || true
   # Deploy and load the tmux-continuum LaunchAgent (Ghostty boot)
   mkdir -p ~/Library/LaunchAgents
