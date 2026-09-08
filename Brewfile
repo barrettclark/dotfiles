@@ -197,7 +197,7 @@ cask "dropbox"
 cask "google-drive"
 cask "istat-menus"
 cask "mtmr"
-cask "nordvpn" unless File.exist?(File.expand_path("~/.hashicorp.env"))
+cask "protonvpn" unless File.exist?(File.expand_path("~/.hashicorp.env"))
 cask "synology-image-assistant"
 cask "todotxt"
 
