@@ -1,14 +1,16 @@
 #==============================================================================
 # Taps
 #==============================================================================
-tap "hashicorp/tap"
-tap "heroku/brew"
-tap "mutagen-io/mutagen"
-tap "osx-cross/arm"
-tap "osx-cross/avr"
-tap "qmk/qmk"
-tap "terraform-linters/tap"
-tap "tmuxpack/tpack"
+tap "barrettclark/tap", trusted: true
+tap "hashicorp/tap", trusted: true
+tap "heroku/brew", trusted: true
+tap "mutagen-io/mutagen", trusted: true
+tap "osx-cross/arm", trusted: true
+tap "osx-cross/avr", trusted: true
+tap "qmk/qmk", trusted: true
+tap "steipete/tap", trusted: true
+tap "terraform-linters/tap", trusted: true
+tap "tmuxpack/tpack", trusted: true
 
 #==============================================================================
 # HashiCorp Things
