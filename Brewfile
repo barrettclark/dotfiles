@@ -154,6 +154,7 @@ brew "pgloader"
 brew "postgresql@18"
 brew "redis"
 brew "sqlite"
+cask "barrettclark/tap/sqlite2pg"
 
 #==============================================================================
 # Keyboard/Hardware Development
@@ -229,6 +230,7 @@ cask "visual-studio-code"
 brew "anomalyco/tap/opencode"
 brew "beads"
 cask "claude-code"
+cask "steipete/tap/codexbar"
 
 #==============================================================================
 # Casks - Browsers & Communication
