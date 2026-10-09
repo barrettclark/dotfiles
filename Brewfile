@@ -229,7 +229,7 @@ cask "visual-studio-code"
 #==============================================================================
 # AI & ML
 #==============================================================================
-brew "anomalyco/tap/opencode"
+brew "anomalyco/tap/opencode-v2"
 brew "beads"
 cask "claude-code"
 cask "steipete/tap/codexbar"
