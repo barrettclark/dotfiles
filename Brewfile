@@ -134,7 +134,6 @@ brew "ripgrep"                # Fast grep alternative
 brew "shared-mime-info"
 brew "tidy-html5"
 brew "urlview"
-brew "zopfli"                 # Compression tool
 
 #==============================================================================
 # Graphics & Media Tools
@@ -142,11 +141,9 @@ brew "zopfli"                 # Compression tool
 brew "autotrace"
 brew "ffmpeg"
 brew "graphicsmagick"
-brew "gtk+"
 brew "librsvg"
 brew "libxml2"
 brew "lynx"
-brew "webkit2png"
 
 #==============================================================================
 # Database Tools
@@ -172,7 +169,6 @@ brew "exercism"               # Coding exercises
 brew "fortune"
 brew "hey"                    # HTTP load generator
 brew "lolcat"
-brew "speedtest-cli"
 brew "todo-txt"
 
 #==============================================================================
@@ -195,7 +191,6 @@ cask "1password-cli"
 cask "cleanmymac"
 cask "cleanshot"
 cask "corelocationcli"
-cask "disk-inventory-x"
 cask "dropbox"
 cask "google-drive"
 cask "istat-menus"
