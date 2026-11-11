@@ -5,10 +5,19 @@ vim.filetype.add({
     pkg = "sql", prc = "sql", spc = "sql", tab = "sql", usr = "sql",
     vw = "sql",
     hcl = "terraform",
+    tf = "terraform",
+    tfrc = "hcl",
+    tfvars = "terraform-vars",
+    tfstate = "json",
     todotxt = "todo",
+  },
+  filename = {
+    [".terraformrc"] = "hcl",
+    ["terraform.rc"] = "hcl",
   },
   pattern = {
     ["Dockerfile.*"] = "dockerfile",
+    [".*%.tfstate%.backup"] = "json",
   },
 })
 

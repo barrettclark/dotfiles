@@ -39,7 +39,7 @@ return {
       },
       format_on_save = function(bufnr)
         local ft = vim.bo[bufnr].filetype
-        if ft == "go" or ft == "terraform" then
+        if ft == "go" or ft == "terraform" or ft == "hcl" then
           -- goimports cold start is ~1.1s (module cache scan); warm runs are ~30ms
           return { timeout_ms = 3000, lsp_format = "fallback" }
         end

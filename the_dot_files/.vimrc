@@ -155,7 +155,10 @@ noremap <leader>ss :call StripWhitespace()<CR>
 " SQL extensions
 au BufRead,BufNewFile *.bdy,*.fnc,*.grt,*.mvw,*.pkb,*.pkg,*.prc,*.spc,*.tab,*.usr,*.vw setfiletype sql
 au BufRead,BufNewFile Dockerfile* setfiletype dockerfile
-au BufRead,BufNewFile *.hcl setfiletype terraform
+au BufRead,BufNewFile *.hcl,*.tf setfiletype terraform
+au BufRead,BufNewFile *.tfrc,.terraformrc,terraform.rc set filetype=hcl
+au BufRead,BufNewFile *.tfvars setfiletype terraform-vars
+au BufRead,BufNewFile *.tfstate,*.tfstate.backup setfiletype json
 au BufRead,BufNewFile *.todotxt setfiletype todo
 au FileType gitcommit set tw=72
 
