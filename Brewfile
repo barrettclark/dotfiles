@@ -227,7 +227,6 @@ cask "visual-studio-code"
 brew "anomalyco/tap/opencode-v2"
 brew "beads"
 cask "claude-code"
-cask "steipete/tap/codexbar"
 
 #==============================================================================
 # Casks - Browsers & Communication
