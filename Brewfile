@@ -205,6 +205,7 @@ cask "todotxt"
 cask "calibre"
 cask "kobo"
 cask "macdown-3000"
+cask "markdown-preview"
 cask "obsidian"
 cask "qlmarkdown"
 
