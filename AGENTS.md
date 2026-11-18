@@ -98,7 +98,7 @@ Terminal.app kept as fallback.
 - Continuum auto-saves every 60s; auto-restores on boot (fullscreen).
 - Plugins: sysstat, battery, continuum, resurrect, treemux, yank.
 - `treemux` (`kiyoon/treemux`) opens a neovim-tree sidebar (Prefix + `Tab`). Uses `nvim-tree` client with `~/.tmux/treemux-configs/treemux_init.lua` — deliberately kept outside `~/.tmux/plugins/` so tpack doesn't mistake the pre-deployed config dir for a legacy (non-git) plugin install during migration. The customized init file is stored in `the_dot_files/.tmux/treemux-configs/treemux_init.lua` and deployed by `bootstrap.sh -t` to survive plugin reinstalls. Opening a file (`<CR>`, `l`) targets the spawning pane (`tabnew_main_pane`); `v`/`<C-v>`/`<C-x>` still split.
-- `@continuum-boot on` with `ghostty,fullscreen`. The LaunchAgent (`Tmux.Start.plist`) is stored in `the_dot_files/Library/LaunchAgents/` and deployed by `bootstrap.sh -d`; `bootstrap.sh -t` also loads it via `launchctl`. The boot script is `bin/tmux-ghostty-start.sh` (deployed to `~/bin/`).
+- `@continuum-boot off`: continuum doesn't support Ghostty and rewrites (or deletes) `~/Library/LaunchAgents/Tmux.Start.plist` with a Terminal.app launcher, so boot is handled by our own LaunchAgent, `com.barrettclark.tmux-ghostty.plist`, stored in `the_dot_files/Library/LaunchAgents/` (with a `__HOME__` placeholder). `bootstrap.sh -d` and `-t` both render it via `deployTmuxLaunchAgent` (and remove any stale `Tmux.Start.plist`); rsync excludes that directory. The boot script is `bin/tmux-ghostty-start.sh` (deployed to `~/bin/`).
 
 (The old `.tmux` submodule was removed 2026-07; `~/.tmux/plugins/tpm` is no longer cloned — tpack manages plugin storage.)
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>Tmux.Start.plist</string>
+    <string>com.barrettclark.tmux-ghostty</string>
     <key>ProgramArguments</key>
     <array>
         <string>__HOME__/bin/tmux-ghostty-start.sh</string>

@@ -81,6 +81,7 @@ function setupDotfiles() {
   rsync -avh --ignore-times --no-perms --progress \
     --exclude='.vimrc' --exclude='.tmux.conf' \
     --exclude='.claude' --exclude='.claude.json' \
+    --exclude='Library/LaunchAgents' \
     /usr/local/dotfiles/the_dot_files/ $HOME
   # sqls config (only written if not already present — preserves local DB connections)
   mkdir -p ~/.config/sqls
@@ -90,6 +91,7 @@ function setupDotfiles() {
   else
     echo "✓ sqls config already exists, skipping"
   fi
+  deployTmuxLaunchAgent
   echo "✓ Dotfiles rsynced"
 }
 
@@ -157,6 +159,21 @@ function setupVim() {
   echo "✓ Mason LSP packages updated"
 }
 
+function deployTmuxLaunchAgent() {
+  # Boot-time Ghostty + tmux launcher. Separate from continuum's Tmux.Start.plist,
+  # which continuum rewrites with the Terminal.app launcher.
+  local label=com.barrettclark.tmux-ghostty
+  local dest=~/Library/LaunchAgents/$label.plist
+  mkdir -p ~/Library/LaunchAgents
+  if [[ -f ~/Library/LaunchAgents/Tmux.Start.plist ]]; then
+    launchctl bootout gui/$(id -u)/Tmux.Start.plist 2>/dev/null || true
+    rm -f ~/Library/LaunchAgents/Tmux.Start.plist
+  fi
+  sed "s|__HOME__|$HOME|g" /usr/local/dotfiles/the_dot_files/Library/LaunchAgents/$label.plist > "$dest"
+  launchctl bootout gui/$(id -u)/$label 2>/dev/null || true
+  launchctl bootstrap gui/$(id -u) "$dest"
+}
+
 function setupTmux() {
   rm -rf ~/.tmux/plugins
   # Symlink .tmux.conf instead of copying
@@ -173,11 +190,7 @@ function setupTmux() {
   cp /usr/local/dotfiles/the_dot_files/.tmux/treemux-configs/treemux_init.lua \
     ~/.tmux/treemux-configs/treemux_init.lua
   tmux source ~/.tmux.conf 2>/dev/null || true
-  # Deploy and load the tmux-continuum LaunchAgent (Ghostty boot)
-  mkdir -p ~/Library/LaunchAgents
-  sed "s|__HOME__|$HOME|g" /usr/local/dotfiles/the_dot_files/Library/LaunchAgents/Tmux.Start.plist > ~/Library/LaunchAgents/Tmux.Start.plist
-  launchctl unload ~/Library/LaunchAgents/Tmux.Start.plist 2>/dev/null || true
-  launchctl load ~/Library/LaunchAgents/Tmux.Start.plist
+  deployTmuxLaunchAgent
   echo "✓ Tmux LaunchAgent loaded"
 }
 
